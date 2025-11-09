@@ -1,0 +1,2585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Analysis | T-Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', Arial, sans-serif; background: #f5f5f7; color: #222; }
+        .navbar { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(226,0,116,0.03);}
+        .nav-container { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;}
+        .logo-nav { display: flex; align-items: center; gap: 48px;}
+        .t-mobile-logo { font-size: 28px; font-weight: 700; color: #E20074; letter-spacing: -0.5px; cursor: pointer; text-decoration: none;}
+        .t-mobile-logo:hover { opacity: 0.8;}
+        .nav-links { display: flex; gap: 32px; list-style: none;}
+        .nav-links a { color: #222; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;}
+        .nav-links a:hover, .nav-links a.active { color: #E20074; }
+        
+        .page-header { background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #fff; padding: 60px 24px 40px; text-align: center;}
+        .page-title { font-size: 42px; font-weight: 700; margin-bottom: 12px;}
+        .page-subtitle { font-size: 18px; opacity: 0.9;}
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px;}
+        
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;}
+        .stat-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);}
+        .stat-number { font-size: 36px; font-weight: 700; color: #E20074; margin-bottom: 8px;}
+        .stat-label { font-size: 14px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        
+        .filters { background: #fff; padding: 24px; border-radius: 16px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);}
+        .filters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;}
+        .filter-group { display: flex; flex-direction: column; gap: 8px;}
+        .filter-label { font-size: 14px; font-weight: 600; color: #333;}
+        .filter-select, .filter-input { padding: 10px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s; background: #fff;}
+        .filter-select:focus, .filter-input:focus { outline: none; border-color: #E20074;}
+        .filter-input { width: 100%;}
+        
+        .feedback-container { position: relative;}
+        .feedback-scroll { display: flex; gap: 20px; overflow-x: auto; overflow-y: hidden; padding: 20px 0; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;}
+        .feedback-scroll::-webkit-scrollbar { height: 8px;}
+        .feedback-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px;}
+        .feedback-scroll::-webkit-scrollbar-thumb { background: #E20074; border-radius: 4px;}
+        .feedback-scroll::-webkit-scrollbar-thumb:hover { background: #c10062;}
+        
+        .feedback-card { 
+            min-width: 320px; 
+            max-width: 320px; 
+            background: #fff; 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex-shrink: 0;
+        }
+        .feedback-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        
+        .feedback-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;}
+        .feedback-user { font-weight: 700; color: #222; font-size: 16px; margin-bottom: 4px;}
+        .feedback-location { font-size: 12px; color: #666; display: flex; align-items: center; gap: 4px;}
+        .feedback-rating { display: flex; align-items: center; gap: 4px;}
+        .stars { color: #fbbf24; font-size: 14px;}
+        .rating-number { font-size: 14px; font-weight: 600; color: #E20074;}
+        
+        .feedback-score { 
+            background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); 
+            color: #fff; 
+            padding: 6px 12px; 
+            border-radius: 16px; 
+            font-size: 13px; 
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .feedback-date { font-size: 11px; color: #999; margin-bottom: 12px;}
+        .feedback-text { color: #4b5563; font-size: 13px; line-height: 1.6; margin-bottom: 12px; min-height: 60px;}
+        .feedback-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0;}
+        .meta-badge { 
+            background: #f3f4f6; 
+            color: #4b5563; 
+            padding: 4px 10px; 
+            border-radius: 12px; 
+            font-size: 11px; 
+            font-weight: 600;
+        }
+        .meta-badge.category { background: #e0f2fe; color: #0369a1;}
+        .meta-badge.verified { background: #d1fae5; color: #059669;}
+        .meta-badge.county { background: #fef3c7; color: #d97706;}
+        
+        .no-feedback { 
+            text-align: center; 
+            padding: 60px 20px; 
+            color: #888;
+            background: #fff;
+            border-radius: 16px;
+        }
+        .no-feedback-icon { font-size: 64px; margin-bottom: 16px;}
+        .no-feedback-text { font-size: 18px; font-weight: 600;}
+        
+        .loading { text-align: center; padding: 60px 20px; color: #888;}
+        
+        .scroll-indicator {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(226, 0, 116, 0.9);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feedback-container:hover .scroll-indicator {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-title { font-size: 32px; }
+            .stats-row { grid-template-columns: 1fr; }
+            .filters-grid { grid-template-columns: 1fr; }
+            .feedback-card { min-width: 280px; max-width: 280px; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-nav">
+            <a href="index.html" class="t-mobile-logo">T-Mobile</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="issues.html">Issues</a></li>
+                <li><a href="details.html">Detailed Analysis</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="page-header">
+    <h1 class="page-title">Customer Feedback Analysis</h1>
+    <p class="page-subtitle">Comprehensive analysis of all customer feedback across all states and counties</p>
+</div>
+
+<div class="container">
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-number" id="total-feedback">0</div>
+            <div class="stat-label">Total Feedback</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="avg-rating">0</div>
+            <div class="stat-label">Avg Rating</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="avg-score">0</div>
+            <div class="stat-label">Avg Score</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="verified-count">0</div>
+            <div class="stat-label">Verified</div>
+        </div>
+    </div>
+    
+    <div class="filters">
+        <div class="filters-grid">
+            <div class="filter-group" style="display: none;">
+                <label class="filter-label">Filter by State</label>
+                <select class="filter-select" id="stateFilter">
+                    <option value="all">All States</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Category</label>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Coverage">Coverage</option>
+                    <option value="Price">Price</option>
+                    <option value="Customer Service">Customer Service</option>
+                    <option value="Network Speed">Network Speed</option>
+                    <option value="Reliability">Reliability</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Rating</label>
+                <select class="filter-select" id="ratingFilter">
+                    <option value="all">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Verified</label>
+                <select class="filter-select" id="verifiedFilter">
+                    <option value="all">All</option>
+                    <option value="true">Verified Only</option>
+                    <option value="false">Unverified Only</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Search</label>
+                <input type="text" class="filter-input" id="searchInput" placeholder="Search feedback...">
+            </div>
+        </div>
+    </div>
+    
+    <div class="feedback-container">
+        <div class="scroll-indicator">← Scroll to see more →</div>
+        <div id="feedback-scroll" class="feedback-scroll">
+            <div class="loading">Loading feedback...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// API Configuration
+let API_BASE_URL = 'http://localhost:3000/api';
+if (window.location.protocol === 'file:') {
+    API_BASE_URL = 'http://localhost:3000/api';
+} else {
+    API_BASE_URL = `${window.location.origin}/api`;
+}
+
+let allFeedback = [];
+let filteredFeedback = [];
+
+// Mock feedback data (fallback if API data is not available)
+const mockFeedbackData = [
+    {
+        id: "mock-1",
+        customerName: "Sarah M.",
+        location: "Los Angeles, CA",
+        state: "California",
+        county: "Los Angeles County",
+        city: "Los Angeles",
+        rating: 4.5,
+        score: 90,
+        review: "Excellent coverage everywhere I go. Never have any dropped calls!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Sarah Martinez",
+            title: "Regional Director",
+            email: "sarah.martinez@t-mobile.com",
+            phone: "(310) 555-0123"
+        }
+    },
+    {
+        id: "mock-2",
+        customerName: "James W.",
+        location: "Houston, TX",
+        state: "Texas",
+        county: "Harris County",
+        city: "Houston",
+        rating: 2.2,
+        score: 45,
+        review: "Frequent dropped calls in my neighborhood, especially during peak hours. Customer service was unhelpful.",
+        date: "2025-11-05",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Michael Johnson",
+            title: "Regional Director",
+            email: "m.johnson@t-mobile.com",
+            phone: "(713) 555-0145"
+        }
+    },
+    {
+        id: "mock-3",
+        customerName: "Patricia B.",
+        location: "New York, NY",
+        state: "New York",
+        county: "New York County",
+        city: "New York",
+        rating: 4.8,
+        score: 96,
+        review: "Best value for money! Great plans at affordable prices. Highly recommend!",
+        date: "2025-11-07",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "David Chen",
+            title: "Regional Director",
+            email: "d.chen@t-mobile.com",
+            phone: "(212) 555-0189"
+        }
+    },
+    {
+        id: "mock-4",
+        customerName: "Robert T.",
+        location: "Chicago, IL",
+        state: "Illinois",
+        county: "Cook County",
+        city: "Chicago",
+        rating: 3.5,
+        score: 70,
+        review: "Coverage is decent but could be better in some areas. Generally satisfied.",
+        date: "2025-11-04",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Jennifer Adams",
+            title: "Regional Director",
+            email: "j.adams@t-mobile.com",
+            phone: "(312) 555-0145"
+        }
+    },
+    {
+        id: "mock-5",
+        customerName: "Emily D.",
+        location: "Phoenix, AZ",
+        state: "Arizona",
+        county: "Maricopa County",
+        city: "Phoenix",
+        rating: 4.2,
+        score: 84,
+        review: "Lightning fast speeds! Perfect for streaming and work. Very satisfied!",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Carlos Rodriguez",
+            title: "Regional Director",
+            email: "c.rodriguez@t-mobile.com",
+            phone: "(602) 555-0167"
+        }
+    },
+    {
+        id: "mock-6",
+        customerName: "Michael C.",
+        location: "Miami, FL",
+        state: "Florida",
+        county: "Miami-Dade County",
+        city: "Miami",
+        rating: 1.8,
+        score: 36,
+        review: "Billing errors every single month! I've called 5 times to fix overcharges with no resolution.",
+        date: "2025-11-03",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Michelle Washington",
+            title: "Regional Director",
+            email: "m.washington@t-mobile.com",
+            phone: "(305) 555-0167"
+        }
+    },
+    {
+        id: "mock-7",
+        customerName: "Jennifer A.",
+        location: "Seattle, WA",
+        state: "Washington",
+        county: "King County",
+        city: "Seattle",
+        rating: 4.6,
+        score: 92,
+        review: "Outstanding customer service! Always helpful and friendly. Best experience ever!",
+        date: "2025-11-08",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Rebecca Martinez",
+            title: "Regional Director",
+            email: "r.martinez@t-mobile.com",
+            phone: "(206) 555-0123"
+        }
+    },
+    {
+        id: "mock-8",
+        customerName: "Christopher L.",
+        location: "Atlanta, GA",
+        state: "Georgia",
+        county: "Fulton County",
+        city: "Atlanta",
+        rating: 2.5,
+        score: 50,
+        review: "Terrible coverage in my area. Calls drop constantly and I can barely get data service.",
+        date: "2025-11-01",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Thomas Anderson",
+            title: "Regional Director",
+            email: "t.anderson@t-mobile.com",
+            phone: "(404) 555-0198"
+        }
+    },
+    {
+        id: "mock-9",
+        customerName: "Karen M.",
+        location: "Denver, CO",
+        state: "Colorado",
+        county: "Denver County",
+        city: "Denver",
+        rating: 4.4,
+        score: 88,
+        review: "Very reliable service. Never have issues. Rock solid reliability!",
+        date: "2025-11-07",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Lisa Thompson",
+            title: "Regional Director",
+            email: "l.thompson@t-mobile.com",
+            phone: "(303) 555-0134"
+        }
+    },
+    {
+        id: "mock-10",
+        customerName: "David K.",
+        location: "Boston, MA",
+        state: "Massachusetts",
+        county: "Suffolk County",
+        city: "Boston",
+        rating: 3.8,
+        score: 76,
+        review: "Good customer support. Quick to resolve any issues. Professional service.",
+        date: "2025-11-05",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Sarah O'Brien",
+            title: "Regional Director",
+            email: "s.obrien@t-mobile.com",
+            phone: "(617) 555-0156"
+        }
+    },
+    {
+        id: "mock-11",
+        customerName: "Linda G.",
+        location: "San Diego, CA",
+        state: "California",
+        county: "San Diego County",
+        city: "San Diego",
+        rating: 4.7,
+        score: 94,
+        review: "Amazing coverage! Works great even in remote areas. Very impressed!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Robert Kim",
+            title: "Regional Director",
+            email: "r.kim@t-mobile.com",
+            phone: "(619) 555-0178"
+        }
+    },
+    {
+        id: "mock-12",
+        customerName: "Mark S.",
+        location: "Dallas, TX",
+        state: "Texas",
+        county: "Dallas County",
+        city: "Dallas",
+        rating: 2.8,
+        score: 56,
+        review: "Network speeds are much slower than advertised. Can barely stream videos.",
+        date: "2025-11-02",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Amanda White",
+            title: "Regional Director",
+            email: "a.white@t-mobile.com",
+            phone: "(214) 555-0132"
+        }
+    },
+    {
+        id: "mock-13",
+        customerName: "Nancy P.",
+        location: "Portland, OR",
+        state: "Oregon",
+        county: "Multnomah County",
+        city: "Portland",
+        rating: 4.3,
+        score: 86,
+        review: "Fair pricing for quality service. Good value overall. Very pleased!",
+        date: "2025-11-06",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Daniel Lee",
+            title: "Regional Director",
+            email: "d.lee@t-mobile.com",
+            phone: "(503) 555-0147"
+        }
+    },
+    {
+        id: "mock-14",
+        customerName: "William H.",
+        location: "Las Vegas, NV",
+        state: "Nevada",
+        county: "Clark County",
+        city: "Las Vegas",
+        rating: 1.9,
+        score: 38,
+        review: "Customer service is awful. Long wait times and unhelpful representatives.",
+        date: "2025-11-01",
+        category: "Customer Service",
+        verified: false,
+        countyContact: {
+            name: "Jessica Brown",
+            title: "Regional Director",
+            email: "j.brown@t-mobile.com",
+            phone: "(702) 555-0189"
+        }
+    },
+    {
+        id: "mock-15",
+        customerName: "Barbara R.",
+        location: "Philadelphia, PA",
+        state: "Pennsylvania",
+        county: "Philadelphia County",
+        city: "Philadelphia",
+        rating: 4.5,
+        score: 90,
+        review: "Excellent data speeds. Works well for all my needs. Great experience!",
+        date: "2025-11-07",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Kevin Taylor",
+            title: "Regional Director",
+            email: "k.taylor@t-mobile.com",
+            phone: "(215) 555-0165"
+        }
+    },
+    {
+        id: "mock-16",
+        customerName: "Joseph M.",
+        location: "San Antonio, TX",
+        state: "Texas",
+        county: "Bexar County",
+        city: "San Antonio",
+        rating: 3.2,
+        score: 64,
+        review: "Coverage works well in most places but has occasional dead zones.",
+        date: "2025-11-04",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Maria Garcia",
+            title: "Regional Director",
+            email: "m.garcia@t-mobile.com",
+            phone: "(210) 555-0124"
+        }
+    },
+    {
+        id: "mock-17",
+        customerName: "Jessica T.",
+        location: "San Jose, CA",
+        state: "California",
+        county: "Santa Clara County",
+        city: "San Jose",
+        rating: 4.9,
+        score: 98,
+        review: "Best carrier I've ever used! Outstanding reliability and service quality.",
+        date: "2025-11-08",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Andrew Wilson",
+            title: "Regional Director",
+            email: "a.wilson@t-mobile.com",
+            phone: "(408) 555-0192"
+        }
+    },
+    {
+        id: "mock-18",
+        customerName: "Thomas J.",
+        location: "Indianapolis, IN",
+        state: "Indiana",
+        county: "Marion County",
+        city: "Indianapolis",
+        rating: 2.3,
+        score: 46,
+        review: "Billing department charged me for services I never requested. Very frustrating.",
+        date: "2025-11-03",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Stephanie Clark",
+            title: "Regional Director",
+            email: "s.clark@t-mobile.com",
+            phone: "(317) 555-0154"
+        }
+    },
+    {
+        id: "mock-19",
+        customerName: "Sarah J.",
+        location: "Columbus, OH",
+        state: "Ohio",
+        county: "Franklin County",
+        city: "Columbus",
+        rating: 4.1,
+        score: 82,
+        review: "Fast and reliable network speeds. Very satisfied with the service!",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Brian Miller",
+            title: "Regional Director",
+            email: "b.miller@t-mobile.com",
+            phone: "(614) 555-0173"
+        }
+    },
+    {
+        id: "mock-20",
+        customerName: "Daniel R.",
+        location: "Charlotte, NC",
+        state: "North Carolina",
+        county: "Mecklenburg County",
+        city: "Charlotte",
+        rating: 3.6,
+        score: 72,
+        review: "Customer service is okay. Sometimes helpful but could be better.",
+        date: "2025-11-05",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Nicole Davis",
+            title: "Regional Director",
+            email: "n.davis@t-mobile.com",
+            phone: "(704) 555-0187"
+        }
+    },
+    {
+        id: "mock-21",
+        customerName: "Matthew B.",
+        location: "Detroit, MI",
+        state: "Michigan",
+        county: "Wayne County",
+        city: "Detroit",
+        rating: 4.4,
+        score: 88,
+        review: "Great coverage in my area. Very reliable service. Highly recommend!",
+        date: "2025-11-07",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Ryan Johnson",
+            title: "Regional Director",
+            email: "r.johnson@t-mobile.com",
+            phone: "(313) 555-0142"
+        }
+    },
+    {
+        id: "mock-22",
+        customerName: "Lisa W.",
+        location: "Memphis, TN",
+        state: "Tennessee",
+        county: "Shelby County",
+        city: "Memphis",
+        rating: 2.6,
+        score: 52,
+        review: "Network is extremely slow during peak hours. Can't even load basic web pages.",
+        date: "2025-11-02",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Brandon Smith",
+            title: "Regional Director",
+            email: "b.smith@t-mobile.com",
+            phone: "(901) 555-0168"
+        }
+    },
+    {
+        id: "mock-23",
+        customerName: "Anthony G.",
+        location: "Baltimore, MD",
+        state: "Maryland",
+        county: "Baltimore City",
+        city: "Baltimore",
+        rating: 4.6,
+        score: 92,
+        review: "Affordable plans with excellent service. Best pricing in the market!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Rachel Green",
+            title: "Regional Director",
+            email: "r.green@t-mobile.com",
+            phone: "(410) 555-0137"
+        }
+    },
+    {
+        id: "mock-24",
+        customerName: "Betty F.",
+        location: "Milwaukee, WI",
+        state: "Wisconsin",
+        county: "Milwaukee County",
+        city: "Milwaukee",
+        rating: 3.4,
+        score: 68,
+        review: "Service is mostly reliable but has occasional issues. Generally satisfied.",
+        date: "2025-11-04",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Justin Moore",
+            title: "Regional Director",
+            email: "j.moore@t-mobile.com",
+            phone: "(414) 555-0159"
+        }
+    },
+    {
+        id: "mock-25",
+        customerName: "Mark A.",
+        location: "Albuquerque, NM",
+        state: "New Mexico",
+        county: "Bernalillo County",
+        city: "Albuquerque",
+        rating: 1.7,
+        score: 34,
+        review: "Very unreliable service. Frequent outages and constant problems.",
+        date: "2025-10-30",
+        category: "Reliability",
+        verified: false,
+        countyContact: {
+            name: "Amanda Martinez",
+            title: "Regional Director",
+            email: "a.martinez@t-mobile.com",
+            phone: "(505) 555-0143"
+        }
+    },
+    {
+        id: "mock-26",
+        customerName: "Margaret L.",
+        location: "Tucson, AZ",
+        state: "Arizona",
+        county: "Pima County",
+        city: "Tucson",
+        rating: 4.3,
+        score: 86,
+        review: "Excellent customer support. Quick responses and very professional.",
+        date: "2025-11-07",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Eric Brown",
+            title: "Regional Director",
+            email: "e.brown@t-mobile.com",
+            phone: "(520) 555-0176"
+        }
+    },
+    {
+        id: "mock-27",
+        customerName: "Donald K.",
+        location: "Fresno, CA",
+        state: "California",
+        county: "Fresno County",
+        city: "Fresno",
+        rating: 3.9,
+        score: 78,
+        review: "Good coverage overall. Works well in most areas. Decent service.",
+        date: "2025-11-06",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Michelle Anderson",
+            title: "Regional Director",
+            email: "m.anderson@t-mobile.com",
+            phone: "(559) 555-0191"
+        }
+    },
+    {
+        id: "mock-28",
+        customerName: "Sandra H.",
+        location: "Sacramento, CA",
+        state: "California",
+        county: "Sacramento County",
+        city: "Sacramento",
+        rating: 4.5,
+        score: 90,
+        review: "Great value for the price. Very satisfied with the service quality!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Jason White",
+            title: "Regional Director",
+            email: "j.white@t-mobile.com",
+            phone: "(916) 555-0128"
+        }
+    },
+    {
+        id: "mock-29",
+        customerName: "Ashley N.",
+        location: "Kansas City, MO",
+        state: "Missouri",
+        county: "Jackson County",
+        city: "Kansas City",
+        rating: 2.4,
+        score: 48,
+        review: "Coverage is non-existent in my area. Can't even make a phone call from home.",
+        date: "2025-11-01",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Laura Thompson",
+            title: "Regional Director",
+            email: "l.thompson@t-mobile.com",
+            phone: "(816) 555-0146"
+        }
+    },
+    {
+        id: "mock-30",
+        customerName: "Kimberly S.",
+        location: "Mesa, AZ",
+        state: "Arizona",
+        county: "Maricopa County",
+        city: "Mesa",
+        rating: 4.7,
+        score: 94,
+        review: "Most reliable carrier I've used. Works consistently every time!",
+        date: "2025-11-08",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Christopher Lee",
+            title: "Regional Director",
+            email: "c.lee@t-mobile.com",
+            phone: "(480) 555-0183"
+        }
+    },
+    {
+        id: "mock-31",
+        customerName: "Emily R.",
+        location: "Virginia Beach, VA",
+        state: "Virginia",
+        county: "Virginia Beach City",
+        city: "Virginia Beach",
+        rating: 3.7,
+        score: 74,
+        review: "Network speed is okay for most tasks. Works for basic use.",
+        date: "2025-11-05",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Patricia Davis",
+            title: "Regional Director",
+            email: "p.davis@t-mobile.com",
+            phone: "(757) 555-0162"
+        }
+    },
+    {
+        id: "mock-32",
+        customerName: "Joshua M.",
+        location: "Oakland, CA",
+        state: "California",
+        county: "Alameda County",
+        city: "Oakland",
+        rating: 4.2,
+        score: 84,
+        review: "Customer service team is excellent. Always helpful when needed.",
+        date: "2025-11-07",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Robert Kim",
+            title: "Regional Director",
+            email: "r.kim@t-mobile.com",
+            phone: "(510) 555-0174"
+        }
+    },
+    {
+        id: "mock-33",
+        customerName: "Donna C.",
+        location: "Minneapolis, MN",
+        state: "Minnesota",
+        county: "Hennepin County",
+        city: "Minneapolis",
+        rating: 2.7,
+        score: 54,
+        review: "Data speeds are terrible. Can't use my phone for work during business hours.",
+        date: "2025-11-03",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Jennifer Adams",
+            title: "Regional Director",
+            email: "j.adams@t-mobile.com",
+            phone: "(612) 555-0151"
+        }
+    },
+    {
+        id: "mock-34",
+        customerName: "Kenneth P.",
+        location: "Tulsa, OK",
+        state: "Oklahoma",
+        county: "Tulsa County",
+        city: "Tulsa",
+        rating: 4.4,
+        score: 88,
+        review: "Perfect coverage throughout my entire area. Very impressed!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Michael Johnson",
+            title: "Regional Director",
+            email: "m.johnson@t-mobile.com",
+            phone: "(918) 555-0139"
+        }
+    },
+    {
+        id: "mock-35",
+        customerName: "Carol W.",
+        location: "Arlington, TX",
+        state: "Texas",
+        county: "Tarrant County",
+        city: "Arlington",
+        rating: 3.3,
+        score: 66,
+        review: "Prices are reasonable but could be better. Fair pricing overall.",
+        date: "2025-11-04",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Sarah Martinez",
+            title: "Regional Director",
+            email: "s.martinez@t-mobile.com",
+            phone: "(817) 555-0185"
+        }
+    },
+    {
+        id: "mock-36",
+        customerName: "Michelle T.",
+        location: "New Orleans, LA",
+        state: "Louisiana",
+        county: "Orleans Parish",
+        city: "New Orleans",
+        rating: 4.6,
+        score: 92,
+        review: "Best customer service experience ever. They go above and beyond!",
+        date: "2025-11-08",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "David Chen",
+            title: "Regional Director",
+            email: "d.chen@t-mobile.com",
+            phone: "(504) 555-0127"
+        }
+    },
+    {
+        id: "mock-37",
+        customerName: "Kevin B.",
+        location: "Wichita, KS",
+        state: "Kansas",
+        county: "Sedgwick County",
+        city: "Wichita",
+        rating: 1.5,
+        score: 30,
+        review: "Service reliability is terrible. Constant problems and outages.",
+        date: "2025-10-29",
+        category: "Reliability",
+        verified: false,
+        countyContact: {
+            name: "Lisa Thompson",
+            title: "Regional Director",
+            email: "l.thompson@t-mobile.com",
+            phone: "(316) 555-0194"
+        }
+    },
+    {
+        id: "mock-38",
+        customerName: "Brian L.",
+        location: "Cleveland, OH",
+        state: "Ohio",
+        county: "Cuyahoga County",
+        city: "Cleveland",
+        rating: 4.1,
+        score: 82,
+        review: "Fast speeds for streaming and browsing. Great experience!",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Thomas Anderson",
+            title: "Regional Director",
+            email: "t.anderson@t-mobile.com",
+            phone: "(216) 555-0148"
+        }
+    },
+    {
+        id: "mock-39",
+        customerName: "George R.",
+        location: "Tampa, FL",
+        state: "Florida",
+        county: "Hillsborough County",
+        city: "Tampa",
+        rating: 3.8,
+        score: 76,
+        review: "Generally reliable with occasional issues. Service is mostly good.",
+        date: "2025-11-05",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Rebecca Martinez",
+            title: "Regional Director",
+            email: "r.martinez@t-mobile.com",
+            phone: "(813) 555-0172"
+        }
+    },
+    {
+        id: "mock-40",
+        customerName: "Edward M.",
+        location: "Bakersfield, CA",
+        state: "California",
+        county: "Kern County",
+        city: "Bakersfield",
+        rating: 4.3,
+        score: 86,
+        review: "Strong signal and great coverage quality. Very satisfied!",
+        date: "2025-11-07",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Amanda White",
+            title: "Regional Director",
+            email: "a.white@t-mobile.com",
+            phone: "(661) 555-0153"
+        }
+    },
+    {
+        id: "mock-41",
+        customerName: "Ronald S.",
+        location: "Aurora, CO",
+        state: "Colorado",
+        county: "Arapahoe County",
+        city: "Aurora",
+        rating: 2.9,
+        score: 58,
+        review: "Customer support is awful. Long wait times and unhelpful.",
+        date: "2025-11-02",
+        category: "Customer Service",
+        verified: false,
+        countyContact: {
+            name: "Daniel Lee",
+            title: "Regional Director",
+            email: "d.lee@t-mobile.com",
+            phone: "(303) 555-0134"
+        }
+    },
+    {
+        id: "mock-42",
+        customerName: "Timothy H.",
+        location: "Anaheim, CA",
+        state: "California",
+        county: "Orange County",
+        city: "Anaheim",
+        rating: 4.8,
+        score: 96,
+        review: "Incredibly fast network. Best speeds I've ever had!",
+        date: "2025-11-08",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Jessica Brown",
+            title: "Regional Director",
+            email: "j.brown@t-mobile.com",
+            phone: "(714) 555-0186"
+        }
+    },
+    {
+        id: "mock-43",
+        customerName: "Jason W.",
+        location: "Santa Ana, CA",
+        state: "California",
+        county: "Orange County",
+        city: "Santa Ana",
+        rating: 3.5,
+        score: 70,
+        review: "Decent pricing for what you get. Could be better but acceptable.",
+        date: "2025-11-04",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Kevin Taylor",
+            title: "Regional Director",
+            email: "k.taylor@t-mobile.com",
+            phone: "(714) 555-0186"
+        }
+    },
+    {
+        id: "mock-44",
+        customerName: "Jeffrey K.",
+        location: "St. Louis, MO",
+        state: "Missouri",
+        county: "St. Louis City",
+        city: "St. Louis",
+        rating: 4.0,
+        score: 80,
+        review: "Reliable network. Good overall experience. Satisfied customer.",
+        date: "2025-11-06",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Maria Garcia",
+            title: "Regional Director",
+            email: "m.garcia@t-mobile.com",
+            phone: "(314) 555-0161"
+        }
+    },
+    {
+        id: "mock-45",
+        customerName: "Ryan B.",
+        location: "Corpus Christi, TX",
+        state: "Texas",
+        county: "Nueces County",
+        city: "Corpus Christi",
+        rating: 1.6,
+        score: 32,
+        review: "Very slow network speeds. Almost unusable for basic tasks.",
+        date: "2025-10-31",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Andrew Wilson",
+            title: "Regional Director",
+            email: "a.wilson@t-mobile.com",
+            phone: "(361) 555-0197"
+        }
+    },
+    {
+        id: "mock-46",
+        customerName: "Jacob M.",
+        location: "Riverside, CA",
+        state: "California",
+        county: "Riverside County",
+        city: "Riverside",
+        rating: 4.5,
+        score: 90,
+        review: "Excellent service team. Quick responses and very professional.",
+        date: "2025-11-08",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Stephanie Clark",
+            title: "Regional Director",
+            email: "s.clark@t-mobile.com",
+            phone: "(951) 555-0141"
+        }
+    },
+    {
+        id: "mock-47",
+        customerName: "Gary T.",
+        location: "Lexington, KY",
+        state: "Kentucky",
+        county: "Fayette County",
+        city: "Lexington",
+        rating: 3.6,
+        score: 72,
+        review: "Coverage works well in most places. Generally satisfied.",
+        date: "2025-11-05",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Brian Miller",
+            title: "Regional Director",
+            email: "b.miller@t-mobile.com",
+            phone: "(859) 555-0179"
+        }
+    },
+    {
+        id: "mock-48",
+        customerName: "Nicholas A.",
+        location: "Stockton, CA",
+        state: "California",
+        county: "San Joaquin County",
+        city: "Stockton",
+        rating: 4.2,
+        score: 84,
+        review: "Great value for the price. Worth every penny!",
+        date: "2025-11-07",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Nicole Davis",
+            title: "Regional Director",
+            email: "n.davis@t-mobile.com",
+            phone: "(209) 555-0126"
+        }
+    },
+    {
+        id: "mock-49",
+        customerName: "Eric S.",
+        location: "Henderson, NV",
+        state: "Nevada",
+        county: "Clark County",
+        city: "Henderson",
+        rating: 2.2,
+        score: 44,
+        review: "Billing errors every month. Very frustrating experience.",
+        date: "2025-11-01",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Ryan Johnson",
+            title: "Regional Director",
+            email: "r.johnson@t-mobile.com",
+            phone: "(702) 555-0189"
+        }
+    },
+    {
+        id: "mock-50",
+        customerName: "Jonathan L.",
+        location: "Greensboro, NC",
+        state: "North Carolina",
+        county: "Guilford County",
+        city: "Greensboro",
+        rating: 4.6,
+        score: 92,
+        review: "Blazing fast data speeds. Excellent performance!",
+        date: "2025-11-08",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Brandon Smith",
+            title: "Regional Director",
+            email: "b.smith@t-mobile.com",
+            phone: "(336) 555-0158"
+        }
+    },
+    {
+        id: "mock-51",
+        customerName: "Amanda K.",
+        location: "Nashville, TN",
+        state: "Tennessee",
+        county: "Davidson County",
+        city: "Nashville",
+        rating: 4.3,
+        score: 86,
+        review: "Great coverage in downtown and suburbs. Very reliable service!",
+        date: "2025-11-07",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Rachel Martinez",
+            title: "Regional Director",
+            email: "r.martinez@t-mobile.com",
+            phone: "(615) 555-0135"
+        }
+    },
+    {
+        id: "mock-52",
+        customerName: "Steven P.",
+        location: "Oklahoma City, OK",
+        state: "Oklahoma",
+        county: "Oklahoma County",
+        city: "Oklahoma City",
+        rating: 3.1,
+        score: 62,
+        review: "Coverage is spotty in some areas. Customer service could be more responsive.",
+        date: "2025-11-03",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Michael Johnson",
+            title: "Regional Director",
+            email: "m.johnson@t-mobile.com",
+            phone: "(405) 555-0147"
+        }
+    },
+    {
+        id: "mock-53",
+        customerName: "Deborah W.",
+        location: "El Paso, TX",
+        state: "Texas",
+        county: "El Paso County",
+        city: "El Paso",
+        rating: 4.6,
+        score: 92,
+        review: "Excellent pricing and great customer support. Very happy with the service!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Carlos Rodriguez",
+            title: "Regional Director",
+            email: "c.rodriguez@t-mobile.com",
+            phone: "(915) 555-0163"
+        }
+    },
+    {
+        id: "mock-54",
+        customerName: "Ruth M.",
+        location: "Washington, DC",
+        state: "District of Columbia",
+        county: "District of Columbia",
+        city: "Washington",
+        rating: 4.4,
+        score: 88,
+        review: "Fast network speeds throughout the city. Perfect for work and streaming!",
+        date: "2025-11-07",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Patricia Davis",
+            title: "Regional Director",
+            email: "p.davis@t-mobile.com",
+            phone: "(202) 555-0187"
+        }
+    },
+    {
+        id: "mock-55",
+        customerName: "Sharon L.",
+        location: "Boston, MA",
+        state: "Massachusetts",
+        county: "Suffolk County",
+        city: "Boston",
+        rating: 2.1,
+        score: 42,
+        review: "Billing issues persist. Multiple calls haven't resolved the problem.",
+        date: "2025-11-02",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Sarah O'Brien",
+            title: "Regional Director",
+            email: "s.obrien@t-mobile.com",
+            phone: "(617) 555-0156"
+        }
+    },
+    {
+        id: "mock-56",
+        customerName: "Michelle R.",
+        location: "Seattle, WA",
+        state: "Washington",
+        county: "King County",
+        city: "Seattle",
+        rating: 4.7,
+        score: 94,
+        review: "Outstanding reliability. Never had a single outage in 2 years!",
+        date: "2025-11-08",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Rebecca Martinez",
+            title: "Regional Director",
+            email: "r.martinez@t-mobile.com",
+            phone: "(206) 555-0123"
+        }
+    },
+    {
+        id: "mock-57",
+        customerName: "Laura B.",
+        location: "Fort Worth, TX",
+        state: "Texas",
+        county: "Tarrant County",
+        city: "Fort Worth",
+        rating: 3.4,
+        score: 68,
+        review: "Average service. Coverage works but speeds could be better.",
+        date: "2025-11-05",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Amanda White",
+            title: "Regional Director",
+            email: "a.white@t-mobile.com",
+            phone: "(817) 555-0185"
+        }
+    },
+    {
+        id: "mock-58",
+        customerName: "Sarah T.",
+        location: "Charlotte, NC",
+        state: "North Carolina",
+        county: "Mecklenburg County",
+        city: "Charlotte",
+        rating: 4.5,
+        score: 90,
+        review: "Best customer service I've experienced. Always helpful and professional!",
+        date: "2025-11-08",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Nicole Davis",
+            title: "Regional Director",
+            email: "n.davis@t-mobile.com",
+            phone: "(704) 555-0187"
+        }
+    },
+    {
+        id: "mock-59",
+        customerName: "Kimberly H.",
+        location: "Columbus, OH",
+        state: "Ohio",
+        county: "Franklin County",
+        city: "Columbus",
+        rating: 1.8,
+        score: 36,
+        review: "Terrible customer service. Waited on hold for hours with no resolution.",
+        date: "2025-11-01",
+        category: "Customer Service",
+        verified: false,
+        countyContact: {
+            name: "Brian Miller",
+            title: "Regional Director",
+            email: "b.miller@t-mobile.com",
+            phone: "(614) 555-0173"
+        }
+    },
+    {
+        id: "mock-60",
+        customerName: "Debra M.",
+        location: "San Francisco, CA",
+        state: "California",
+        county: "San Francisco County",
+        city: "San Francisco",
+        rating: 4.8,
+        score: 96,
+        review: "Amazing coverage even in the hills. Best carrier in the Bay Area!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Robert Kim",
+            title: "Regional Director",
+            email: "r.kim@t-mobile.com",
+            phone: "(415) 555-0193"
+        }
+    },
+    {
+        id: "mock-61",
+        customerName: "Angela S.",
+        location: "Indianapolis, IN",
+        state: "Indiana",
+        county: "Marion County",
+        city: "Indianapolis",
+        rating: 3.7,
+        score: 74,
+        review: "Good value for money. Service is reliable most of the time.",
+        date: "2025-11-06",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Stephanie Clark",
+            title: "Regional Director",
+            email: "s.clark@t-mobile.com",
+            phone: "(317) 555-0154"
+        }
+    },
+    {
+        id: "mock-62",
+        customerName: "Brenda J.",
+        location: "Jacksonville, FL",
+        state: "Florida",
+        county: "Duval County",
+        city: "Jacksonville",
+        rating: 4.2,
+        score: 84,
+        review: "Fast data speeds. Great for streaming and video calls!",
+        date: "2025-11-07",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Michelle Washington",
+            title: "Regional Director",
+            email: "m.washington@t-mobile.com",
+            phone: "(904) 555-0175"
+        }
+    },
+    {
+        id: "mock-63",
+        customerName: "Emma W.",
+        location: "Austin, TX",
+        state: "Texas",
+        county: "Travis County",
+        city: "Austin",
+        rating: 4.6,
+        score: 92,
+        review: "Excellent coverage throughout the city. Very satisfied customer!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Carlos Rodriguez",
+            title: "Regional Director",
+            email: "c.rodriguez@t-mobile.com",
+            phone: "(512) 555-0198"
+        }
+    },
+    {
+        id: "mock-64",
+        customerName: "Olivia G.",
+        location: "San Jose, CA",
+        state: "California",
+        county: "Santa Clara County",
+        city: "San Jose",
+        rating: 2.4,
+        score: 48,
+        review: "Network reliability is poor. Frequent disconnections during calls.",
+        date: "2025-11-02",
+        category: "Reliability",
+        verified: false,
+        countyContact: {
+            name: "Andrew Wilson",
+            title: "Regional Director",
+            email: "a.wilson@t-mobile.com",
+            phone: "(408) 555-0192"
+        }
+    },
+    {
+        id: "mock-65",
+        customerName: "Cynthia R.",
+        location: "Jackson, MS",
+        state: "Mississippi",
+        county: "Hinds County",
+        city: "Jackson",
+        rating: 4.1,
+        score: 82,
+        review: "Good customer service. Quick to resolve issues when they arise.",
+        date: "2025-11-06",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Thomas Anderson",
+            title: "Regional Director",
+            email: "t.anderson@t-mobile.com",
+            phone: "(601) 555-0149"
+        }
+    },
+    {
+        id: "mock-66",
+        customerName: "Kathleen B.",
+        location: "Louisville, KY",
+        state: "Kentucky",
+        county: "Jefferson County",
+        city: "Louisville",
+        rating: 3.9,
+        score: 78,
+        review: "Decent coverage. Works well in most areas of the city.",
+        date: "2025-11-05",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Brian Miller",
+            title: "Regional Director",
+            email: "b.miller@t-mobile.com",
+            phone: "(502) 555-0164"
+        }
+    },
+    {
+        id: "mock-67",
+        customerName: "Amy L.",
+        location: "Portland, OR",
+        state: "Oregon",
+        county: "Multnomah County",
+        city: "Portland",
+        rating: 4.4,
+        score: 88,
+        review: "Great pricing plans. Very affordable for what you get!",
+        date: "2025-11-07",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Daniel Lee",
+            title: "Regional Director",
+            email: "d.lee@t-mobile.com",
+            phone: "(503) 555-0147"
+        }
+    },
+    {
+        id: "mock-68",
+        customerName: "Shirley M.",
+        location: "Las Vegas, NV",
+        state: "Nevada",
+        county: "Clark County",
+        city: "Las Vegas",
+        rating: 2.8,
+        score: 56,
+        review: "Data speeds are inconsistent. Sometimes fast, sometimes very slow.",
+        date: "2025-11-03",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Jessica Brown",
+            title: "Regional Director",
+            email: "j.brown@t-mobile.com",
+            phone: "(702) 555-0189"
+        }
+    },
+    {
+        id: "mock-69",
+        customerName: "Anna K.",
+        location: "Albuquerque, NM",
+        state: "New Mexico",
+        county: "Bernalillo County",
+        city: "Albuquerque",
+        rating: 4.3,
+        score: 86,
+        review: "Reliable service. Never had any major issues. Very satisfied!",
+        date: "2025-11-07",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Amanda Martinez",
+            title: "Regional Director",
+            email: "a.martinez@t-mobile.com",
+            phone: "(505) 555-0143"
+        }
+    },
+    {
+        id: "mock-70",
+        customerName: "Joyce P.",
+        location: "Tucson, AZ",
+        state: "Arizona",
+        county: "Pima County",
+        city: "Tucson",
+        rating: 3.2,
+        score: 64,
+        review: "Customer service is average. Could be more helpful at times.",
+        date: "2025-11-04",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Eric Brown",
+            title: "Regional Director",
+            email: "e.brown@t-mobile.com",
+            phone: "(520) 555-0176"
+        }
+    },
+    {
+        id: "mock-71",
+        customerName: "Virginia T.",
+        location: "Fresno, CA",
+        state: "California",
+        county: "Fresno County",
+        city: "Fresno",
+        rating: 4.5,
+        score: 90,
+        review: "Excellent coverage in the Central Valley. Very reliable!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Michelle Anderson",
+            title: "Regional Director",
+            email: "m.anderson@t-mobile.com",
+            phone: "(559) 555-0191"
+        }
+    },
+    {
+        id: "mock-72",
+        customerName: "Rebecca H.",
+        location: "Sacramento, CA",
+        state: "California",
+        county: "Sacramento County",
+        city: "Sacramento",
+        rating: 1.9,
+        score: 38,
+        review: "Billing department is a nightmare. Overcharged multiple times.",
+        date: "2025-11-01",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Jason White",
+            title: "Regional Director",
+            email: "j.white@t-mobile.com",
+            phone: "(916) 555-0128"
+        }
+    },
+    {
+        id: "mock-73",
+        customerName: "Christine W.",
+        location: "Long Beach, CA",
+        state: "California",
+        county: "Los Angeles County",
+        city: "Long Beach",
+        rating: 4.7,
+        score: 94,
+        review: "Lightning fast speeds! Perfect for my work and entertainment needs!",
+        date: "2025-11-08",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Sarah Martinez",
+            title: "Regional Director",
+            email: "sarah.martinez@t-mobile.com",
+            phone: "(310) 555-0123"
+        }
+    },
+    {
+        id: "mock-74",
+        customerName: "Carolyn M.",
+        location: "Kansas City, MO",
+        state: "Missouri",
+        county: "Jackson County",
+        city: "Kansas City",
+        rating: 3.6,
+        score: 72,
+        review: "Service is mostly reliable. Occasional issues but generally good.",
+        date: "2025-11-05",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Laura Thompson",
+            title: "Regional Director",
+            email: "l.thompson@t-mobile.com",
+            phone: "(816) 555-0146"
+        }
+    },
+    {
+        id: "mock-75",
+        customerName: "Janet L.",
+        location: "Mesa, AZ",
+        state: "Arizona",
+        county: "Maricopa County",
+        city: "Mesa",
+        rating: 4.2,
+        score: 84,
+        review: "Great customer support team. Always willing to help!",
+        date: "2025-11-07",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Christopher Lee",
+            title: "Regional Director",
+            email: "c.lee@t-mobile.com",
+            phone: "(480) 555-0183"
+        }
+    },
+    {
+        id: "mock-76",
+        customerName: "Catherine R.",
+        location: "Virginia Beach, VA",
+        state: "Virginia",
+        county: "Virginia Beach City",
+        city: "Virginia Beach",
+        rating: 2.6,
+        score: 52,
+        review: "Coverage is weak in my neighborhood. Many dropped calls.",
+        date: "2025-11-02",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Patricia Davis",
+            title: "Regional Director",
+            email: "p.davis@t-mobile.com",
+            phone: "(757) 555-0162"
+        }
+    },
+    {
+        id: "mock-77",
+        customerName: "Frances B.",
+        location: "Atlanta, GA",
+        state: "Georgia",
+        county: "Fulton County",
+        city: "Atlanta",
+        rating: 4.4,
+        score: 88,
+        review: "Best pricing in the market. Great value for money!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Thomas Anderson",
+            title: "Regional Director",
+            email: "t.anderson@t-mobile.com",
+            phone: "(404) 555-0198"
+        }
+    },
+    {
+        id: "mock-78",
+        customerName: "Ann K.",
+        location: "Oakland, CA",
+        state: "California",
+        county: "Alameda County",
+        city: "Oakland",
+        rating: 3.8,
+        score: 76,
+        review: "Network speeds are decent. Works well for most applications.",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Robert Kim",
+            title: "Regional Director",
+            email: "r.kim@t-mobile.com",
+            phone: "(510) 555-0174"
+        }
+    },
+    {
+        id: "mock-79",
+        customerName: "Samantha T.",
+        location: "Minneapolis, MN",
+        state: "Minnesota",
+        county: "Hennepin County",
+        city: "Minneapolis",
+        rating: 1.7,
+        score: 34,
+        review: "Very unreliable service. Frequent outages and connection problems.",
+        date: "2025-10-30",
+        category: "Reliability",
+        verified: false,
+        countyContact: {
+            name: "Jennifer Adams",
+            title: "Regional Director",
+            email: "j.adams@t-mobile.com",
+            phone: "(612) 555-0151"
+        }
+    },
+    {
+        id: "mock-80",
+        customerName: "Marie W.",
+        location: "Tulsa, OK",
+        state: "Oklahoma",
+        county: "Tulsa County",
+        city: "Tulsa",
+        rating: 4.1,
+        score: 82,
+        review: "Good customer service experience. Staff is friendly and helpful.",
+        date: "2025-11-06",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Michael Johnson",
+            title: "Regional Director",
+            email: "m.johnson@t-mobile.com",
+            phone: "(918) 555-0139"
+        }
+    },
+    {
+        id: "mock-81",
+        customerName: "Janice H.",
+        location: "Arlington, TX",
+        state: "Texas",
+        county: "Tarrant County",
+        city: "Arlington",
+        rating: 3.5,
+        score: 70,
+        review: "Coverage is acceptable. Works in most areas but has some gaps.",
+        date: "2025-11-04",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Sarah Martinez",
+            title: "Regional Director",
+            email: "s.martinez@t-mobile.com",
+            phone: "(817) 555-0185"
+        }
+    },
+    {
+        id: "mock-82",
+        customerName: "Jean M.",
+        location: "New Orleans, LA",
+        state: "Louisiana",
+        county: "Orleans Parish",
+        city: "New Orleans",
+        rating: 4.6,
+        score: 92,
+        review: "Excellent pricing options. Very competitive rates!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "David Chen",
+            title: "Regional Director",
+            email: "d.chen@t-mobile.com",
+            phone: "(504) 555-0127"
+        }
+    },
+    {
+        id: "mock-83",
+        customerName: "Betty L.",
+        location: "Wichita, KS",
+        state: "Kansas",
+        county: "Sedgwick County",
+        city: "Wichita",
+        rating: 2.3,
+        score: 46,
+        review: "Network speeds are too slow. Can't stream videos properly.",
+        date: "2025-11-03",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Lisa Thompson",
+            title: "Regional Director",
+            email: "l.thompson@t-mobile.com",
+            phone: "(316) 555-0194"
+        }
+    },
+    {
+        id: "mock-84",
+        customerName: "Helen R.",
+        location: "Cleveland, OH",
+        state: "Ohio",
+        county: "Cuyahoga County",
+        city: "Cleveland",
+        rating: 4.3,
+        score: 86,
+        review: "Very reliable network. Rarely experience any issues!",
+        date: "2025-11-07",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Thomas Anderson",
+            title: "Regional Director",
+            email: "t.anderson@t-mobile.com",
+            phone: "(216) 555-0148"
+        }
+    },
+    {
+        id: "mock-85",
+        customerName: "Sandra B.",
+        location: "Tampa, FL",
+        state: "Florida",
+        county: "Hillsborough County",
+        city: "Tampa",
+        rating: 3.9,
+        score: 78,
+        review: "Customer service is good. Quick response times and helpful staff.",
+        date: "2025-11-05",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Rebecca Martinez",
+            title: "Regional Director",
+            email: "r.martinez@t-mobile.com",
+            phone: "(813) 555-0172"
+        }
+    },
+    {
+        id: "mock-86",
+        customerName: "Donna K.",
+        location: "Bakersfield, CA",
+        state: "California",
+        county: "Kern County",
+        city: "Bakersfield",
+        rating: 1.5,
+        score: 30,
+        review: "Worst coverage I've ever had. Can't make calls from my home.",
+        date: "2025-10-29",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Amanda White",
+            title: "Regional Director",
+            email: "a.white@t-mobile.com",
+            phone: "(661) 555-0153"
+        }
+    },
+    {
+        id: "mock-87",
+        customerName: "Carol T.",
+        location: "Aurora, CO",
+        state: "Colorado",
+        county: "Arapahoe County",
+        city: "Aurora",
+        rating: 4.5,
+        score: 90,
+        review: "Great value for the price. Very satisfied with the service!",
+        date: "2025-11-08",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Daniel Lee",
+            title: "Regional Director",
+            email: "d.lee@t-mobile.com",
+            phone: "(303) 555-0134"
+        }
+    },
+    {
+        id: "mock-88",
+        customerName: "Ruth W.",
+        location: "Anaheim, CA",
+        state: "California",
+        county: "Orange County",
+        city: "Anaheim",
+        rating: 2.9,
+        score: 58,
+        review: "Data speeds fluctuate a lot. Sometimes fast, sometimes very slow.",
+        date: "2025-11-02",
+        category: "Network Speed",
+        verified: false,
+        countyContact: {
+            name: "Jessica Brown",
+            title: "Regional Director",
+            email: "j.brown@t-mobile.com",
+            phone: "(714) 555-0186"
+        }
+    },
+    {
+        id: "mock-89",
+        customerName: "Sharon M.",
+        location: "Santa Ana, CA",
+        state: "California",
+        county: "Orange County",
+        city: "Santa Ana",
+        rating: 4.4,
+        score: 88,
+        review: "Rock solid reliability. Never had any service interruptions!",
+        date: "2025-11-08",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Kevin Taylor",
+            title: "Regional Director",
+            email: "k.taylor@t-mobile.com",
+            phone: "(714) 555-0186"
+        }
+    },
+    {
+        id: "mock-90",
+        customerName: "Michelle L.",
+        location: "St. Louis, MO",
+        state: "Missouri",
+        county: "St. Louis City",
+        city: "St. Louis",
+        rating: 3.3,
+        score: 66,
+        review: "Customer service is average. Could be more proactive.",
+        date: "2025-11-04",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Maria Garcia",
+            title: "Regional Director",
+            email: "m.garcia@t-mobile.com",
+            phone: "(314) 555-0161"
+        }
+    },
+    {
+        id: "mock-91",
+        customerName: "Laura H.",
+        location: "Corpus Christi, TX",
+        state: "Texas",
+        county: "Nueces County",
+        city: "Corpus Christi",
+        rating: 4.2,
+        score: 84,
+        review: "Good coverage along the coast. Works well in most areas!",
+        date: "2025-11-07",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Andrew Wilson",
+            title: "Regional Director",
+            email: "a.wilson@t-mobile.com",
+            phone: "(361) 555-0197"
+        }
+    },
+    {
+        id: "mock-92",
+        customerName: "Sarah R.",
+        location: "Riverside, CA",
+        state: "California",
+        county: "Riverside County",
+        city: "Riverside",
+        rating: 2.7,
+        score: 54,
+        review: "Billing errors are frustrating. Overcharged on multiple occasions.",
+        date: "2025-11-03",
+        category: "Price",
+        verified: false,
+        countyContact: {
+            name: "Stephanie Clark",
+            title: "Regional Director",
+            email: "s.clark@t-mobile.com",
+            phone: "(951) 555-0141"
+        }
+    },
+    {
+        id: "mock-93",
+        customerName: "Kimberly B.",
+        location: "Lexington, KY",
+        state: "Kentucky",
+        county: "Fayette County",
+        city: "Lexington",
+        rating: 4.1,
+        score: 82,
+        review: "Fast network speeds. Great for streaming and video calls!",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Brian Miller",
+            title: "Regional Director",
+            email: "b.miller@t-mobile.com",
+            phone: "(859) 555-0179"
+        }
+    },
+    {
+        id: "mock-94",
+        customerName: "Deborah K.",
+        location: "Stockton, CA",
+        state: "California",
+        county: "San Joaquin County",
+        city: "Stockton",
+        rating: 3.7,
+        score: 74,
+        review: "Service reliability is good. Occasional minor issues but overall satisfied.",
+        date: "2025-11-05",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "Nicole Davis",
+            title: "Regional Director",
+            email: "n.davis@t-mobile.com",
+            phone: "(209) 555-0126"
+        }
+    },
+    {
+        id: "mock-95",
+        customerName: "Lisa T.",
+        location: "Henderson, NV",
+        state: "Nevada",
+        county: "Clark County",
+        city: "Henderson",
+        rating: 4.6,
+        score: 92,
+        review: "Excellent customer support. Always goes above and beyond!",
+        date: "2025-11-08",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Ryan Johnson",
+            title: "Regional Director",
+            email: "r.johnson@t-mobile.com",
+            phone: "(702) 555-0189"
+        }
+    },
+    {
+        id: "mock-96",
+        customerName: "Nancy W.",
+        location: "Greensboro, NC",
+        state: "North Carolina",
+        county: "Guilford County",
+        city: "Greensboro",
+        rating: 2.5,
+        score: 50,
+        review: "Coverage is poor in rural areas. Many dead zones.",
+        date: "2025-11-01",
+        category: "Coverage",
+        verified: false,
+        countyContact: {
+            name: "Brandon Smith",
+            title: "Regional Director",
+            email: "b.smith@t-mobile.com",
+            phone: "(336) 555-0158"
+        }
+    },
+    {
+        id: "mock-97",
+        customerName: "Karen M.",
+        location: "Plano, TX",
+        state: "Texas",
+        county: "Collin County",
+        city: "Plano",
+        rating: 4.3,
+        score: 86,
+        review: "Great pricing plans. Very affordable and competitive!",
+        date: "2025-11-07",
+        category: "Price",
+        verified: true,
+        countyContact: {
+            name: "Carlos Rodriguez",
+            title: "Regional Director",
+            email: "c.rodriguez@t-mobile.com",
+            phone: "(972) 555-0157"
+        }
+    },
+    {
+        id: "mock-98",
+        customerName: "Betty R.",
+        location: "Lincoln, NE",
+        state: "Nebraska",
+        county: "Lancaster County",
+        city: "Lincoln",
+        rating: 3.8,
+        score: 76,
+        review: "Network speeds are decent. Works well for most daily tasks.",
+        date: "2025-11-05",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Jennifer Adams",
+            title: "Regional Director",
+            email: "j.adams@t-mobile.com",
+            phone: "(402) 555-0168"
+        }
+    },
+    {
+        id: "mock-99",
+        customerName: "Margaret B.",
+        location: "Buffalo, NY",
+        state: "New York",
+        county: "Erie County",
+        city: "Buffalo",
+        rating: 4.4,
+        score: 88,
+        review: "Very reliable service. Rarely experience any connectivity issues!",
+        date: "2025-11-08",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "David Chen",
+            title: "Regional Director",
+            email: "d.chen@t-mobile.com",
+            phone: "(716) 555-0138"
+        }
+    },
+    {
+        id: "mock-100",
+        customerName: "Sandra K.",
+        location: "Newark, NJ",
+        state: "New Jersey",
+        county: "Essex County",
+        city: "Newark",
+        rating: 3.4,
+        score: 68,
+        review: "Customer service is okay. Sometimes helpful, sometimes not.",
+        date: "2025-11-04",
+        category: "Customer Service",
+        verified: true,
+        countyContact: {
+            name: "Sarah O'Brien",
+            title: "Regional Director",
+            email: "s.obrien@t-mobile.com",
+            phone: "(973) 555-0171"
+        }
+    },
+    {
+        id: "mock-hawaii-1",
+        customerName: "Keoni K.",
+        location: "Honolulu, HI",
+        state: "Hawaii",
+        county: "Honolulu County",
+        city: "Honolulu",
+        rating: 4.6,
+        score: 92,
+        review: "Excellent coverage across all the islands! Works great even in remote areas. Very satisfied with the service quality!",
+        date: "2025-11-08",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Kai Nakamura",
+            title: "Regional Director",
+            email: "k.nakamura@t-mobile.com",
+            phone: "(808) 555-0123"
+        }
+    },
+    {
+        id: "mock-hawaii-2",
+        customerName: "Leilani M.",
+        location: "Hilo, HI",
+        state: "Hawaii",
+        county: "Hawaii County",
+        city: "Hilo",
+        rating: 3.8,
+        score: 76,
+        review: "Good network speeds on the Big Island. Customer service is helpful and responsive. Overall satisfied!",
+        date: "2025-11-06",
+        category: "Network Speed",
+        verified: true,
+        countyContact: {
+            name: "Malia Kapono",
+            title: "Regional Director",
+            email: "m.kapono@t-mobile.com",
+            phone: "(808) 555-0145"
+        }
+    },
+    {
+        id: "mock-alaska-1",
+        customerName: "James T.",
+        location: "Anchorage, AK",
+        state: "Alaska",
+        county: "Anchorage Municipality",
+        city: "Anchorage",
+        rating: 4.4,
+        score: 88,
+        review: "Surprisingly good coverage in Alaska! Works well in Anchorage and surrounding areas. Very reliable service!",
+        date: "2025-11-07",
+        category: "Coverage",
+        verified: true,
+        countyContact: {
+            name: "Sarah Johnson",
+            title: "Regional Director",
+            email: "s.johnson@t-mobile.com",
+            phone: "(907) 555-0167"
+        }
+    },
+    {
+        id: "mock-alaska-2",
+        customerName: "Michael R.",
+        location: "Fairbanks, AK",
+        state: "Alaska",
+        county: "Fairbanks North Star Borough",
+        city: "Fairbanks",
+        rating: 3.5,
+        score: 70,
+        review: "Decent coverage in Fairbanks area. Network speeds are okay for most tasks. Could be better in rural areas.",
+        date: "2025-11-05",
+        category: "Reliability",
+        verified: true,
+        countyContact: {
+            name: "David Chen",
+            title: "Regional Director",
+            email: "d.chen@t-mobile.com",
+            phone: "(907) 555-0189"
+        }
+    }
+];
+
+// Load all feedback entries
+async function loadFeedback() {
+    try {
+        // Try to load from pre-generated entries-all.json first
+        try {
+            const response = await fetch('api/entries-all.json');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.entries) {
+                    allFeedback = data.entries;
+                    console.log(`Loaded ${allFeedback.length} feedback entries from pre-generated file`);
+                }
+            }
+        } catch (e) {
+            console.log('Pre-generated file not found, trying API...');
+        }
+
+        // Fallback to API if no pre-generated data
+        if (allFeedback.length === 0) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/entries/all?limit=20000`);
+                const data = await response.json();
+                if (data.success && data.entries) {
+                    allFeedback = data.entries;
+                    console.log(`Loaded ${allFeedback.length} feedback entries from API`);
+                }
+            } catch (e) {
+                console.log('API not available');
+            }
+        }
+
+        // Fallback to large mock data file if no API data is available
+        if (allFeedback.length === 0) {
+            try {
+                const response = await fetch('mock-feedback-data.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        allFeedback = data;
+                        console.log(`Loaded ${allFeedback.length} feedback entries from mock-feedback-data.json`);
+                    }
+                }
+            } catch (e) {
+                console.log('Mock feedback data file not found');
+            }
+        }
+
+        // Final fallback to embedded mock data if no other data is available
+        if (allFeedback.length === 0) {
+            console.log('No API data available, using embedded mock feedback data');
+            allFeedback = mockFeedbackData;
+        }
+        
+        if (allFeedback.length === 0) {
+            document.getElementById('feedback-scroll').innerHTML = `
+                <div class="no-feedback">
+                    <div class="no-feedback-icon">📭</div>
+                    <div class="no-feedback-text">No feedback data available</div>
+                </div>
+            `;
+            return;
+        }
+
+        // Populate state filter dropdown
+        const states = [...new Set(allFeedback.map(f => f.state))].sort();
+        const stateFilter = document.getElementById('stateFilter');
+        states.forEach(state => {
+            if (state && state !== 'Unknown') {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateFilter.appendChild(option);
+            }
+        });
+
+        // Check if state parameter is in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const stateParam = urlParams.get('state');
+        if (stateParam) {
+            // Try to find matching state (case-insensitive, handle variations)
+            const normalizedParam = stateParam.trim();
+            const matchingState = states.find(s => 
+                s.toLowerCase() === normalizedParam.toLowerCase() ||
+                s.toLowerCase().includes(normalizedParam.toLowerCase()) ||
+                normalizedParam.toLowerCase().includes(s.toLowerCase())
+            );
+            
+            if (matchingState) {
+                // Set the state filter to the matching state (even though it's hidden)
+                stateFilter.value = matchingState;
+                console.log(`State filter set to: ${matchingState} (from URL parameter)`);
+                // Update page title to show filtered state
+                const pageTitle = document.querySelector('.page-title');
+                if (pageTitle) {
+                    pageTitle.textContent = `Customer Feedback Analysis - ${matchingState}`;
+                }
+            } else {
+                // If no exact match, try to set it anyway (might work if names match)
+                stateFilter.value = normalizedParam;
+                console.log(`State filter set to (no exact match): ${normalizedParam}`);
+                const pageTitle = document.querySelector('.page-title');
+                if (pageTitle) {
+                    pageTitle.textContent = `Customer Feedback Analysis - ${normalizedParam}`;
+                }
+            }
+        } else {
+            // If no state parameter, set to 'all' to show all feedback
+            stateFilter.value = 'all';
+        }
+
+        updateStatistics();
+        applyFilters();
+    } catch (error) {
+        console.error('Error loading feedback:', error);
+        document.getElementById('feedback-scroll').innerHTML = `
+            <div class="no-feedback">
+                <div class="no-feedback-icon">⚠️</div>
+                <div class="no-feedback-text">Error loading feedback. Please try again later.</div>
+            </div>
+        `;
+    }
+}
+
+function updateStatistics() {
+    // Use filtered feedback if available, otherwise use all feedback
+    const feedbackToUse = filteredFeedback.length > 0 ? filteredFeedback : allFeedback;
+    const total = feedbackToUse.length;
+    const avgRating = total > 0 
+        ? (feedbackToUse.reduce((sum, f) => sum + f.rating, 0) / total).toFixed(2)
+        : '0.00';
+    const avgScore = total > 0 
+        ? Math.round(feedbackToUse.reduce((sum, f) => sum + f.score, 0) / total)
+        : 0;
+    const verified = feedbackToUse.filter(f => f.verified).length;
+    
+    document.getElementById('total-feedback').textContent = total.toLocaleString();
+    document.getElementById('avg-rating').textContent = avgRating;
+    document.getElementById('avg-score').textContent = avgScore;
+    document.getElementById('verified-count').textContent = verified.toLocaleString();
+}
+
+function applyFilters() {
+    const stateFilter = document.getElementById('stateFilter').value;
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const ratingFilter = document.getElementById('ratingFilter').value;
+    const verifiedFilter = document.getElementById('verifiedFilter').value;
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    
+    // Log state filtering for debugging (especially for Alaska and Hawaii)
+    if (stateFilter !== 'all' && stateFilter !== '') {
+        console.log(`Filtering feedback by state: ${stateFilter}`);
+    }
+    
+    filteredFeedback = allFeedback.filter(feedback => {
+        // Case-insensitive state matching (works for all states including Alaska and Hawaii)
+        const matchState = stateFilter === 'all' || stateFilter === '' || 
+            feedback.state.toLowerCase() === stateFilter.toLowerCase() ||
+            feedback.state.toLowerCase().includes(stateFilter.toLowerCase()) ||
+            stateFilter.toLowerCase().includes(feedback.state.toLowerCase());
+        const matchCategory = categoryFilter === 'all' || feedback.category === categoryFilter;
+        const matchRating = ratingFilter === 'all' || Math.floor(feedback.rating) === parseInt(ratingFilter);
+        const matchVerified = verifiedFilter === 'all' || 
+            (verifiedFilter === 'true' && feedback.verified === true) ||
+            (verifiedFilter === 'false' && feedback.verified === false);
+        const matchSearch = !searchInput || 
+            feedback.customerName.toLowerCase().includes(searchInput) ||
+            feedback.location.toLowerCase().includes(searchInput) ||
+            feedback.review.toLowerCase().includes(searchInput) ||
+            feedback.state.toLowerCase().includes(searchInput) ||
+            (feedback.county && feedback.county.toLowerCase().includes(searchInput)) ||
+            (feedback.city && feedback.city.toLowerCase().includes(searchInput));
+        
+        return matchState && matchCategory && matchRating && matchVerified && matchSearch;
+    });
+    
+    updateStatistics();
+    displayFeedback();
+}
+
+function displayFeedback() {
+    const container = document.getElementById('feedback-scroll');
+    
+    if (filteredFeedback.length === 0) {
+        container.innerHTML = `
+            <div class="no-feedback">
+                <div class="no-feedback-icon">🔍</div>
+                <div class="no-feedback-text">No feedback matches the current filters</div>
+            </div>
+        `;
+        return;
+    }
+
+    // Sort by date (newest first)
+    const sortedFeedback = [...filteredFeedback].sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    container.innerHTML = sortedFeedback.map(feedback => {
+        const dateObj = new Date(feedback.date);
+        // Generate random time for this feedback (consistent based on feedback ID)
+        const feedbackIdHash = feedback.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        const randomHour = (feedbackIdHash % 24);
+        const randomMinute = (feedbackIdHash * 7 % 60);
+        const formattedTime = `${String(randomHour).padStart(2, '0')}:${String(randomMinute).padStart(2, '0')}`;
+        
+        const formattedDate = dateObj.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+        });
+        
+        const stars = '★'.repeat(Math.floor(feedback.rating)) + '☆'.repeat(5 - Math.floor(feedback.rating));
+        const ratingColor = feedback.rating >= 4 ? '#10b981' : feedback.rating >= 3 ? '#fbbf24' : '#ef4444';
+        
+        return `
+            <div class="feedback-card">
+                <div class="feedback-header">
+                    <div>
+                        <div class="feedback-user">${feedback.customerName}</div>
+                        <div class="feedback-location">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            ${feedback.location}
+                        </div>
+                    </div>
+                    <div class="feedback-rating">
+                        <span class="stars">${stars}</span>
+                        <span class="rating-number">${feedback.rating}</span>
+                    </div>
+                </div>
+                <div class="feedback-score">Score: ${feedback.score}/100</div>
+                <div class="feedback-date">${formattedDate} at ${formattedTime}</div>
+                ${feedback.county ? `<div style="font-size: 11px; color: #666; margin-bottom: 8px;">📍 ${feedback.county}</div>` : ''}
+                <div class="feedback-text">${feedback.review}</div>
+                <div class="feedback-meta">
+                    <span class="meta-badge category">${feedback.category}</span>
+                    ${feedback.verified ? '<span class="meta-badge verified">✓ Verified</span>' : ''}
+                    ${feedback.county ? `<span class="meta-badge county">${feedback.county}</span>` : ''}
+                </div>
+                ${feedback.countyContact ? `
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; font-size: 11px; color: #666;">
+                    <div style="font-weight: 600; margin-bottom: 4px; color: #0369a1;">County Contact:</div>
+                    <div>${feedback.countyContact.name} - ${feedback.countyContact.title}</div>
+                    <div style="margin-top: 2px;">${feedback.countyContact.email}</div>
+                </div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
+}
+
+// Initialize
+window.onload = () => {
+    loadFeedback();
+    
+    // Add event listeners for all filters
+    document.getElementById('stateFilter').addEventListener('change', applyFilters);
+    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+    document.getElementById('ratingFilter').addEventListener('change', applyFilters);
+    document.getElementById('verifiedFilter').addEventListener('change', applyFilters);
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+};
+</script>
+</body>
+</html>
+

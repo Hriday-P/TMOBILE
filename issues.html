@@ -1,720 +1,2308 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Customer Issues Tracking | T-Mobile</title>
-
-    <meta name="description" content="Track and monitor customer issues and complaints across all states for T-Mobile." />
-
-    <link rel="icon" href="https://www.t-mobile.com/etc.clientlibs/tmo-website/clientlibs/clientlib-site/resources/img/favicon.ico">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
+    <title>Issues Tracker | T-Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #222; min-height: 100vh; }
-
+        body { font-family: 'Inter', Arial, sans-serif; background: #f5f5f7; color: #222; }
         .navbar { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(226,0,116,0.03);}
-
         .nav-container { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;}
-
         .logo-nav { display: flex; align-items: center; gap: 48px;}
-
         .t-mobile-logo { font-size: 28px; font-weight: 700; color: #E20074; letter-spacing: -0.5px; cursor: pointer; text-decoration: none;}
-
         .t-mobile-logo:hover { opacity: 0.8;}
-
         .nav-links { display: flex; gap: 32px; list-style: none;}
-
         .nav-links a { color: #222; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;}
-
-        .nav-links a:hover { color: #E20074; }
-
-        .content-section { max-width: 1200px; margin: 0 auto; padding: 60px 24px;}
-
-        .issues-header { text-align: center; margin-bottom: 48px; color: #fff;}
-
-        .issues-header h1 { font-size: 42px; font-weight: 700; margin-bottom: 16px;}
-
-        .issues-header p { font-size: 18px; opacity: 0.9;}
-
-        .stats-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 48px;}
-
-        .stat-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); text-align: center;}
-
-        .stat-label { font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500;}
-
-        .stat-value { font-size: 36px; font-weight: 700; color: #E20074; margin-bottom: 4px;}
-
-        .stat-subvalue { font-size: 12px; color: #999;}
-
-        .issues-filters { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 32px;}
-
+        .nav-links a:hover, .nav-links a.active { color: #E20074; }
+        
+        .page-header { background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #fff; padding: 60px 24px 40px; text-align: center;}
+        .page-title { font-size: 42px; font-weight: 700; margin-bottom: 12px;}
+        .page-subtitle { font-size: 18px; opacity: 0.9;}
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px;}
+        
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;}
+        .stat-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);}
+        .stat-number { font-size: 36px; font-weight: 700; color: #E20074; margin-bottom: 8px;}
+        .stat-label { font-size: 14px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        
+        .filters { background: #fff; padding: 24px; border-radius: 16px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);}
         .filters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;}
-
         .filter-group { display: flex; flex-direction: column; gap: 8px;}
-
         .filter-label { font-size: 14px; font-weight: 600; color: #333;}
-
-        .filter-select, .filter-input { padding: 10px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s;}
-
+        .filter-select, .filter-input { padding: 10px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s; background: #fff;}
         .filter-select:focus, .filter-input:focus { outline: none; border-color: #E20074;}
-
-        .issues-list { display: grid; gap: 20px;}
-
-        .issue-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s;}
-
-        .issue-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15);}
-
-        .issue-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;}
-
-        .issue-title { font-size: 20px; font-weight: 700; color: #222; margin-bottom: 4px;}
-
-        .issue-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #666;}
-
-        .issue-meta span { display: flex; align-items: center; gap: 6px;}
-
-        .issue-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;}
-
-        .badge-critical { background: #fee2e2; color: #dc2626;}
-
-        .badge-high { background: #fef3c7; color: #d97706;}
-
-        .badge-medium { background: #dbeafe; color: #2563eb;}
-
-        .badge-low { background: #f3f4f6; color: #6b7280;}
-
-        .badge-resolved { background: #d1fae5; color: #059669;}
-
-        .issue-description { color: #4b5563; line-height: 1.6; margin-bottom: 16px;}
-
-        .issue-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 16px; background: #f9fafb; border-radius: 12px; margin-top: 16px;}
-
-        .issue-detail-item { display: flex; flex-direction: column; gap: 4px;}
-
-        .issue-detail-label { font-size: 12px; color: #666; font-weight: 500;}
-
-        .issue-detail-value { font-size: 14px; color: #222; font-weight: 600;}
-
-        .loading { text-align: center; padding: 60px 24px; color: #fff;}
-
-        .error { background: #fff; padding: 40px; border-radius: 16px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1);}
-
-        .error h2 { color: #ef4444; margin-bottom: 16px;}
-
-        .footer { background: rgba(255,255,255,0.1); padding: 40px 24px; text-align: center; color: #fff; margin-top: 80px;}
-
-        .footer-content { max-width: 1200px; margin: 0 auto;}
-
-        .footer-logo { font-size: 24px; font-weight: 700; margin-bottom: 12px;}
-
-        .footer-text { font-size: 14px; opacity: 0.9;}
-
+        .filter-input { width: 100%;}
+        
+        .issues-grid { display: grid; gap: 24px;}
+        
+        .issue-category { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px;}
+        .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #f0f0f0;}
+        .category-title { font-size: 22px; font-weight: 700; color: #222; display: flex; align-items: center; gap: 12px;}
+        .category-icon { font-size: 28px;}
+        .category-count { background: #fef2f2; color: #dc2626; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;}
+        
+        .feedback-item { background: #f9fafb; border-left: 4px solid #dc2626; padding: 20px; border-radius: 8px; margin-bottom: 16px;}
+        .feedback-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 12px;}
+        .feedback-user { font-weight: 700; color: #222; font-size: 16px;}
+        .feedback-location { font-size: 13px; color: #666; display: flex; align-items: center; gap: 6px; margin-top: 4px;}
+        .feedback-score { background: #dc2626; color: #fff; padding: 6px 12px; border-radius: 16px; font-size: 14px; font-weight: 700;}
+        .feedback-date { font-size: 12px; color: #999; margin-bottom: 12px;}
+        .feedback-text { color: #4b5563; font-size: 14px; line-height: 1.6; margin-bottom: 16px;}
+        .feedback-tags { display: flex; gap: 8px; flex-wrap: wrap;}
+        .tag { background: #fee2e2; color: #991b1b; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;}
+        
+        .rep-card { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid #0ea5e9; padding: 20px; border-radius: 12px; margin-top: 20px;}
+        .rep-header { font-weight: 700; color: #0369a1; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;}
+        .rep-name { font-size: 18px; font-weight: 700; color: #222; margin-bottom: 4px;}
+        .rep-title { font-size: 13px; color: #666; margin-bottom: 12px;}
+        .rep-contact { display: grid; gap: 8px; margin-top: 12px;}
+        .rep-contact-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #444;}
+        .contact-icon { font-size: 16px; color: #0ea5e9;}
+        
+        .no-issues { text-align: center; padding: 60px 20px; color: #888;}
+        .no-issues-icon { font-size: 64px; margin-bottom: 16px;}
+        .no-issues-text { font-size: 18px; font-weight: 600;}
+        
+        .loading { text-align: center; padding: 60px 20px; color: #888;}
+        
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .issues-header h1 { font-size: 32px; }
-            .stats-overview { grid-template-columns: 1fr; }
+            .page-title { font-size: 32px; }
+            .stats-row { grid-template-columns: 1fr; }
             .filters-grid { grid-template-columns: 1fr; }
-            .issue-header { flex-direction: column; }
+            .category-header { flex-direction: column; align-items: flex-start; gap: 12px; }
         }
-
     </style>
-
 </head>
-
 <body>
-
 <nav class="navbar">
-
     <div class="nav-container">
-
         <div class="logo-nav">
-
             <a href="index.html" class="t-mobile-logo">T-Mobile</a>
-
             <ul class="nav-links">
-
                 <li><a href="index.html">Home</a></li>
-
-                <li><a href="issues.html">Issues</a></li>
-
+                <li><a href="issues.html" class="active">Issues</a></li>
                 <li><a href="details.html">Detailed Analysis</a></li>
-
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
-<section class="content-section">
+<div class="page-header">
+    <h1 class="page-title">Customer Issues Tracker</h1>
+    <p class="page-subtitle">Monitoring feedback with satisfaction scores of 60 or below</p>
+</div>
 
-    <div class="issues-header">
-
-        <h1>Customer Issues Tracking</h1>
-
-        <p>Monitor and track customer issues and complaints across all states</p>
-
-    </div>
-
-    <div id="statsContainer" class="stats-overview">
-
+<div class="container">
+    <div class="stats-row">
         <div class="stat-card">
-
+            <div class="stat-number" id="total-issues">0</div>
             <div class="stat-label">Total Issues</div>
-
-            <div class="stat-value" id="total-issues">--</div>
-
-            <div class="stat-subvalue">Tracked</div>
-
         </div>
-
         <div class="stat-card">
-
-            <div class="stat-label">Critical Issues</div>
-
-            <div class="stat-value" id="critical-issues">--</div>
-
-            <div class="stat-subvalue">Requires immediate attention</div>
-
+            <div class="stat-number" id="avg-score">0</div>
+            <div class="stat-label">Avg Score</div>
         </div>
-
         <div class="stat-card">
-
-            <div class="stat-label">Resolved</div>
-
-            <div class="stat-value" id="resolved-issues">--</div>
-
-            <div class="stat-subvalue">This month</div>
-
+            <div class="stat-number" id="affected-districts">0</div>
+            <div class="stat-label">Affected Districts</div>
         </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">Avg Resolution Time</div>
-
-            <div class="stat-value" id="avg-resolution">--</div>
-
-            <div class="stat-subvalue">Days</div>
-
-        </div>
-
     </div>
-
-    <div class="issues-filters">
-
+    
+    <div class="filters">
         <div class="filters-grid">
-
             <div class="filter-group">
-
                 <label class="filter-label">Filter by State</label>
-
                 <select class="filter-select" id="stateFilter">
-
                     <option value="all">All States</option>
-
                 </select>
-
             </div>
-
             <div class="filter-group">
-
-                <label class="filter-label">Filter by Priority</label>
-
-                <select class="filter-select" id="priorityFilter">
-
-                    <option value="all">All Priorities</option>
-
-                    <option value="critical">Critical</option>
-
-                    <option value="high">High</option>
-
-                    <option value="medium">Medium</option>
-
-                    <option value="low">Low</option>
-
+                <label class="filter-label">Filter by Category</label>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="All">All Categories</option>
+                    <option value="Coverage">Coverage</option>
+                    <option value="Customer Service">Customer Service</option>
+                    <option value="Price">Price/Billing</option>
+                    <option value="Network Speed">Network Speed</option>
+                    <option value="Other">Other</option>
                 </select>
-
             </div>
-
             <div class="filter-group">
-
-                <label class="filter-label">Filter by Status</label>
-
-                <select class="filter-select" id="statusFilter">
-
-                    <option value="all">All Statuses</option>
-
-                    <option value="open">Open</option>
-
-                    <option value="in-progress">In Progress</option>
-
-                    <option value="resolved">Resolved</option>
-
+                <label class="filter-label">Filter by District</label>
+                <select class="filter-select" id="districtFilter">
+                    <option value="all">All Districts</option>
+                    <option value="Northwest">Northwest</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="Southeast">Southeast</option>
+                    <option value="Midwest">Midwest</option>
+                    <option value="Northeast">Northeast</option>
+                    <option value="West">West</option>
+                    <option value="Mountain">Mountain</option>
                 </select>
-
             </div>
-
             <div class="filter-group">
-
                 <label class="filter-label">Search</label>
-
                 <input type="text" class="filter-input" id="searchInput" placeholder="Search issues...">
-
             </div>
-
         </div>
-
     </div>
-
-    <div id="issuesContainer" class="issues-list">
-
-        <div class="loading">
-
-            <div style="font-size: 18px; margin-bottom: 12px;">Loading issues...</div>
-
-            <div style="font-size: 14px; opacity: 0.7;">Fetching data from API...</div>
-
-        </div>
-
+    
+    <div id="issues-container" class="issues-grid">
+        <div class="loading">Loading issues...</div>
     </div>
-
-</section>
-
-<footer class="footer">
-
-    <div class="footer-content">
-
-        <div class="footer-logo">T-Mobile</div>
-
-        <p class="footer-text">©️ 2025 T-Mobile USA, Inc. All rights reserved.</p>
-
-    </div>
-
-</footer>
+</div>
 
 <script>
+const issueIcons = {
+    "Coverage": "📡",
+    "Customer Service": "🎧",
+    "Price": "💳",
+    "Network Speed": "⚡",
+    "Reliability": "🏪",
+    "Other": "⚠️"
+};
 
-    // API Configuration
-    let API_BASE_URL = 'http://localhost:3000/api';
-    if (window.location.protocol === 'file:') {
-        API_BASE_URL = 'http://localhost:3000/api';
-    } else {
-        API_BASE_URL = `${window.location.origin}/api`;
+// API Configuration
+let API_BASE_URL = 'http://localhost:3000/api';
+if (window.location.protocol === 'file:') {
+    API_BASE_URL = 'http://localhost:3000/api';
+} else {
+    API_BASE_URL = `${window.location.origin}/api`;
+}
+
+// District to state mapping (simplified)
+const districtToState = {
+    "Northwest": ["Washington", "Oregon", "Idaho"],
+    "Southwest": ["Texas", "Arizona", "New Mexico", "Nevada"],
+    "Southeast": ["Florida", "Georgia", "Alabama", "Mississippi", "Louisiana", "South Carolina", "North Carolina", "Tennessee"],
+    "Midwest": ["Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin", "Minnesota", "Iowa", "Missouri", "Kansas", "Nebraska", "North Dakota", "South Dakota"],
+    "Northeast": ["New York", "Pennsylvania", "Massachusetts", "New Jersey", "Connecticut", "Maine", "New Hampshire", "Vermont", "Rhode Island"],
+    "West": ["California", "Hawaii"],
+    "Mountain": ["Colorado", "Utah", "Montana", "Wyoming", "Nevada", "Idaho"]
+};
+
+// Get district from state
+function getDistrictFromState(stateName) {
+    for (const [district, states] of Object.entries(districtToState)) {
+        if (states.includes(stateName)) {
+            return district;
+        }
     }
+    return "Other";
+}
 
-    let allIssues = [];
-    let filteredIssues = [];
-
-    // Helper function to determine issue priority based on rating
-    function getIssuePriority(rating, score) {
-        if (rating <= 2 || score <= 40) return 'critical';
-        if (rating <= 3 || score <= 60) return 'high';
-        if (rating <= 4 || score <= 80) return 'medium';
-        return 'low';
+const representatives = {
+    "Northwest": {
+        name: "Jennifer Adams",
+        title: "Regional Customer Experience Manager",
+        phone: "(206) 555-0123",
+        email: "j.adams@t-mobile.com",
+        office: "Seattle Regional Office"
+    },
+    "Southwest": {
+        name: "Carlos Rodriguez",
+        title: "Regional Customer Experience Manager",
+        phone: "(512) 555-0198",
+        email: "c.rodriguez@t-mobile.com",
+        office: "Austin Regional Office"
+    },
+    "Southeast": {
+        name: "Michelle Washington",
+        title: "Regional Customer Experience Manager",
+        phone: "(305) 555-0167",
+        email: "m.washington@t-mobile.com",
+        office: "Miami Regional Office"
+    },
+    "Midwest": {
+        name: "David Chen",
+        title: "Regional Customer Experience Manager",
+        phone: "(312) 555-0145",
+        email: "d.chen@t-mobile.com",
+        office: "Chicago Regional Office"
+    },
+    "Northeast": {
+        name: "Sarah O'Brien",
+        title: "Regional Customer Experience Manager",
+        phone: "(212) 555-0189",
+        email: "s.obrien@t-mobile.com",
+        office: "New York Regional Office"
+    },
+    "West": {
+        name: "Michael Kim",
+        title: "Regional Customer Experience Manager",
+        phone: "(213) 555-0176",
+        email: "m.kim@t-mobile.com",
+        office: "Los Angeles Regional Office"
+    },
+    "Mountain": {
+        name: "Rebecca Martinez",
+        title: "Regional Customer Experience Manager",
+        phone: "(303) 555-0134",
+        email: "r.martinez@t-mobile.com",
+        office: "Denver Regional Office"
+    },
+    "Other": {
+        name: "General Support",
+        title: "Customer Experience Manager",
+        phone: "(800) 555-0000",
+        email: "support@t-mobile.com",
+        office: "National Support Center"
     }
+};
 
-    // Helper function to generate issue status (simulated)
-    function getIssueStatus(entry) {
-        // Simulate status based on date and rating
-        const daysSince = Math.floor((new Date() - new Date(entry.date)) / (1000 * 60 * 60 * 24));
-        if (entry.rating <= 2 && daysSince < 7) return 'open';
-        if (entry.rating <= 3 && daysSince < 14) return 'in-progress';
-        if (daysSince > 30) return 'resolved';
-        return 'open';
+// Mock issues data (fallback if API data is not available)
+const mockIssuesData = [
+    {
+        name: "Linda Garcia",
+        location: "Houston, TX",
+        state: "Texas",
+        district: "Southwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-05",
+        disliked: "Frequent dropped calls in my neighborhood, especially during peak hours. Customer service was unhelpful and couldn't resolve my coverage issues. Been experiencing these problems for 3 months now with no solution. Very frustrating!",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "James Wilson",
+        location: "Los Angeles, CA",
+        state: "California",
+        district: "West",
+        score: 38,
+        rating: 1.9,
+        date: "2025-11-03",
+        disliked: "Billing errors every single month! I've called 5 times to fix overcharges and they keep promising it's resolved but it never is. Very frustrating experience. Also, data speeds are much slower than advertised - can barely stream videos.",
+        issues: ["Price", "Network Speed", "Customer Service"]
+    },
+    {
+        name: "Patricia Brown",
+        location: "Denver, CO",
+        state: "Colorado",
+        district: "Mountain",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-01",
+        disliked: "Terrible coverage in my area. Calls drop constantly and I can barely get data service. The store representatives were rude when I complained. Considering switching back to my old carrier.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Christopher Lee",
+        location: "Atlanta, GA",
+        state: "Georgia",
+        district: "Southeast",
+        score: 35,
+        rating: 1.7,
+        date: "2025-10-29",
+        disliked: "Absolute nightmare. They locked me into a device payment plan without properly explaining the terms. When I tried to leave, they hit me with massive early termination fees. Customer service refuses to help and keeps transferring me between departments.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Karen Martinez",
+        location: "Portland, OR",
+        state: "Oregon",
+        district: "Northwest",
+        score: 55,
+        rating: 2.7,
+        date: "2025-10-27",
+        disliked: "Network is extremely slow during peak hours. Can't even load basic web pages sometimes. Customer support promised to escalate but I never heard back. Very disappointed with the service quality.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    {
+        name: "Robert Thompson",
+        location: "Phoenix, AZ",
+        state: "Arizona",
+        district: "Southwest",
+        score: 48,
+        rating: 2.4,
+        date: "2025-10-25",
+        disliked: "Coverage is non-existent in my rural area. I was told I'd have great coverage but I can't even make a phone call from my home. Multiple calls to customer service have resulted in no resolution.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Sarah Johnson",
+        location: "Chicago, IL",
+        state: "Illinois",
+        district: "Midwest",
+        score: 40,
+        rating: 2.0,
+        date: "2025-10-23",
+        disliked: "Billing department charged me for services I never requested. When I called to dispute, they were unhelpful and kept me on hold for over an hour. Still haven't received a refund after 2 weeks.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Michael Chen",
+        location: "Seattle, WA",
+        state: "Washington",
+        district: "Northwest",
+        score: 52,
+        rating: 2.6,
+        date: "2025-10-21",
+        disliked: "Data speeds are terrible in downtown Seattle. Can't use my phone for work during business hours. Customer service said they'd look into it but nothing has changed in months.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Emily Davis",
+        location: "Miami, FL",
+        state: "Florida",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-19",
+        disliked: "Coverage drops completely when I'm in certain areas of the city. Customer service was dismissive and told me to 'just move to a better location'. Unacceptable response!",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "David Rodriguez",
+        location: "New York, NY",
+        state: "New York",
+        district: "Northeast",
+        score: 36,
+        rating: 1.8,
+        date: "2025-10-17",
+        disliked: "Billing nightmare! They charged me for international calls I never made. Multiple calls and emails, still no resolution. Customer service keeps giving me the runaround.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Jennifer White",
+        location: "Boston, MA",
+        state: "Massachusetts",
+        district: "Northeast",
+        score: 50,
+        rating: 2.5,
+        date: "2025-10-15",
+        disliked: "Network speed is incredibly slow, especially in the evenings. Streaming is impossible and even basic web browsing takes forever. Very disappointed with the service.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Mark Anderson",
+        location: "Dallas, TX",
+        state: "Texas",
+        district: "Southwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-10-13",
+        disliked: "Coverage issues throughout the metro area. Dropped calls are a daily occurrence. Customer service representatives are unhelpful and seem untrained. Very poor experience overall.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Lisa Taylor",
+        location: "San Francisco, CA",
+        state: "California",
+        district: "West",
+        score: 47,
+        rating: 2.3,
+        date: "2025-10-11",
+        disliked: "Billing errors and overcharges every month. Customer service is slow to respond and when they do, they're not helpful. Considering switching carriers.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Thomas Moore",
+        location: "Detroit, MI",
+        state: "Michigan",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-09",
+        disliked: "Network coverage is spotty at best. Can't rely on my phone for important calls. Customer service was dismissive when I reported the issue.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Amanda Jackson",
+        location: "Nashville, TN",
+        state: "Tennessee",
+        district: "Southeast",
+        score: 49,
+        rating: 2.4,
+        date: "2025-10-07",
+        disliked: "Data speeds are extremely slow, especially during peak times. Can't use my phone for work effectively. Customer support hasn't been able to help.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    {
+        name: "Daniel Harris",
+        location: "Las Vegas, NV",
+        state: "Nevada",
+        district: "Southwest",
+        score: 39,
+        rating: 1.9,
+        date: "2025-10-05",
+        disliked: "Billing department keeps charging me for services I cancelled months ago. Multiple calls and still no resolution. Very frustrated with the lack of customer service.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Jessica Martinez",
+        location: "Minneapolis, MN",
+        state: "Minnesota",
+        district: "Midwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-03",
+        disliked: "Coverage is terrible in my area. Constant dropped calls and no signal in many locations. Customer service was unhelpful and didn't offer any solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Ryan Clark",
+        location: "Philadelphia, PA",
+        state: "Pennsylvania",
+        district: "Northeast",
+        score: 51,
+        rating: 2.5,
+        date: "2025-10-01",
+        disliked: "Network speeds are very slow, making it difficult to use data-intensive apps. Customer service said they'd investigate but I haven't heard anything back.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Michelle Lewis",
+        location: "Charlotte, NC",
+        state: "North Carolina",
+        district: "Southeast",
+        score: 37,
+        rating: 1.8,
+        date: "2025-09-29",
+        disliked: "Billing issues and poor customer service. Charged for features I never requested. Multiple attempts to resolve have been unsuccessful. Very disappointed.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Kevin Walker",
+        location: "San Diego, CA",
+        state: "California",
+        district: "West",
+        score: 53,
+        rating: 2.6,
+        date: "2025-09-27",
+        disliked: "Coverage drops frequently in certain neighborhoods. Customer service was not helpful in resolving the issue. Expected better service quality.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    // Additional issues for all states - at least 3 per state
+    // Alabama
+    {
+        name: "Robert Williams",
+        location: "Birmingham, AL",
+        state: "Alabama",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-04",
+        disliked: "Network speeds are extremely slow in my area. Can't stream videos or use data-intensive apps. Customer service hasn't been able to help.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    {
+        name: "Mary Johnson",
+        location: "Montgomery, AL",
+        state: "Alabama",
+        district: "Southeast",
+        score: 39,
+        rating: 1.9,
+        date: "2025-11-02",
+        disliked: "Billing errors every month. Charged for services I never signed up for. Multiple calls to customer service with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "James Brown",
+        location: "Mobile, AL",
+        state: "Alabama",
+        district: "Southeast",
+        score: 47,
+        rating: 2.3,
+        date: "2025-10-30",
+        disliked: "Coverage is terrible in rural areas. Dropped calls constantly. Store representatives were unhelpful when I complained.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    // Alaska
+    {
+        name: "Sarah Thompson",
+        location: "Anchorage, AK",
+        state: "Alaska",
+        district: "Other",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-03",
+        disliked: "App crashes constantly and won't load my account information. Very frustrating experience trying to manage my account.",
+        issues: ["Other"]
+    },
+    {
+        name: "Michael Davis",
+        location: "Fairbanks, AK",
+        state: "Alaska",
+        district: "Other",
+        score: 38,
+        rating: 1.9,
+        date: "2025-11-01",
+        disliked: "Network coverage is non-existent outside of major cities. Can't use my phone for work when traveling. Very disappointed.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Jennifer Wilson",
+        location: "Juneau, AK",
+        state: "Alaska",
+        district: "Other",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-29",
+        disliked: "Billing department keeps making errors. Charged for international roaming I never used. Customer service is unresponsive.",
+        issues: ["Price", "Customer Service"]
+    },
+    // Arizona - already has 1, adding 2 more
+    {
+        name: "Patricia Martinez",
+        location: "Tucson, AZ",
+        state: "Arizona",
+        district: "Southwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-10-23",
+        disliked: "Data speeds are terrible during peak hours. Can't use my phone for work. Customer service said they'd investigate but nothing changed.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Richard Garcia",
+        location: "Mesa, AZ",
+        state: "Arizona",
+        district: "Southwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-21",
+        disliked: "Device warranty claim was denied without proper explanation. Customer service was unhelpful and dismissive.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Arkansas
+    {
+        name: "Linda Anderson",
+        location: "Little Rock, AR",
+        state: "Arkansas",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-05",
+        disliked: "Coverage drops in many areas of the city. Dropped calls are frequent. Customer service couldn't provide any solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "David Taylor",
+        location: "Fayetteville, AR",
+        state: "Arkansas",
+        district: "Southeast",
+        score: 40,
+        rating: 2.0,
+        date: "2025-11-03",
+        disliked: "Billing errors and overcharges. Charged for premium features I never requested. Still waiting for a refund after 3 weeks.",
+        issues: ["Price"]
+    },
+    {
+        name: "Susan White",
+        location: "Fort Smith, AR",
+        state: "Arkansas",
+        district: "Southeast",
+        score: 48,
+        rating: 2.4,
+        date: "2025-11-01",
+        disliked: "Network speed is very slow, especially in the evenings. Streaming is impossible. Customer support hasn't been able to help.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    // California - already has 3, adding more for variety
+    {
+        name: "Robert Lee",
+        location: "Sacramento, CA",
+        state: "California",
+        district: "West",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-19",
+        disliked: "Account was incorrectly suspended due to system error. Took 2 weeks to resolve. Very poor customer service experience.",
+        issues: ["Other", "Customer Service"]
+    },
+    {
+        name: "Nancy Harris",
+        location: "Oakland, CA",
+        state: "California",
+        district: "West",
+        score: 41,
+        rating: 2.0,
+        date: "2025-10-17",
+        disliked: "Coverage is spotty in my neighborhood. Can't make reliable calls. Customer service was dismissive of my concerns.",
+        issues: ["Coverage"]
+    },
+    // Colorado - already has 1, adding 2 more
+    {
+        name: "Thomas Jackson",
+        location: "Colorado Springs, CO",
+        state: "Colorado",
+        district: "Mountain",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-28",
+        disliked: "Billing department keeps charging me incorrectly. Multiple disputes with no resolution. Very frustrated.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Barbara Moore",
+        location: "Aurora, CO",
+        state: "Colorado",
+        district: "Mountain",
+        score: 47,
+        rating: 2.3,
+        date: "2025-10-26",
+        disliked: "Network speeds are slow during peak times. Can't use data-intensive applications. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Connecticut
+    {
+        name: "William Clark",
+        location: "Hartford, CT",
+        state: "Connecticut",
+        district: "Northeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-06",
+        disliked: "Coverage issues throughout the state. Dropped calls are common. Customer service representatives are unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Patricia Lewis",
+        location: "New Haven, CT",
+        state: "Connecticut",
+        district: "Northeast",
+        score: 39,
+        rating: 1.9,
+        date: "2025-11-04",
+        disliked: "Billing errors every month. Charged for services I cancelled. Customer service keeps transferring me between departments.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Jennifer Walker",
+        location: "Stamford, CT",
+        state: "Connecticut",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-02",
+        disliked: "Device upgrade process was confusing and resulted in incorrect charges. Customer service was not helpful.",
+        issues: ["Other", "Price"]
+    },
+    // Delaware
+    {
+        name: "Michael Robinson",
+        location: "Wilmington, DE",
+        state: "Delaware",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-05",
+        disliked: "Network coverage is poor in many areas. Can't rely on my phone for important calls. Very disappointed.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Sarah Young",
+        location: "Dover, DE",
+        state: "Delaware",
+        district: "Northeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-03",
+        disliked: "Data speeds are extremely slow. Can't stream or use work apps effectively. Customer service said they'd look into it.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    {
+        name: "Robert King",
+        location: "Newark, DE",
+        state: "Delaware",
+        district: "Northeast",
+        score: 40,
+        rating: 2.0,
+        date: "2025-11-01",
+        disliked: "Billing department made errors on my account. Charged for features I never requested. Still waiting for resolution.",
+        issues: ["Price"]
+    },
+    // Florida - already has 1, adding 2 more
+    {
+        name: "Linda Wright",
+        location: "Tampa, FL",
+        state: "Florida",
+        district: "Southeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-18",
+        disliked: "Coverage drops frequently in certain areas. Customer service was dismissive and unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "James Lopez",
+        location: "Orlando, FL",
+        state: "Florida",
+        district: "Southeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-16",
+        disliked: "Network speeds are very slow during peak hours. Can't use my phone effectively for work. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Georgia - already has 1, adding 2 more
+    {
+        name: "Mary Hill",
+        location: "Savannah, GA",
+        state: "Georgia",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-28",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "John Scott",
+        location: "Augusta, GA",
+        state: "Georgia",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-26",
+        disliked: "Coverage is terrible in rural areas. Can't make calls from my home. Multiple complaints with no resolution.",
+        issues: ["Coverage"]
+    },
+    // Hawaii
+    {
+        name: "Patricia Green",
+        location: "Honolulu, HI",
+        state: "Hawaii",
+        district: "West",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-07",
+        disliked: "Network coverage is poor on many islands. Dropped calls are frequent. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Robert Adams",
+        location: "Hilo, HI",
+        state: "Hawaii",
+        district: "West",
+        score: 39,
+        rating: 1.9,
+        date: "2025-11-05",
+        disliked: "Billing department keeps making errors. Charged for roaming I never used. Customer service is unresponsive.",
+        issues: ["Price"]
+    },
+    {
+        name: "Susan Baker",
+        location: "Kailua, HI",
+        state: "Hawaii",
+        district: "West",
+        score: 47,
+        rating: 2.3,
+        date: "2025-11-03",
+        disliked: "Data speeds are very slow. Can't stream videos or use data-intensive apps. Very disappointed with service quality.",
+        issues: ["Network Speed"]
+    },
+    // Idaho
+    {
+        name: "Michael Nelson",
+        location: "Boise, ID",
+        state: "Idaho",
+        district: "Mountain",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-06",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Jennifer Carter",
+        location: "Nampa, ID",
+        state: "Idaho",
+        district: "Mountain",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-04",
+        disliked: "Billing errors every month. Charged for services I never requested. Multiple calls with no resolution.",
+        issues: ["Price"]
+    },
+    {
+        name: "David Mitchell",
+        location: "Idaho Falls, ID",
+        state: "Idaho",
+        district: "Mountain",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-02",
+        disliked: "Network speeds are slow during peak hours. Can't use work applications effectively. Customer support hasn't helped.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    // Illinois - already has 1, adding 2 more
+    {
+        name: "Lisa Perez",
+        location: "Aurora, IL",
+        state: "Illinois",
+        district: "Midwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-22",
+        disliked: "Coverage drops frequently in certain neighborhoods. Customer service was dismissive of my concerns.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Mark Roberts",
+        location: "Naperville, IL",
+        state: "Illinois",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-20",
+        disliked: "Device trade-in process was mishandled. Received incorrect credit amount. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Indiana
+    {
+        name: "Amanda Turner",
+        location: "Indianapolis, IN",
+        state: "Indiana",
+        district: "Midwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-07",
+        disliked: "Network coverage is spotty throughout the city. Dropped calls are common. Customer service couldn't provide solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Christopher Phillips",
+        location: "Fort Wayne, IN",
+        state: "Indiana",
+        district: "Midwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-05",
+        disliked: "Billing department keeps making errors. Charged for premium features I never signed up for. Still waiting for refund.",
+        issues: ["Price"]
+    },
+    {
+        name: "Karen Campbell",
+        location: "Evansville, IN",
+        state: "Indiana",
+        district: "Midwest",
+        score: 47,
+        rating: 2.3,
+        date: "2025-11-03",
+        disliked: "Data speeds are extremely slow. Can't stream videos or use data-intensive apps. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Iowa
+    {
+        name: "Ryan Parker",
+        location: "Des Moines, IA",
+        state: "Iowa",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-06",
+        disliked: "Coverage is terrible in rural areas. Can't make calls from many locations. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Michelle Evans",
+        location: "Cedar Rapids, IA",
+        state: "Iowa",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-04",
+        disliked: "Billing errors and incorrect charges. Customer service keeps transferring me between departments with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Daniel Edwards",
+        location: "Davenport, IA",
+        state: "Iowa",
+        district: "Midwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-02",
+        disliked: "Network speeds are slow during peak times. Can't use work applications effectively. Very disappointed.",
+        issues: ["Network Speed"]
+    },
+    // Kansas
+    {
+        name: "Jessica Collins",
+        location: "Wichita, KS",
+        state: "Kansas",
+        district: "Midwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-07",
+        disliked: "Coverage drops frequently in certain areas. Dropped calls are a daily occurrence. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Thomas Stewart",
+        location: "Overland Park, KS",
+        state: "Kansas",
+        district: "Midwest",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-05",
+        disliked: "Billing department made errors on my account. Charged for services I never requested. Still waiting for resolution.",
+        issues: ["Price"]
+    },
+    {
+        name: "Nancy Sanchez",
+        location: "Kansas City, KS",
+        state: "Kansas",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-03",
+        disliked: "Account was incorrectly locked due to system error. Took over a week to resolve. Poor customer service experience.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Kentucky
+    {
+        name: "Robert Morris",
+        location: "Louisville, KY",
+        state: "Kentucky",
+        district: "Southeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-08",
+        disliked: "Network coverage is poor in many areas. Can't rely on my phone for important calls. Customer service was dismissive.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Linda Rogers",
+        location: "Lexington, KY",
+        state: "Kentucky",
+        district: "Southeast",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-06",
+        disliked: "Billing errors every month. Charged for features I never signed up for. Multiple calls with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "James Reed",
+        location: "Bowling Green, KY",
+        state: "Kentucky",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-04",
+        disliked: "Data speeds are very slow. Can't stream or use data-intensive applications. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Louisiana
+    {
+        name: "Patricia Cook",
+        location: "New Orleans, LA",
+        state: "Louisiana",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-07",
+        disliked: "Coverage is spotty throughout the city. Dropped calls are frequent. Customer service representatives are unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Michael Morgan",
+        location: "Baton Rouge, LA",
+        state: "Louisiana",
+        district: "Southeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-05",
+        disliked: "Billing department keeps making errors. Charged for international calls I never made. Customer service is unresponsive.",
+        issues: ["Price"]
+    },
+    {
+        name: "Sarah Bell",
+        location: "Shreveport, LA",
+        state: "Louisiana",
+        district: "Southeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-03",
+        disliked: "Network speeds are extremely slow during peak hours. Can't use my phone for work effectively. Very disappointed.",
+        issues: ["Network Speed", "Customer Service"]
+    },
+    // Maine
+    {
+        name: "David Murphy",
+        location: "Portland, ME",
+        state: "Maine",
+        district: "Northeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-08",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Jennifer Bailey",
+        location: "Lewiston, ME",
+        state: "Maine",
+        district: "Northeast",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-06",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Mark Rivera",
+        location: "Bangor, ME",
+        state: "Maine",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-04",
+        disliked: "Device upgrade was mishandled. Received wrong device model. Customer service was dismissive and unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Maryland
+    {
+        name: "Amanda Cooper",
+        location: "Baltimore, MD",
+        state: "Maryland",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-09",
+        disliked: "Network coverage drops frequently in certain areas. Dropped calls are common. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Christopher Richardson",
+        location: "Frederick, MD",
+        state: "Maryland",
+        district: "Northeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-07",
+        disliked: "Billing department keeps making errors. Charged for services I cancelled months ago. Still waiting for resolution.",
+        issues: ["Price"]
+    },
+    {
+        name: "Karen Cox",
+        location: "Rockville, MD",
+        state: "Maryland",
+        district: "Northeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-05",
+        disliked: "Data speeds are very slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Massachusetts - already has 1, adding 2 more
+    {
+        name: "Ryan Howard",
+        location: "Worcester, MA",
+        state: "Massachusetts",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-14",
+        disliked: "Coverage is terrible in my area. Constant dropped calls. Customer service was unhelpful and didn't offer solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Michelle Ward",
+        location: "Springfield, MA",
+        state: "Massachusetts",
+        district: "Northeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-12",
+        disliked: "Billing errors every month. Charged for premium features I never requested. Multiple disputes with no resolution.",
+        issues: ["Price"]
+    },
+    // Michigan - already has 1, adding 2 more
+    {
+        name: "Daniel Torres",
+        location: "Grand Rapids, MI",
+        state: "Michigan",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-08",
+        disliked: "Network speeds are slow during peak times. Can't use work applications effectively. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Jessica Peterson",
+        location: "Warren, MI",
+        state: "Michigan",
+        district: "Midwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-06",
+        disliked: "Account management portal is broken and won't load. Can't access my account information. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Minnesota - already has 1, adding 2 more
+    {
+        name: "Thomas Gray",
+        location: "St. Paul, MN",
+        state: "Minnesota",
+        district: "Midwest",
+        score: 47,
+        rating: 2.3,
+        date: "2025-10-02",
+        disliked: "Billing errors and incorrect charges. Customer service keeps transferring me between departments with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Nancy Ramirez",
+        location: "Duluth, MN",
+        state: "Minnesota",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-09-30",
+        disliked: "Coverage is poor in rural areas. Can't make calls from many locations. Very disappointed with service quality.",
+        issues: ["Coverage"]
+    },
+    // Mississippi
+    {
+        name: "Robert James",
+        location: "Jackson, MS",
+        state: "Mississippi",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-10",
+        disliked: "Network coverage is spotty throughout the city. Dropped calls are frequent. Customer service couldn't provide solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Linda Watson",
+        location: "Gulfport, MS",
+        state: "Mississippi",
+        district: "Southeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-08",
+        disliked: "Billing department keeps making errors. Charged for services I never requested. Still waiting for refund.",
+        issues: ["Price"]
+    },
+    {
+        name: "James Brooks",
+        location: "Southaven, MS",
+        state: "Mississippi",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-06",
+        disliked: "Data speeds are extremely slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Missouri
+    {
+        name: "Patricia Kelly",
+        location: "Kansas City, MO",
+        state: "Missouri",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-11",
+        disliked: "Coverage drops frequently in certain neighborhoods. Customer service was dismissive of my concerns.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Michael Sanders",
+        location: "St. Louis, MO",
+        state: "Missouri",
+        district: "Midwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-09",
+        disliked: "Billing errors every month. Charged for features I never signed up for. Multiple calls with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Sarah Price",
+        location: "Springfield, MO",
+        state: "Missouri",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-07",
+        disliked: "Device warranty claim process was confusing and resulted in denial. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Montana
+    {
+        name: "David Bennett",
+        location: "Billings, MT",
+        state: "Montana",
+        district: "Mountain",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-12",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Jennifer Wood",
+        location: "Missoula, MT",
+        state: "Montana",
+        district: "Mountain",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-10",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Mark Barnes",
+        location: "Great Falls, MT",
+        state: "Montana",
+        district: "Mountain",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-08",
+        disliked: "Network speeds are very slow. Can't stream or use data-intensive applications. Very disappointed.",
+        issues: ["Network Speed"]
+    },
+    // Nebraska
+    {
+        name: "Amanda Ross",
+        location: "Omaha, NE",
+        state: "Nebraska",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-13",
+        disliked: "Coverage is terrible in rural areas. Can't make calls from many locations. Customer service was unhelpful.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Christopher Henderson",
+        location: "Lincoln, NE",
+        state: "Nebraska",
+        district: "Midwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-11",
+        disliked: "Billing department keeps making errors. Charged for premium features I never signed up for. Still waiting for refund.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Karen Coleman",
+        location: "Bellevue, NE",
+        state: "Nebraska",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-09",
+        disliked: "Account was incorrectly locked due to system error. Took over a week to resolve. Poor customer service experience.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Nevada - already has 1, adding 2 more
+    {
+        name: "Ryan Jenkins",
+        location: "Reno, NV",
+        state: "Nevada",
+        district: "Southwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-04",
+        disliked: "Network coverage is poor in many areas. Dropped calls are frequent. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Michelle Perry",
+        location: "Henderson, NV",
+        state: "Nevada",
+        district: "Southwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-02",
+        disliked: "Data speeds are slow during peak hours. Can't use work applications effectively. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // New Hampshire
+    {
+        name: "Daniel Powell",
+        location: "Manchester, NH",
+        state: "New Hampshire",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-14",
+        disliked: "Coverage is spotty throughout the state. Dropped calls are common. Customer service representatives are unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Jessica Long",
+        location: "Nashua, NH",
+        state: "New Hampshire",
+        district: "Northeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-12",
+        disliked: "Billing errors every month. Charged for services I cancelled. Customer service keeps transferring me between departments.",
+        issues: ["Price"]
+    },
+    {
+        name: "Thomas Patterson",
+        location: "Concord, NH",
+        state: "New Hampshire",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-10",
+        disliked: "Network speeds are very slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // New Jersey
+    {
+        name: "Nancy Hughes",
+        location: "Newark, NJ",
+        state: "New Jersey",
+        district: "Northeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-15",
+        disliked: "Coverage drops frequently in certain areas. Dropped calls are a daily occurrence. Customer service couldn't help.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Robert Flores",
+        location: "Jersey City, NJ",
+        state: "New Jersey",
+        district: "Northeast",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-13",
+        disliked: "Billing department made errors on my account. Charged for services I never requested. Still waiting for resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Linda Washington",
+        location: "Paterson, NJ",
+        state: "New Jersey",
+        district: "Northeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-11",
+        disliked: "Device trade-in process was mishandled. Received incorrect credit amount. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // New Mexico
+    {
+        name: "James Butler",
+        location: "Albuquerque, NM",
+        state: "New Mexico",
+        district: "Southwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-16",
+        disliked: "Network coverage is poor in many areas. Can't rely on my phone for important calls. Very disappointed.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Patricia Simmons",
+        location: "Las Cruces, NM",
+        state: "New Mexico",
+        district: "Southwest",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-14",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Michael Foster",
+        location: "Rio Rancho, NM",
+        state: "New Mexico",
+        district: "Southwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-12",
+        disliked: "Data speeds are extremely slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // New York - already has 1, adding 2 more
+    {
+        name: "Sarah Gonzales",
+        location: "Buffalo, NY",
+        state: "New York",
+        district: "Northeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-16",
+        disliked: "Coverage is terrible in my area. Constant dropped calls. Customer service was unhelpful and didn't offer solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "David Bryant",
+        location: "Rochester, NY",
+        state: "New York",
+        district: "Northeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-14",
+        disliked: "Network speeds are slow during peak times. Can't use work applications effectively. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // North Carolina - already has 1, adding 2 more
+    {
+        name: "Jennifer Alexander",
+        location: "Raleigh, NC",
+        state: "North Carolina",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-09-28",
+        disliked: "Coverage drops frequently in certain neighborhoods. Customer service was dismissive of my concerns.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Mark Russell",
+        location: "Greensboro, NC",
+        state: "North Carolina",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-09-26",
+        disliked: "Account management system is broken. Can't access my account information online. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // North Dakota
+    {
+        name: "Amanda Griffin",
+        location: "Fargo, ND",
+        state: "North Dakota",
+        district: "Midwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-17",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Christopher Diaz",
+        location: "Bismarck, ND",
+        state: "North Dakota",
+        district: "Midwest",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-15",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Karen Hayes",
+        location: "Grand Forks, ND",
+        state: "North Dakota",
+        district: "Midwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-13",
+        disliked: "Network speeds are very slow. Can't stream or use data-intensive applications. Very disappointed.",
+        issues: ["Network Speed"]
+    },
+    // Ohio
+    {
+        name: "Ryan Myers",
+        location: "Columbus, OH",
+        state: "Ohio",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-18",
+        disliked: "Coverage is spotty throughout the city. Dropped calls are frequent. Customer service couldn't provide solutions.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Michelle Ford",
+        location: "Cleveland, OH",
+        state: "Ohio",
+        district: "Midwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-16",
+        disliked: "Billing department keeps making errors. Charged for services I never requested. Still waiting for refund.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Daniel Hamilton",
+        location: "Cincinnati, OH",
+        state: "Ohio",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-14",
+        disliked: "Device upgrade was mishandled. Received wrong device model. Customer service was dismissive and unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Oklahoma
+    {
+        name: "Jessica Graham",
+        location: "Oklahoma City, OK",
+        state: "Oklahoma",
+        district: "Southwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-19",
+        disliked: "Network coverage is poor in many areas. Dropped calls are common. Customer service representatives are unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Thomas Sullivan",
+        location: "Tulsa, OK",
+        state: "Oklahoma",
+        district: "Southwest",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-17",
+        disliked: "Billing errors every month. Charged for features I never signed up for. Multiple calls with no resolution.",
+        issues: ["Price"]
+    },
+    {
+        name: "Nancy Wallace",
+        location: "Norman, OK",
+        state: "Oklahoma",
+        district: "Southwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-15",
+        disliked: "Data speeds are extremely slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Oregon - already has 1, adding 2 more
+    {
+        name: "Robert Woods",
+        location: "Eugene, OR",
+        state: "Oregon",
+        district: "Northwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-26",
+        disliked: "Coverage is terrible in my area. Constant dropped calls. Customer service was unhelpful and didn't offer solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Linda Cole",
+        location: "Salem, OR",
+        state: "Oregon",
+        district: "Northwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-24",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    // Pennsylvania - already has 1, adding 2 more
+    {
+        name: "James West",
+        location: "Pittsburgh, PA",
+        state: "Pennsylvania",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-09-30",
+        disliked: "Network speeds are slow during peak times. Can't use work applications effectively. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    {
+        name: "Patricia Jordan",
+        location: "Allentown, PA",
+        state: "Pennsylvania",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-09-28",
+        disliked: "Account was incorrectly suspended due to system error. Took 2 weeks to resolve. Very poor customer service experience.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Rhode Island
+    {
+        name: "Michael Owens",
+        location: "Providence, RI",
+        state: "Rhode Island",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-20",
+        disliked: "Coverage drops frequently in certain areas. Dropped calls are a daily occurrence. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Sarah Reynolds",
+        location: "Warwick, RI",
+        state: "Rhode Island",
+        district: "Northeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-18",
+        disliked: "Billing department made errors on my account. Charged for services I never requested. Still waiting for resolution.",
+        issues: ["Price"]
+    },
+    {
+        name: "David Fisher",
+        location: "Cranston, RI",
+        state: "Rhode Island",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-16",
+        disliked: "Network speeds are very slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // South Carolina
+    {
+        name: "Jennifer Ellis",
+        location: "Columbia, SC",
+        state: "South Carolina",
+        district: "Southeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-21",
+        disliked: "Coverage is spotty throughout the city. Dropped calls are frequent. Customer service couldn't provide solutions.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Mark Harrison",
+        location: "Charleston, SC",
+        state: "South Carolina",
+        district: "Southeast",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-19",
+        disliked: "Billing errors every month. Charged for features I never signed up for. Multiple calls with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Amanda Gibson",
+        location: "North Charleston, SC",
+        state: "South Carolina",
+        district: "Southeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-17",
+        disliked: "Device warranty claim was denied without proper explanation. Customer service was unhelpful and dismissive.",
+        issues: ["Other", "Customer Service"]
+    },
+    // South Dakota
+    {
+        name: "Christopher Mendoza",
+        location: "Sioux Falls, SD",
+        state: "South Dakota",
+        district: "Midwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-22",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Karen Carr",
+        location: "Rapid City, SD",
+        state: "South Dakota",
+        district: "Midwest",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-20",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Ryan Stephens",
+        location: "Aberdeen, SD",
+        state: "South Dakota",
+        district: "Midwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-18",
+        disliked: "Network speeds are very slow. Can't stream or use data-intensive applications. Very disappointed.",
+        issues: ["Network Speed"]
+    },
+    // Tennessee - already has 1, adding 2 more
+    {
+        name: "Michelle Barber",
+        location: "Memphis, TN",
+        state: "Tennessee",
+        district: "Southeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-10-06",
+        disliked: "Coverage is terrible in my area. Constant dropped calls. Customer service was unhelpful and didn't offer solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Daniel Austin",
+        location: "Knoxville, TN",
+        state: "Tennessee",
+        district: "Southeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-10-04",
+        disliked: "Account management portal is broken and won't load. Can't access my account information. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Texas - already has 2, adding 1 more
+    {
+        name: "Jessica Lawson",
+        location: "Austin, TX",
+        state: "Texas",
+        district: "Southwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-12",
+        disliked: "Network speeds are slow during peak hours. Can't use work applications effectively. Customer service hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Utah
+    {
+        name: "Thomas Fields",
+        location: "Salt Lake City, UT",
+        state: "Utah",
+        district: "Mountain",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-23",
+        disliked: "Coverage is spotty throughout the city. Dropped calls are frequent. Customer service couldn't provide solutions.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Nancy Tucker",
+        location: "West Valley City, UT",
+        state: "Utah",
+        district: "Mountain",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-21",
+        disliked: "Billing department keeps making errors. Charged for services I never requested. Still waiting for refund.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Robert Freeman",
+        location: "Provo, UT",
+        state: "Utah",
+        district: "Mountain",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-19",
+        disliked: "Data speeds are extremely slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Vermont
+    {
+        name: "Linda Burns",
+        location: "Burlington, VT",
+        state: "Vermont",
+        district: "Northeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-24",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "James Olson",
+        location: "Essex, VT",
+        state: "Vermont",
+        district: "Northeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-22",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Patricia Wells",
+        location: "South Burlington, VT",
+        state: "Vermont",
+        district: "Northeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-20",
+        disliked: "Device upgrade process was confusing and resulted in incorrect charges. Customer service was not helpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Virginia
+    {
+        name: "Michael Webb",
+        location: "Virginia Beach, VA",
+        state: "Virginia",
+        district: "Southeast",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-25",
+        disliked: "Network coverage is poor in many areas. Dropped calls are common. Customer service representatives are unhelpful.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Sarah Simpson",
+        location: "Norfolk, VA",
+        state: "Virginia",
+        district: "Southeast",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-23",
+        disliked: "Billing errors every month. Charged for features I never signed up for. Multiple calls with no resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "David Stevens",
+        location: "Richmond, VA",
+        state: "Virginia",
+        district: "Southeast",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-21",
+        disliked: "Network speeds are very slow. Can't stream videos or use data-intensive apps. Customer support hasn't helped.",
+        issues: ["Network Speed"]
+    },
+    // Washington - already has 1, adding 2 more
+    {
+        name: "Jennifer Porter",
+        location: "Spokane, WA",
+        state: "Washington",
+        district: "Northwest",
+        score: 46,
+        rating: 2.3,
+        date: "2025-10-20",
+        disliked: "Coverage is terrible in my area. Constant dropped calls. Customer service was unhelpful and didn't offer solutions.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Mark Hunter",
+        location: "Tacoma, WA",
+        state: "Washington",
+        district: "Northwest",
+        score: 44,
+        rating: 2.2,
+        date: "2025-10-18",
+        disliked: "Account was incorrectly locked due to system error. Took over a week to resolve. Poor customer service experience.",
+        issues: ["Other", "Customer Service"]
+    },
+    // West Virginia
+    {
+        name: "Amanda Hicks",
+        location: "Charleston, WV",
+        state: "West Virginia",
+        district: "Southeast",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-26",
+        disliked: "Coverage is spotty throughout the state. Dropped calls are common. Customer service couldn't help.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Christopher Crawford",
+        location: "Huntington, WV",
+        state: "West Virginia",
+        district: "Southeast",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-24",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Karen Henry",
+        location: "Morgantown, WV",
+        state: "West Virginia",
+        district: "Southeast",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-22",
+        disliked: "Network speeds are very slow. Can't stream or use data-intensive applications. Very disappointed.",
+        issues: ["Network Speed"]
+    },
+    // Wisconsin
+    {
+        name: "Ryan Boyd",
+        location: "Milwaukee, WI",
+        state: "Wisconsin",
+        district: "Midwest",
+        score: 43,
+        rating: 2.1,
+        date: "2025-11-27",
+        disliked: "Coverage drops frequently in certain areas. Dropped calls are a daily occurrence. Customer service couldn't help.",
+        issues: ["Coverage"]
+    },
+    {
+        name: "Michelle Mason",
+        location: "Madison, WI",
+        state: "Wisconsin",
+        district: "Midwest",
+        score: 41,
+        rating: 2.0,
+        date: "2025-11-25",
+        disliked: "Billing department made errors on my account. Charged for services I never requested. Still waiting for resolution.",
+        issues: ["Price", "Customer Service"]
+    },
+    {
+        name: "Daniel Morales",
+        location: "Green Bay, WI",
+        state: "Wisconsin",
+        district: "Midwest",
+        score: 45,
+        rating: 2.2,
+        date: "2025-11-23",
+        disliked: "Device trade-in process was mishandled. Received incorrect credit amount. Customer service was unhelpful.",
+        issues: ["Other", "Customer Service"]
+    },
+    // Wyoming
+    {
+        name: "Jessica Kennedy",
+        location: "Cheyenne, WY",
+        state: "Wyoming",
+        district: "Mountain",
+        score: 44,
+        rating: 2.2,
+        date: "2025-11-28",
+        disliked: "Coverage is non-existent in rural areas. Can't use my phone when traveling. Customer service was unhelpful.",
+        issues: ["Coverage", "Customer Service"]
+    },
+    {
+        name: "Thomas Warren",
+        location: "Casper, WY",
+        state: "Wyoming",
+        district: "Mountain",
+        score: 42,
+        rating: 2.1,
+        date: "2025-11-26",
+        disliked: "Billing errors and incorrect charges. Customer service keeps promising to fix it but nothing changes.",
+        issues: ["Price"]
+    },
+    {
+        name: "Nancy Dixon",
+        location: "Laramie, WY",
+        state: "Wyoming",
+        district: "Mountain",
+        score: 46,
+        rating: 2.3,
+        date: "2025-11-24",
+        disliked: "Network speeds are very slow. Can't stream or use data-intensive applications. Very disappointed.",
+        issues: ["Network Speed"]
     }
+];
 
-    // Load issues from all states using generated data
-    async function loadIssues() {
+let lowScoreFeedback = [];
+
+// Load issues from API
+async function loadIssues() {
+    try {
+        let allEntries = [];
+        
+        // Try to load from pre-generated entries-all.json first
         try {
-            let allEntries = [];
-            
-            // Try to load from pre-generated entries-all.json first
-            try {
-                const response = await fetch('api/entries-all.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.success && data.entries) {
-                        console.log(`Loaded ${data.entries.length} entries from pre-generated file`);
-                        allEntries = data.entries;
-                        // Ensure all entries have state field
-                        allEntries = allEntries.map(entry => ({
-                            ...entry,
-                            state: entry.state || 'Unknown'
-                        }));
-                    } else {
-                        console.warn('Pre-generated file exists but has no entries');
-                    }
-                } else {
-                    console.warn(`Pre-generated file returned status ${response.status}`);
-                }
-            } catch (e) {
-                console.log('Pre-generated file not found, loading from individual states...', e);
-            }
-
-            // If we don't have enough entries, load from individual state files
-            if (allEntries.length < 100) {
-                console.log('Loading entries from individual state files...');
-                const states = [
-                    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-                    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-                    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri',
-                    'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-                    'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-                    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
-                    'West Virginia', 'Wisconsin', 'Wyoming'
-                ];
-                
-                const loadPromises = states.map(async (stateName) => {
-                    try {
-                        const encodedState = encodeURIComponent(stateName);
-                        const response = await fetch(`api/state/${encodedState}/entries.json`);
-                        if (response.ok) {
-                            const data = await response.json();
-                            if (data.success && data.entries) {
-                                // Add state name to each entry
-                                return data.entries.map(entry => ({
-                                    ...entry,
-                                    state: stateName
-                                }));
-                            }
-                        }
-                    } catch (e) {
-                        // State file not found, skip
-                    }
-                    return [];
-                });
-                
-                const stateEntriesArrays = await Promise.all(loadPromises);
-                const stateEntries = stateEntriesArrays.flat();
-                
-                // Combine with existing entries, avoiding duplicates
-                const existingIds = new Set(allEntries.map(e => e.id));
-                const newEntries = stateEntries.filter(e => !existingIds.has(e.id));
-                allEntries = [...allEntries, ...newEntries];
-                
-                console.log(`Loaded ${allEntries.length} total entries from generated data`);
-            }
-
-            // Fallback to API if still no entries
-            if (allEntries.length === 0) {
-                console.log('Loading from API...');
-                const response = await fetch(`${API_BASE_URL}/entries/all?limit=500&minRating=1`);
+            const response = await fetch('api/entries-all.json');
+            if (response.ok) {
                 const data = await response.json();
                 if (data.success && data.entries) {
                     allEntries = data.entries;
                 }
             }
+        } catch (e) {
+            console.log('Pre-generated file not found, trying API...');
+        }
 
-            // Transform entries into issues - include entries with rating <= 4 (to ensure we have issues to display)
-            // In a real scenario, you'd want stricter filtering, but for demo purposes we'll show entries <= 4
-            allIssues = allEntries
+        // Fallback to API if no pre-generated data
+        if (allEntries.length === 0) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/entries/all?limit=500&minRating=1`);
+                const data = await response.json();
+                if (data.success && data.entries) {
+                    allEntries = data.entries;
+                }
+            } catch (e) {
+                console.log('API not available, using mock data...');
+            }
+        }
+
+        // Filter entries with score <= 60 or rating <= 3
+        if (allEntries.length > 0) {
+            lowScoreFeedback = allEntries
                 .filter(entry => {
+                    const score = entry.score || Math.round((entry.rating || 5) * 20);
                     const rating = entry.rating || 5;
-                    const review = (entry.review || '').toLowerCase();
-                    const hasIssueKeywords = review.includes('issue') || 
-                                           review.includes('problem') || 
-                                           review.includes('complaint') ||
-                                           review.includes('poor') ||
-                                           review.includes('bad') ||
-                                           review.includes('slow') ||
-                                           review.includes('disappointed') ||
-                                           review.includes('frustrated') ||
-                                           review.includes('terrible') ||
-                                           review.includes('awful') ||
-                                           review.includes('worst') ||
-                                           review.includes('horrible') ||
-                                           review.includes('unacceptable') ||
-                                           review.includes('needs improvement') ||
-                                           review.includes('could be better');
-                    // Include entries with rating <= 4 (to ensure we have data to display)
-                    // Priority will be determined by the actual rating
-                    return rating <= 4 || hasIssueKeywords;
+                    return score <= 60 || rating <= 3;
                 })
                 .map(entry => {
-                    const priority = getIssuePriority(entry.rating, entry.score);
-                    const status = getIssueStatus(entry);
+                    const score = entry.score || Math.round((entry.rating || 5) * 20);
+                    const state = entry.state || 'Unknown';
+                    const district = getDistrictFromState(state);
                     
-                    // Generate issue title based on category and rating
-                    const category = entry.category || 'General';
-                    let issueTitle = '';
-                    if (entry.rating <= 2) {
-                        issueTitle = `Critical ${category} Issue - ${entry.customerName || 'Customer'}`;
-                    } else if (entry.rating <= 3) {
-                        issueTitle = `${category} Problem Reported - ${entry.customerName || 'Customer'}`;
-                    } else {
-                        issueTitle = `${category} Feedback - ${entry.customerName || 'Customer'}`;
+                    // Determine issues from category and review text
+                    const category = entry.category || 'Other';
+                    const review = (entry.review || '').toLowerCase();
+                    const issues = [];
+                    
+                    if (category === 'Coverage' || review.includes('coverage') || review.includes('signal') || review.includes('dropped call')) {
+                        issues.push('Coverage');
                     }
-                    
-                    // Use review text as description, or generate based on category and rating
-                    let issueDescription = entry.review || '';
-                    if (!issueDescription || issueDescription.length < 20) {
-                        const categoryIssues = {
-                            'Coverage': 'Customer reported coverage issues in their area.',
-                            'Price': 'Customer has concerns about pricing or billing.',
-                            'Customer Service': 'Customer experienced issues with customer service.',
-                            'Network Speed': 'Customer reported slow network speeds.',
-                            'Reliability': 'Customer reported service reliability problems.'
-                        };
-                        issueDescription = categoryIssues[category] || `Customer reported ${category.toLowerCase()} issues.`;
-                        issueDescription += ` Rating: ${entry.rating}/5, Score: ${entry.score || Math.round(entry.rating * 20)}/100.`;
+                    if (category === 'Customer Service' || review.includes('service') || review.includes('support') || review.includes('representative')) {
+                        issues.push('Customer Service');
+                    }
+                    if (category === 'Price' || review.includes('billing') || review.includes('price') || review.includes('charge') || review.includes('cost')) {
+                        issues.push('Price');
+                    }
+                    if (category === 'Network Speed' || review.includes('slow') || review.includes('speed') || review.includes('data')) {
+                        issues.push('Network Speed');
+                    }
+                    if (issues.length === 0) {
+                        issues.push(category || 'Other');
                     }
 
                     return {
-                        id: entry.id || `${entry.state || 'unknown'}-${Math.random().toString(36).substr(2, 9)}`,
-                        title: issueTitle,
-                        description: issueDescription,
-                        state: entry.state || 'Unknown',
-                        location: entry.location || entry.state || 'Unknown',
-                        priority: priority,
-                        status: status,
-                        rating: entry.rating,
-                        score: entry.score || Math.round(entry.rating * 20),
-                        category: category,
-                        date: entry.date,
-                        customerName: entry.customerName || 'Customer',
-                        verified: entry.verified || false
+                        name: entry.customerName || 'Customer',
+                        location: entry.location || state,
+                        state: state,
+                        district: district,
+                        score: score,
+                        rating: entry.rating || 3,
+                        date: entry.date || new Date().toISOString().split('T')[0],
+                        disliked: entry.review || `Customer reported ${category.toLowerCase()} issues. Rating: ${entry.rating}/5, Score: ${score}/100.`,
+                        issues: [...new Set(issues)]
                     };
-                })
-                .sort((a, b) => {
-                    // Sort by priority first, then by date (newest first)
-                    const priorityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
-                    if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
-                        return priorityOrder[a.priority] - priorityOrder[b.priority];
-                    }
-                    return new Date(b.date) - new Date(a.date);
                 });
-
-            console.log(`Total entries loaded: ${allEntries.length}`);
-            console.log(`Issues found: ${allIssues.length}`);
-            console.log('Sample entries:', allEntries.slice(0, 3));
-            console.log('Sample issues:', allIssues.slice(0, 3));
-            
-            if (allIssues.length === 0) {
-                console.warn('No issues found. Showing all entries with rating <= 4 as issues for demo purposes.');
-                // If no issues found with strict filter, show entries with rating <= 4 as issues
-                if (allEntries.length > 0) {
-                    allIssues = allEntries
-                        .filter(entry => (entry.rating || 5) <= 4)
-                        .map(entry => {
-                            const priority = getIssuePriority(entry.rating, entry.score);
-                            const status = getIssueStatus(entry);
-                            const category = entry.category || 'General';
-                            
-                            return {
-                                id: entry.id || `${entry.state || 'unknown'}-${Math.random().toString(36).substr(2, 9)}`,
-                                title: `${category} Feedback - ${entry.customerName || 'Customer'}`,
-                                description: entry.review || `Customer feedback regarding ${category.toLowerCase()}. Rating: ${entry.rating}/5.`,
-                                state: entry.state || 'Unknown',
-                                location: entry.location || entry.state || 'Unknown',
-                                priority: priority,
-                                status: status,
-                                rating: entry.rating,
-                                score: entry.score || Math.round(entry.rating * 20),
-                                category: category,
-                                date: entry.date,
-                                customerName: entry.customerName || 'Customer',
-                                verified: entry.verified || false
-                            };
-                        })
-                        .sort((a, b) => {
-                            const priorityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
-                            if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
-                                return priorityOrder[a.priority] - priorityOrder[b.priority];
-                            }
-                            return new Date(b.date) - new Date(a.date);
-                        });
-                    
-                    console.log(`Created ${allIssues.length} issues from entries`);
-                }
-                
-                if (allIssues.length === 0) {
-                    // Show a message that there are no issues
-                    document.getElementById('issuesContainer').innerHTML = `
-                        <div class="error">
-                            <h2>No Issues Found</h2>
-                            <p>Great news! No customer issues were found in the current data.</p>
-                            <p style="margin-top: 12px; font-size: 14px; opacity: 0.8;">All customer feedback shows positive experiences.</p>
-                        </div>
-                    `;
-                    // Still update statistics with zeros
-                    document.getElementById('total-issues').textContent = '0';
-                    document.getElementById('critical-issues').textContent = '0';
-                    document.getElementById('resolved-issues').textContent = '0';
-                    document.getElementById('avg-resolution').textContent = '--';
-                    return;
-                }
-            }
-
-            // Populate state filter
-            const states = [...new Set(allIssues.map(issue => issue.state))].sort();
-            const stateFilter = document.getElementById('stateFilter');
-            // Clear existing options except "All States"
-            while (stateFilter.children.length > 1) {
-                stateFilter.removeChild(stateFilter.lastChild);
-            }
-            states.forEach(state => {
-                if (state && state !== 'Unknown') {
-                    const option = document.createElement('option');
-                    option.value = state;
-                    option.textContent = state;
-                    stateFilter.appendChild(option);
-                }
-            });
-
-            // Calculate statistics
-            updateStatistics();
-            
-            // Display issues
-            filteredIssues = [...allIssues];
-            displayIssues();
-
-        } catch (error) {
-            console.error('Error loading issues:', error);
-            document.getElementById('issuesContainer').innerHTML = `
-                <div class="error">
-                    <h2>Error Loading Issues</h2>
-                    <p>Could not load issues data. Please try again later.</p>
-                </div>
-            `;
         }
-    }
 
-    // Update statistics
-    function updateStatistics() {
-        const total = allIssues.length;
-        const critical = allIssues.filter(i => i.priority === 'critical').length;
-        const resolved = allIssues.filter(i => i.status === 'resolved').length;
+        // Use mock data if no API data is available or if filtered results are empty
+        if (lowScoreFeedback.length === 0) {
+            console.log('Using mock issues data');
+            lowScoreFeedback = [...mockIssuesData];
+        }
+
+        console.log(`Loaded ${lowScoreFeedback.length} low-score feedback entries`);
         
-        // Calculate average resolution time (simulated)
-        const resolvedIssues = allIssues.filter(i => i.status === 'resolved');
-        const avgResolution = resolvedIssues.length > 0 
-            ? Math.round(resolvedIssues.reduce((sum, issue) => {
-                const daysSince = Math.floor((new Date() - new Date(issue.date)) / (1000 * 60 * 60 * 24));
-                return sum + daysSince;
-            }, 0) / resolvedIssues.length)
-            : 0;
-
-        document.getElementById('total-issues').textContent = total.toLocaleString();
-        document.getElementById('critical-issues').textContent = critical.toLocaleString();
-        document.getElementById('resolved-issues').textContent = resolved.toLocaleString();
-        document.getElementById('avg-resolution').textContent = avgResolution || '--';
-    }
-
-    // Display issues
-    function displayIssues() {
-        const container = document.getElementById('issuesContainer');
-        
-        if (filteredIssues.length === 0) {
-            container.innerHTML = `
-                <div class="error">
-                    <h2>No Issues Found</h2>
-                    <p>No issues match the current filters.</p>
+        if (lowScoreFeedback.length === 0) {
+            document.getElementById('issues-container').innerHTML = `
+                <div class="no-issues">
+                    <div class="no-issues-icon">✅</div>
+                    <div class="no-issues-text">No issues found with scores of 60 or below</div>
                 </div>
             `;
+            updateStats();
             return;
         }
 
-        container.innerHTML = filteredIssues.map(issue => {
-            const priorityBadge = `<span class="issue-badge badge-${issue.priority}">${issue.priority.toUpperCase()}</span>`;
-            const statusBadge = issue.status === 'resolved' 
-                ? `<span class="issue-badge badge-resolved">RESOLVED</span>`
-                : `<span class="issue-badge badge-${issue.priority}">${issue.status.toUpperCase().replace('-', ' ')}</span>`;
-            
-            const stars = '★'.repeat(Math.floor(issue.rating)) + '☆'.repeat(5 - Math.floor(issue.rating));
-            const issueDate = new Date(issue.date).toLocaleDateString('en-US', { 
+        // Populate state filter dropdown
+        const states = [...new Set(lowScoreFeedback.map(f => f.state))].sort();
+        const stateFilter = document.getElementById('stateFilter');
+        states.forEach(state => {
+            if (state && state !== 'Unknown') {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateFilter.appendChild(option);
+            }
+        });
+
+        updateStats();
+        renderIssues();
+    } catch (error) {
+        console.error('Error loading issues:', error);
+        // Use mock data as fallback on error
+        console.log('Error occurred, using mock issues data');
+        lowScoreFeedback = [...mockIssuesData];
+        
+        // Populate state filter dropdown
+        const states = [...new Set(lowScoreFeedback.map(f => f.state))].sort();
+        const stateFilter = document.getElementById('stateFilter');
+        states.forEach(state => {
+            if (state && state !== 'Unknown') {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateFilter.appendChild(option);
+            }
+        });
+        
+        updateStats();
+        renderIssues();
+    }
+}
+
+function updateStats() {
+    const totalIssues = lowScoreFeedback.length;
+    const avgScore = totalIssues > 0 
+        ? Math.round(lowScoreFeedback.reduce((sum, f) => sum + f.score, 0) / totalIssues)
+        : 0;
+    const districts = new Set(lowScoreFeedback.map(f => f.district)).size;
+    
+    document.getElementById('total-issues').textContent = totalIssues;
+    document.getElementById('avg-score').textContent = avgScore;
+    document.getElementById('affected-districts').textContent = districts;
+}
+
+function categorizeIssues() {
+    const categories = {};
+    
+    lowScoreFeedback.forEach(feedback => {
+        feedback.issues.forEach(issue => {
+            if (!categories[issue]) {
+                categories[issue] = {
+                    feedbacks: [],
+                    districts: new Set()
+                };
+            }
+            categories[issue].feedbacks.push(feedback);
+            categories[issue].districts.add(feedback.district);
+        });
+    });
+    
+    return categories;
+}
+
+function applyFilters() {
+    const stateFilter = document.getElementById('stateFilter').value;
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const districtFilter = document.getElementById('districtFilter').value;
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    
+    // Filter feedback based on all criteria
+    let filteredFeedback = lowScoreFeedback.filter(feedback => {
+        const matchState = stateFilter === 'all' || feedback.state === stateFilter;
+        const matchDistrict = districtFilter === 'all' || feedback.district === districtFilter;
+        const matchSearch = !searchInput || 
+            feedback.name.toLowerCase().includes(searchInput) ||
+            feedback.location.toLowerCase().includes(searchInput) ||
+            feedback.disliked.toLowerCase().includes(searchInput) ||
+            feedback.state.toLowerCase().includes(searchInput) ||
+            feedback.issues.some(issue => issue.toLowerCase().includes(searchInput));
+        
+        return matchState && matchDistrict && matchSearch;
+    });
+    
+    return filteredFeedback;
+}
+
+function renderIssues() {
+    const container = document.getElementById('issues-container');
+    
+    // Get filtered feedback
+    const filteredFeedback = applyFilters();
+    
+    // Categorize filtered feedback
+    const categories = {};
+    filteredFeedback.forEach(feedback => {
+        feedback.issues.forEach(issue => {
+            if (!categories[issue]) {
+                categories[issue] = {
+                    feedbacks: [],
+                    districts: new Set()
+                };
+            }
+            categories[issue].feedbacks.push(feedback);
+            categories[issue].districts.add(feedback.district);
+        });
+    });
+    
+    // Get category filter
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    
+    let html = '';
+    
+    const sortedCategories = Object.entries(categories).sort((a, b) => b[1].feedbacks.length - a[1].feedbacks.length);
+    
+    for (const [categoryName, data] of sortedCategories) {
+        if (categoryFilter !== 'All' && categoryName !== categoryFilter) continue;
+        
+        const icon = issueIcons[categoryName] || issueIcons["Other"];
+        const districtsList = Array.from(data.districts);
+        
+        html += `
+        <div class="issue-category">
+            <div class="category-header">
+                <div class="category-title">
+                    <span class="category-icon">${icon}</span>
+                    ${categoryName}
+                </div>
+                <div class="category-count">${data.feedbacks.length} Issue${data.feedbacks.length > 1 ? 's' : ''}</div>
+            </div>
+        `;
+        
+        // Display each feedback with its own representative
+        data.feedbacks.forEach(feedback => {
+            const dateObj = new Date(feedback.date);
+            // Generate random time for this issue (consistent based on feedback name/id)
+            const feedbackIdHash = (feedback.name || feedback.id || '').split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const randomHour = (feedbackIdHash % 24);
+            const randomMinute = (feedbackIdHash * 7 % 60);
+            const formattedTime = `${String(randomHour).padStart(2, '0')}:${String(randomMinute).padStart(2, '0')}`;
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
                 month: 'long', 
                 day: 'numeric', 
                 year: 'numeric' 
             });
-
-            return `
-                <div class="issue-card">
-                    <div class="issue-header">
-                        <div>
-                            <div class="issue-title">${issue.title}</div>
-                            <div class="issue-meta">
-                                <span>📍 ${issue.location}</span>
-                                <span>📅 ${issueDate}</span>
-                                <span>⭐ ${stars} (${issue.rating}/5)</span>
-                                ${issue.verified ? '<span>✓ Verified</span>' : ''}
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            ${priorityBadge}
-                            ${statusBadge}
+            
+            html += `
+            <div class="feedback-item">
+                <div class="feedback-header">
+                    <div>
+                        <div class="feedback-user">${feedback.name}</div>
+                        <div class="feedback-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            ${feedback.location} (${feedback.district} District)
                         </div>
                     </div>
-                    <div class="issue-description">${issue.description}</div>
-                    <div class="issue-details">
-                        <div class="issue-detail-item">
-                            <div class="issue-detail-label">State</div>
-                            <div class="issue-detail-value">${issue.state}</div>
+                    <div class="feedback-score">${feedback.score}/100</div>
+                </div>
+                <div class="feedback-date">Reported on ${formattedDate} at ${formattedTime}</div>
+                <div class="feedback-text">${feedback.disliked}</div>
+                <div class="feedback-tags">
+                    ${feedback.issues.map(issue => `<span class="tag">${issue}</span>`).join('')}
+                </div>
+            </div>
+            `;
+            
+            // Add representative info for this specific issue
+            const rep = representatives[feedback.district] || representatives["Other"];
+            if (rep) {
+                html += `
+                <div class="rep-card">
+                    <div class="rep-header">📞 District Representative</div>
+                    <div class="rep-name">${rep.name}</div>
+                    <div class="rep-title">${rep.title}</div>
+                    <div class="rep-contact">
+                        <div class="rep-contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>${rep.phone}</span>
                         </div>
-                        <div class="issue-detail-item">
-                            <div class="issue-detail-label">Category</div>
-                            <div class="issue-detail-value">${issue.category}</div>
+                        <div class="rep-contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>${rep.email}</span>
                         </div>
-                        <div class="issue-detail-item">
-                            <div class="issue-detail-label">Score</div>
-                            <div class="issue-detail-value">${issue.score}/100</div>
-                        </div>
-                        <div class="issue-detail-item">
-                            <div class="issue-detail-label">Customer</div>
-                            <div class="issue-detail-value">${issue.customerName}</div>
+                        <div class="rep-contact-item">
+                            <span class="contact-icon">🏢</span>
+                            <span>${rep.office}</span>
                         </div>
                     </div>
                 </div>
-            `;
-        }).join('');
-    }
-
-    // Filter issues
-    function filterIssues() {
-        const stateFilter = document.getElementById('stateFilter').value;
-        const priorityFilter = document.getElementById('priorityFilter').value;
-        const statusFilter = document.getElementById('statusFilter').value;
-        const searchInput = document.getElementById('searchInput').value.toLowerCase();
-
-        filteredIssues = allIssues.filter(issue => {
-            const matchState = stateFilter === 'all' || issue.state === stateFilter;
-            const matchPriority = priorityFilter === 'all' || issue.priority === priorityFilter;
-            const matchStatus = statusFilter === 'all' || issue.status === statusFilter;
-            const matchSearch = !searchInput || 
-                issue.title.toLowerCase().includes(searchInput) ||
-                issue.description.toLowerCase().includes(searchInput) ||
-                issue.location.toLowerCase().includes(searchInput) ||
-                issue.category.toLowerCase().includes(searchInput);
-
-            return matchState && matchPriority && matchStatus && matchSearch;
+                `;
+            }
         });
-
-        displayIssues();
+        
+        html += `</div>`;
     }
+    
+    if (html === '') {
+        html = `
+        <div class="no-issues">
+            <div class="no-issues-icon">✅</div>
+            <div class="no-issues-text">No issues found for this category</div>
+        </div>
+        `;
+    }
+    
+    container.innerHTML = html;
+}
 
-    // Event listeners
-    document.getElementById('stateFilter').addEventListener('change', filterIssues);
-    document.getElementById('priorityFilter').addEventListener('change', filterIssues);
-    document.getElementById('statusFilter').addEventListener('change', filterIssues);
-    document.getElementById('searchInput').addEventListener('input', filterIssues);
-
-    // Initialize on page load
-    window.onload = () => {
-        loadIssues();
-    };
-
+// Initialize
+window.onload = () => {
+    loadIssues();
+    
+    // Add event listeners for all filters
+    document.getElementById('stateFilter').addEventListener('change', renderIssues);
+    document.getElementById('categoryFilter').addEventListener('change', renderIssues);
+    document.getElementById('districtFilter').addEventListener('change', renderIssues);
+    document.getElementById('searchInput').addEventListener('input', renderIssues);
+};
 </script>
-
 </body>
-
 </html>
-

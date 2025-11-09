@@ -68,7 +68,94 @@
 
         .us-map { width: 100%; height: auto; max-height: 700px; display: block; margin: 0 auto;}
 
-        #map { width: 100%; height: 600px; border-radius: 12px; margin: 20px 0; z-index: 1;}
+        #map { width: 100%; height: 600px; border-radius: 12px; margin: 20px 0; z-index: 1; position: relative;}
+        
+        /* Alaska inset map */
+        .alaska-inset-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            z-index: 1000;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid #E20074;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+        
+        .alaska-inset-label {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: rgba(226, 0, 116, 0.9);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 1001;
+            pointer-events: none;
+        }
+        
+        #alaska-map {
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+        }
+        
+        /* Hawaii inset map */
+        .hawaii-inset-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 200px;
+            height: 150px;
+            z-index: 1000;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid #E20074;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+        
+        .hawaii-inset-label {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: rgba(226, 0, 116, 0.9);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 1001;
+            pointer-events: none;
+        }
+        
+        #hawaii-map {
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .alaska-inset-container {
+                width: 150px;
+                height: 110px;
+                bottom: 10px;
+                right: 10px;
+            }
+            .hawaii-inset-container {
+                width: 150px;
+                height: 110px;
+                bottom: 10px;
+                left: 10px;
+            }
+        }
 
         /* Custom styles for state hover effects */
         .leaflet-interactive {
@@ -164,7 +251,16 @@
 
         <p style="font-size: 18px; color: #666; margin-bottom: 40px; line-height: 1.6;">View detailed customer satisfaction ratings by region across the United States.</p>
 
-        <div id="map"></div>
+        <div id="map">
+            <div class="alaska-inset-container">
+                <div class="alaska-inset-label">Alaska</div>
+                <div id="alaska-map"></div>
+            </div>
+            <div class="hawaii-inset-container">
+                <div class="hawaii-inset-label">Hawaii</div>
+                <div id="hawaii-map"></div>
+            </div>
+        </div>
 
         <div style="text-align: center; margin-top: 40px;">
 
@@ -191,16 +287,16 @@
 <script>
     // Initialize Leaflet map
     document.addEventListener('DOMContentLoaded', function() {
-        // USA bounds (approximate)
-        const usaBounds = [
+        // Continental USA bounds (excluding Alaska)
+        const continentalUSABounds = [
             [24.396308, -125.0], // Southwest corner
             [49.384358, -66.93457] // Northeast corner
         ];
 
-        // Create map centered on USA with no zoom controls and restricted bounds
+        // Create main map centered on continental USA
         const map = L.map('map', {
-            center: [39.8283, -98.5795],
-            zoom: 4,
+            center: [39.8283, -98.5795], // Center of continental USA
+            zoom: 4, // Zoom to fit continental USA
             minZoom: 4,
             maxZoom: 4,
             zoomControl: false,
@@ -208,7 +304,7 @@
             doubleClickZoom: false,
             boxZoom: false,
             keyboard: false,
-            maxBounds: usaBounds,
+            maxBounds: continentalUSABounds,
             maxBoundsViscosity: 1.0 // Prevent panning outside bounds
         });
 
@@ -231,6 +327,50 @@
                 map.setZoom(4);
             }
         });
+        
+        // Create Alaska inset map
+        const alaskaMap = L.map('alaska-map', {
+            center: [64.0, -152.0], // Center of Alaska
+            zoom: 3,
+            minZoom: 3,
+            maxZoom: 3,
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            dragging: false,
+            touchZoom: false
+        });
+
+        // Add tile layer to Alaska map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '',
+            maxZoom: 3,
+            minZoom: 3
+        }).addTo(alaskaMap);
+        
+        // Create Hawaii inset map
+        const hawaiiMap = L.map('hawaii-map', {
+            center: [20.5, -157.5], // Center of Hawaii
+            zoom: 6,
+            minZoom: 6,
+            maxZoom: 6,
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            dragging: false,
+            touchZoom: false
+        });
+
+        // Add tile layer to Hawaii map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '',
+            maxZoom: 6,
+            minZoom: 6
+        }).addTo(hawaiiMap);
 
         // Function to style states
         function styleState(feature) {
@@ -467,7 +607,7 @@
             }
         }
 
-        // Function to handle state click - navigate to state detail page
+        // Function to handle state click - navigate to feedback page
         function onStateClick(e) {
             try {
                 // Stop any event propagation
@@ -486,10 +626,10 @@
                 
                 const stateName = layer.feature.properties.NAME || layer.feature.properties.name || 'State';
                 console.log('State clicked:', stateName);
-                console.log('Navigating to state page...');
+                console.log('Navigating to feedback page...');
                 
-                // Navigate to state detail page
-                const url = `state.html?state=${encodeURIComponent(stateName)}`;
+                // Navigate to feedback page with state filter
+                const url = `feedback.html?state=${encodeURIComponent(stateName)}`;
                 console.log('Navigation URL:', url);
                 window.location.href = url;
             } catch (error) {
@@ -499,11 +639,35 @@
 
         // Load US states GeoJSON
         let geojsonLayer;
+        let alaskaLayer;
+        let hawaiiLayer;
         fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
             .then(res => res.json())
             .then(geojson => {
-                // Add states to map
-                geojsonLayer = L.geoJSON(geojson, {
+                // Separate Alaska and Hawaii from other states
+                const continentalStates = geojson.features.filter(f => {
+                    const stateName = f.properties.NAME || f.properties.name || '';
+                    return stateName !== 'Alaska' && stateName !== 'Hawaii';
+                });
+                
+                const alaskaFeature = geojson.features.find(f => {
+                    const stateName = f.properties.NAME || f.properties.name || '';
+                    return stateName === 'Alaska';
+                });
+                
+                const hawaiiFeature = geojson.features.find(f => {
+                    const stateName = f.properties.NAME || f.properties.name || '';
+                    return stateName === 'Hawaii';
+                });
+                
+                // Create continental USA GeoJSON
+                const continentalGeoJSON = {
+                    ...geojson,
+                    features: continentalStates
+                };
+                
+                // Add continental states to main map
+                geojsonLayer = L.geoJSON(continentalGeoJSON, {
                     style: styleState,
                     interactive: true,
                     onEachFeature: function(feature, layer) {
@@ -519,16 +683,84 @@
                     }
                 }).addTo(map);
 
-                // Fit map to bounds of all states (but keep zoom level fixed)
+                // Fit map to bounds of continental USA states (but keep zoom level fixed)
                 const statesBounds = geojsonLayer.getBounds();
-                // Ensure bounds are within USA bounds
-                const constrainedBounds = [
-                    [Math.max(statesBounds.getSouth(), usaBounds[0][0]), Math.max(statesBounds.getWest(), usaBounds[0][1])],
-                    [Math.min(statesBounds.getNorth(), usaBounds[1][0]), Math.min(statesBounds.getEast(), usaBounds[1][1])]
-                ];
-                map.fitBounds(constrainedBounds, { padding: [20, 20] });
+                // Fit to continental USA states, with padding
+                map.fitBounds(statesBounds, { padding: [20, 20] });
                 // Lock zoom level after fitting
                 map.setZoom(4);
+                
+                // Add Alaska to inset map
+                if (alaskaFeature) {
+                    const alaskaGeoJSON = {
+                        ...geojson,
+                        features: [alaskaFeature]
+                    };
+                    
+                    alaskaLayer = L.geoJSON(alaskaGeoJSON, {
+                        style: styleState,
+                        interactive: true,
+                        onEachFeature: function(feature, layer) {
+                            layer.options.interactive = true;
+                            layer.on({
+                                mouseover: function(e) {
+                                    e.target.setStyle({
+                                        fillColor: '#E20074',
+                                        fillOpacity: 0.9,
+                                        color: '#E20074',
+                                        weight: 2,
+                                        opacity: 1
+                                    });
+                                },
+                                mouseout: function(e) {
+                                    alaskaLayer.resetStyle(e.target);
+                                },
+                                click: onStateClick
+                            });
+                        }
+                    }).addTo(alaskaMap);
+                    
+                    // Fit Alaska map to Alaska bounds
+                    const alaskaBounds = alaskaLayer.getBounds();
+                    alaskaMap.fitBounds(alaskaBounds, { padding: [10, 10] });
+                    alaskaMap.setZoom(3);
+                }
+                
+                // Add Hawaii to inset map
+                if (hawaiiFeature) {
+                    const hawaiiGeoJSON = {
+                        ...geojson,
+                        features: [hawaiiFeature]
+                    };
+                    
+                    hawaiiLayer = L.geoJSON(hawaiiGeoJSON, {
+                        style: styleState,
+                        interactive: true,
+                        onEachFeature: function(feature, layer) {
+                            layer.options.interactive = true;
+                            layer.on({
+                                mouseover: function(e) {
+                                    e.target.setStyle({
+                                        fillColor: '#E20074',
+                                        fillOpacity: 0.9,
+                                        color: '#E20074',
+                                        weight: 2,
+                                        opacity: 1
+                                    });
+                                },
+                                mouseout: function(e) {
+                                    hawaiiLayer.resetStyle(e.target);
+                                },
+                                click: onStateClick
+                            });
+                        }
+                    }).addTo(hawaiiMap);
+                    
+                    // Fit Hawaii map to Hawaii bounds
+                    const hawaiiBounds = hawaiiLayer.getBounds();
+                    hawaiiMap.fitBounds(hawaiiBounds, { padding: [10, 10] });
+                    hawaiiMap.setZoom(6);
+                }
             })
             .catch(error => {
                 console.error('Error loading states GeoJSON:', error);
@@ -536,14 +768,34 @@
                 fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
                     .then(res => res.json())
                     .then(geojson => {
-                        geojsonLayer = L.geoJSON(geojson, {
+                        // Separate Alaska and Hawaii from other states
+                        const continentalStates = geojson.features.filter(f => {
+                            const stateName = f.properties.NAME || f.properties.name || '';
+                            return stateName !== 'Alaska' && stateName !== 'Hawaii';
+                        });
+                        
+                        const alaskaFeature = geojson.features.find(f => {
+                            const stateName = f.properties.NAME || f.properties.name || '';
+                            return stateName === 'Alaska';
+                        });
+                        
+                        const hawaiiFeature = geojson.features.find(f => {
+                            const stateName = f.properties.NAME || f.properties.name || '';
+                            return stateName === 'Hawaii';
+                        });
+                        
+                        // Create continental USA GeoJSON
+                        const continentalGeoJSON = {
+                            ...geojson,
+                            features: continentalStates
+                        };
+                        
+                        // Add continental states to main map
+                        geojsonLayer = L.geoJSON(continentalGeoJSON, {
                             style: styleState,
                             interactive: true,
                             onEachFeature: function(feature, layer) {
-                                // Make layer clickable and interactive
                                 layer.options.interactive = true;
-                                
-                                // Add event handlers
                                 layer.on({
                                     mouseover: highlightState,
                                     mouseout: resetState,
@@ -551,15 +803,81 @@
                                 });
                             }
                         }).addTo(map);
-                        // Fit map to bounds of all states (but keep zoom level fixed)
+                        
+                        // Fit map to bounds of continental USA states (but keep zoom level fixed)
                         const statesBounds = geojsonLayer.getBounds();
-                        const constrainedBounds = [
-                            [Math.max(statesBounds.getSouth(), usaBounds[0][0]), Math.max(statesBounds.getWest(), usaBounds[0][1])],
-                            [Math.min(statesBounds.getNorth(), usaBounds[1][0]), Math.min(statesBounds.getEast(), usaBounds[1][1])]
-                        ];
-                        map.fitBounds(constrainedBounds, { padding: [20, 20] });
-                        // Lock zoom level after fitting
+                        map.fitBounds(statesBounds, { padding: [20, 20] });
                         map.setZoom(4);
+                        
+                        // Add Alaska to inset map
+                        if (alaskaFeature) {
+                            const alaskaGeoJSON = {
+                                ...geojson,
+                                features: [alaskaFeature]
+                            };
+                            
+                            alaskaLayer = L.geoJSON(alaskaGeoJSON, {
+                                style: styleState,
+                                interactive: true,
+                                onEachFeature: function(feature, layer) {
+                                    layer.options.interactive = true;
+                                    layer.on({
+                                        mouseover: function(e) {
+                                            e.target.setStyle({
+                                                fillColor: '#E20074',
+                                                fillOpacity: 0.9,
+                                                color: '#E20074',
+                                                weight: 2,
+                                                opacity: 1
+                                            });
+                                        },
+                                        mouseout: function(e) {
+                                            alaskaLayer.resetStyle(e.target);
+                                        },
+                                        click: onStateClick
+                                    });
+                                }
+                            }).addTo(alaskaMap);
+                            
+                            const alaskaBounds = alaskaLayer.getBounds();
+                            alaskaMap.fitBounds(alaskaBounds, { padding: [10, 10] });
+                            alaskaMap.setZoom(3);
+                        }
+                        
+                        // Add Hawaii to inset map
+                        if (hawaiiFeature) {
+                            const hawaiiGeoJSON = {
+                                ...geojson,
+                                features: [hawaiiFeature]
+                            };
+                            
+                            hawaiiLayer = L.geoJSON(hawaiiGeoJSON, {
+                                style: styleState,
+                                interactive: true,
+                                onEachFeature: function(feature, layer) {
+                                    layer.options.interactive = true;
+                                    layer.on({
+                                        mouseover: function(e) {
+                                            e.target.setStyle({
+                                                fillColor: '#E20074',
+                                                fillOpacity: 0.9,
+                                                color: '#E20074',
+                                                weight: 2,
+                                                opacity: 1
+                                            });
+                                        },
+                                        mouseout: function(e) {
+                                            hawaiiLayer.resetStyle(e.target);
+                                        },
+                                        click: onStateClick
+                                    });
+                                }
+                            }).addTo(hawaiiMap);
+                            
+                            const hawaiiBounds = hawaiiLayer.getBounds();
+                            hawaiiMap.fitBounds(hawaiiBounds, { padding: [10, 10] });
+                            hawaiiMap.setZoom(6);
+                        }
                     })
                     .catch(err => {
                         console.error('Failed to load states:', err);
