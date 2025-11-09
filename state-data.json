@@ -1,0 +1,6257 @@
+{
+  "California": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.8,
+        "representative": "Doug LaMalfa"
+      },
+      {
+        "number": 2,
+        "averageRating": 4.5,
+        "representative": "Jared Huffman"
+      },
+      {
+        "number": 3,
+        "averageRating": 3.2,
+        "representative": "Kevin Kiley"
+      },
+      {
+        "number": 4,
+        "averageRating": 4.9,
+        "representative": "Mike Thompson"
+      },
+      {
+        "number": 5,
+        "averageRating": 3.8,
+        "representative": "Tom McClintock"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Los Angeles County",
+        "city": "Los Angeles",
+        "contact": {
+          "name": "Sarah Martinez",
+          "title": "Regional Director",
+          "email": "sarah.martinez@t-mobile.com",
+          "phone": "(310) 555-0123"
+        },
+        "averageRating": 4.53,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "San Diego County",
+        "city": "San Diego",
+        "contact": {
+          "name": "Michael Chen",
+          "title": "Regional Director",
+          "email": "michael.chen@t-mobile.com",
+          "phone": "(619) 555-0145"
+        },
+        "averageRating": 4.44,
+        "averageScore": 89,
+        "stars": 4
+      },
+      {
+        "name": "Orange County",
+        "city": "Santa Ana",
+        "contact": {
+          "name": "Jennifer Lee",
+          "title": "Regional Director",
+          "email": "jennifer.lee@t-mobile.com",
+          "phone": "(714) 555-0167"
+        },
+        "averageRating": 3.99,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Riverside County",
+        "city": "Riverside",
+        "contact": {
+          "name": "David Kim",
+          "title": "Regional Director",
+          "email": "david.kim@t-mobile.com",
+          "phone": "(951) 555-0189"
+        },
+        "averageRating": 4.7,
+        "averageScore": 94,
+        "stars": 5
+      },
+      {
+        "name": "San Bernardino County",
+        "city": "San Bernardino",
+        "contact": {
+          "name": "Amanda Rodriguez",
+          "title": "Regional Director",
+          "email": "amanda.rodriguez@t-mobile.com",
+          "phone": "(909) 555-0201"
+        },
+        "averageRating": 3.64,
+        "averageScore": 73,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Riverside County",
+      "city": "Riverside",
+      "averageRating": 4.7,
+      "averageScore": 94,
+      "stars": 5,
+      "contact": {
+        "name": "David Kim",
+        "title": "Regional Director",
+        "email": "david.kim@t-mobile.com",
+        "phone": "(951) 555-0189"
+      }
+    },
+    "lowestCounty": {
+      "name": "San Bernardino County",
+      "city": "San Bernardino",
+      "averageRating": 3.64,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Amanda Rodriguez",
+        "title": "Regional Director",
+        "email": "amanda.rodriguez@t-mobile.com",
+        "phone": "(909) 555-0201"
+      }
+    }
+  },
+  "Texas": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Nathaniel Moran"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.1,
+        "representative": "Dan Crenshaw"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Keith Self"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Pat Fallon"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.8,
+        "representative": "Lance Gooden"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Harris County",
+        "city": "Houston",
+        "contact": {
+          "name": "Robert Johnson",
+          "title": "Regional Director",
+          "email": "robert.johnson@t-mobile.com",
+          "phone": "(713) 555-0123"
+        },
+        "averageRating": 3.87,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Dallas County",
+        "city": "Dallas",
+        "contact": {
+          "name": "Lisa Williams",
+          "title": "Regional Director",
+          "email": "lisa.williams@t-mobile.com",
+          "phone": "(214) 555-0145"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Tarrant County",
+        "city": "Fort Worth",
+        "contact": {
+          "name": "James Brown",
+          "title": "Regional Director",
+          "email": "james.brown@t-mobile.com",
+          "phone": "(817) 555-0167"
+        },
+        "averageRating": 3.42,
+        "averageScore": 68,
+        "stars": 3
+      },
+      {
+        "name": "Travis County",
+        "city": "Austin",
+        "contact": {
+          "name": "Patricia Davis",
+          "title": "Regional Director",
+          "email": "patricia.davis@t-mobile.com",
+          "phone": "(512) 555-0189"
+        },
+        "averageRating": 3.51,
+        "averageScore": 70,
+        "stars": 4
+      },
+      {
+        "name": "Bexar County",
+        "city": "San Antonio",
+        "contact": {
+          "name": "Christopher Miller",
+          "title": "Regional Director",
+          "email": "christopher.miller@t-mobile.com",
+          "phone": "(210) 555-0201"
+        },
+        "averageRating": 3.9,
+        "averageScore": 78,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Dallas County",
+      "city": "Dallas",
+      "averageRating": 4.35,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Lisa Williams",
+        "title": "Regional Director",
+        "email": "lisa.williams@t-mobile.com",
+        "phone": "(214) 555-0145"
+      }
+    },
+    "lowestCounty": {
+      "name": "Tarrant County",
+      "city": "Fort Worth",
+      "averageRating": 3.42,
+      "averageScore": 68,
+      "stars": 3,
+      "contact": {
+        "name": "James Brown",
+        "title": "Regional Director",
+        "email": "james.brown@t-mobile.com",
+        "phone": "(817) 555-0167"
+      }
+    }
+  },
+  "New York": {
+    "averageRating": 4.3,
+    "stars": 4,
+    "score": 86,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.9,
+        "representative": "Nick LaLota"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Andrew Garbarino"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.7,
+        "representative": "Thomas Suozzi"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.6,
+        "representative": "Anthony D'Esposito"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.5,
+        "representative": "Gregory Meeks"
+      }
+    ],
+    "counties": [
+      {
+        "name": "New York County",
+        "city": "New York City",
+        "contact": {
+          "name": "Maria Garcia",
+          "title": "Regional Director",
+          "email": "maria.garcia@t-mobile.com",
+          "phone": "(212) 555-0123"
+        },
+        "averageRating": 3.76,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Kings County",
+        "city": "Brooklyn",
+        "contact": {
+          "name": "Daniel Martinez",
+          "title": "Regional Director",
+          "email": "daniel.martinez@t-mobile.com",
+          "phone": "(718) 555-0145"
+        },
+        "averageRating": 4.57,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Queens County",
+        "city": "Queens",
+        "contact": {
+          "name": "Elizabeth Anderson",
+          "title": "Regional Director",
+          "email": "elizabeth.anderson@t-mobile.com",
+          "phone": "(718) 555-0167"
+        },
+        "averageRating": 3.88,
+        "averageScore": 78,
+        "stars": 4
+      },
+      {
+        "name": "Erie County",
+        "city": "Buffalo",
+        "contact": {
+          "name": "Thomas Wilson",
+          "title": "Regional Director",
+          "email": "thomas.wilson@t-mobile.com",
+          "phone": "(716) 555-0189"
+        },
+        "averageRating": 4.73,
+        "averageScore": 95,
+        "stars": 5
+      },
+      {
+        "name": "Monroe County",
+        "city": "Rochester",
+        "contact": {
+          "name": "Nancy Moore",
+          "title": "Regional Director",
+          "email": "nancy.moore@t-mobile.com",
+          "phone": "(585) 555-0201"
+        },
+        "averageRating": 4.32,
+        "averageScore": 86,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Erie County",
+      "city": "Buffalo",
+      "averageRating": 4.73,
+      "averageScore": 95,
+      "stars": 5,
+      "contact": {
+        "name": "Thomas Wilson",
+        "title": "Regional Director",
+        "email": "thomas.wilson@t-mobile.com",
+        "phone": "(716) 555-0189"
+      }
+    },
+    "lowestCounty": {
+      "name": "New York County",
+      "city": "New York City",
+      "averageRating": 3.76,
+      "averageScore": 75,
+      "stars": 4,
+      "contact": {
+        "name": "Maria Garcia",
+        "title": "Regional Director",
+        "email": "maria.garcia@t-mobile.com",
+        "phone": "(212) 555-0123"
+      }
+    }
+  },
+  "Florida": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.8,
+        "representative": "Matt Gaetz"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Neal Dunn"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Kat Cammack"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Aaron Bean"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.7,
+        "representative": "John Rutherford"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.florida@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.65,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.florida@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.96,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.florida@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.53,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.florida@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.78,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.florida@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.65,
+        "averageScore": 93,
+        "stars": 5
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.65,
+      "averageScore": 93,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.florida@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.53,
+      "averageScore": 71,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.florida@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Illinois": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Jonathan Jackson"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.1,
+        "representative": "Robin Kelly"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Delia Ramirez"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.3,
+        "representative": "Jesús García"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.4,
+        "representative": "Mike Quigley"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.illinois@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.04,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.illinois@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.39,
+        "averageScore": 68,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.illinois@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.29,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.illinois@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.77,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.illinois@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.87,
+        "averageScore": 77,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.29,
+      "averageScore": 86,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.illinois@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.39,
+      "averageScore": 68,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.illinois@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "Pennsylvania": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Brian Fitzpatrick"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Brendan Boyle"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Dwight Evans"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Madeleine Dean"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.6,
+        "representative": "Mary Gay Scanlon"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.pennsylvania@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.45,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.pennsylvania@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.6,
+        "averageScore": 72,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.pennsylvania@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.54,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.pennsylvania@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.25,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.pennsylvania@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.08,
+        "averageScore": 82,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.25,
+      "averageScore": 85,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.pennsylvania@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.45,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.pennsylvania@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Ohio": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Greg Landsman"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.1,
+        "representative": "Brad Wenstrup"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Joyce Beatty"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.2,
+        "representative": "Jim Jordan"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Bob Latta"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.ohio@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.07,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.ohio@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.4,
+        "averageScore": 88,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.ohio@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.72,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.ohio@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.64,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.ohio@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.23,
+        "averageScore": 85,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.4,
+      "averageScore": 88,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.ohio@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.64,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.ohio@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Georgia": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.8,
+        "representative": "Buddy Carter"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Sanford Bishop"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Drew Ferguson"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Hank Johnson"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.7,
+        "representative": "Nikema Williams"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.georgia@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.53,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.georgia@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.37,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.georgia@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.24,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.georgia@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.03,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.georgia@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.52,
+        "averageScore": 90,
+        "stars": 5
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.52,
+      "averageScore": 90,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.georgia@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.53,
+      "averageScore": 71,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.georgia@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "North Carolina": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Don Davis"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Deborah Ross"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Greg Murphy"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Valerie Foushee"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.4,
+        "representative": "Virginia Foxx"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.northcarolina@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.06,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.northcarolina@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.23,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.northcarolina@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.79,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.northcarolina@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.84,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.northcarolina@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.71,
+        "averageScore": 74,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.23,
+      "averageScore": 85,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.northcarolina@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.71,
+      "averageScore": 74,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.northcarolina@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Michigan": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Jack Bergman"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "John Moolenaar"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Hillary Scholten"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Bill Huizenga"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.5,
+        "representative": "Tim Walberg"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.michigan@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.27,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.michigan@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.43,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.michigan@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.38,
+        "averageScore": 88,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.michigan@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.89,
+        "averageScore": 78,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.michigan@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.98,
+        "averageScore": 80,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.38,
+      "averageScore": 88,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.michigan@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.43,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.michigan@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "Alabama": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Jerry Carl"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Barry Moore"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Mike Rogers"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.3,
+        "representative": "Robert Aderholt"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Dale Strong"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.4,
+        "representative": "Gary Palmer"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.5,
+        "representative": "Terri Sewell"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.alabama@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.46,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.alabama@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.14,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.alabama@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.73,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.alabama@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.93,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.alabama@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.16,
+        "averageScore": 83,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.16,
+      "averageScore": 83,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.alabama@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.46,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.alabama@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Alaska": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.1,
+        "representative": "Mary Peltola"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.alaska@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.62,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.alaska@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.88,
+        "averageScore": 78,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.alaska@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.06,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.alaska@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.19,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.alaska@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.74,
+        "averageScore": 75,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.62,
+      "averageScore": 92,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.alaska@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.74,
+      "averageScore": 75,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.alaska@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Arizona": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "David Schweikert"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Eli Crane"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Raúl Grijalva"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Greg Stanton"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.5,
+        "representative": "Andy Biggs"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Juan Ciscomani"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.4,
+        "representative": "Ruben Gallego"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Debbie Lesko"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.3,
+        "representative": "Paul Gosar"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.arizona@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.61,
+        "averageScore": 72,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.arizona@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.01,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.arizona@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.67,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.arizona@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.44,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.arizona@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.91,
+        "averageScore": 78,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.01,
+      "averageScore": 80,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.arizona@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.44,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.arizona@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Arkansas": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Rick Crawford"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "French Hill"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Steve Womack"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Bruce Westerman"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.arkansas@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.87,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.arkansas@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.12,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.arkansas@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.48,
+        "averageScore": 90,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.arkansas@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.65,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.arkansas@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.11,
+        "averageScore": 82,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.48,
+      "averageScore": 90,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.arkansas@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.65,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.arkansas@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Colorado": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.8,
+        "representative": "Diana DeGette"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Joe Neguse"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.7,
+        "representative": "Lauren Boebert"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.3,
+        "representative": "Ken Buck"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.6,
+        "representative": "Doug Lamborn"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.4,
+        "representative": "Jason Crow"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.5,
+        "representative": "Brittany Pettersen"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Yadira Caraveo"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.colorado@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.53,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.colorado@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.64,
+        "averageScore": 93,
+        "stars": 5
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.colorado@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.8,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.colorado@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.28,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.colorado@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.64,
+      "averageScore": 93,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.colorado@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.8,
+      "averageScore": 76,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.colorado@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Connecticut": {
+    "averageRating": 4.3,
+    "stars": 4,
+    "score": 86,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.9,
+        "representative": "John Larson"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Joe Courtney"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.7,
+        "representative": "Rosa DeLauro"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Jim Himes"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.6,
+        "representative": "Jahana Hayes"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.connecticut@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.59,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.connecticut@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.1,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.connecticut@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.21,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.connecticut@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.81,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.connecticut@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.01,
+        "averageScore": 80,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.59,
+      "averageScore": 92,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.connecticut@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.81,
+      "averageScore": 76,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.connecticut@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Delaware": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.1,
+        "representative": "Lisa Blunt Rochester"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.delaware@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.54,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.delaware@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.delaware@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.54,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.delaware@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.03,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.delaware@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.01,
+        "averageScore": 80,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.54,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.delaware@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.54,
+      "averageScore": 71,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.delaware@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Hawaii": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Ed Case"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.9,
+        "representative": "Jill Tokuda"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.hawaii@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.26,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.hawaii@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.55,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.hawaii@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.05,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.hawaii@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.3,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.hawaii@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.64,
+        "averageScore": 73,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.55,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.hawaii@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.64,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.hawaii@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Idaho": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Russ Fulcher"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Mike Simpson"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.idaho@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.71,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.idaho@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.2,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.idaho@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.77,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.idaho@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.81,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.idaho@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.39,
+        "averageScore": 68,
+        "stars": 3
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.2,
+      "averageScore": 84,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.idaho@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.39,
+      "averageScore": 68,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.idaho@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Indiana": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Frank Mrvan"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Rudy Yakym"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Jim Banks"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.3,
+        "representative": "Jim Baird"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Victoria Spartz"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.4,
+        "representative": "Greg Pence"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "André Carson"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.5,
+        "representative": "Larry Bucshon"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.1,
+        "representative": "Erin Houchin"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.indiana@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.68,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.indiana@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.27,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.indiana@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.74,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.indiana@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.46,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.indiana@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.1,
+        "averageScore": 82,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.27,
+      "averageScore": 85,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.indiana@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.46,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.indiana@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Iowa": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Mariannette Miller-Meeks"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Ashley Hinson"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.3,
+        "representative": "Zach Nunn"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Randy Feenstra"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.iowa@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.09,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.iowa@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.76,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.iowa@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.1,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.iowa@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.9,
+        "averageScore": 78,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.iowa@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.7,
+        "averageScore": 74,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.1,
+      "averageScore": 82,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.iowa@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.7,
+      "averageScore": 74,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.iowa@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Kansas": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Tracey Mann"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Jake LaTurner"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Sharice Davids"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.6,
+        "representative": "Ron Estes"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.kansas@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.66,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.kansas@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.49,
+        "averageScore": 70,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.kansas@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.34,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.kansas@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.11,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.kansas@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.76,
+        "averageScore": 75,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.34,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.kansas@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.49,
+      "averageScore": 70,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.kansas@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "Kentucky": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "James Comer"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Brett Guthrie"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.3,
+        "representative": "Morgan McGarvey"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Thomas Massie"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.2,
+        "representative": "Hal Rogers"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Andy Barr"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.kentucky@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.99,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.kentucky@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.66,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.kentucky@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.21,
+        "averageScore": 64,
+        "stars": 3
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.kentucky@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.17,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.kentucky@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.35,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.kentucky@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.21,
+      "averageScore": 64,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.kentucky@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Louisiana": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Steve Scalise"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.2,
+        "representative": "Troy Carter"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Clay Higgins"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.3,
+        "representative": "Mike Johnson"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Julia Letlow"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.4,
+        "representative": "Garret Graves"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.louisiana@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.07,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.louisiana@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.13,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.louisiana@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.68,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.louisiana@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.5,
+        "averageScore": 90,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.louisiana@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.54,
+        "averageScore": 71,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.5,
+      "averageScore": 90,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.louisiana@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.54,
+      "averageScore": 71,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.louisiana@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Maine": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Chellie Pingree"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.6,
+        "representative": "Jared Golden"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.maine@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.59,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.maine@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.73,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.maine@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.53,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.maine@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.68,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.maine@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.13,
+        "averageScore": 83,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.59,
+      "averageScore": 92,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.maine@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.68,
+      "averageScore": 74,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.maine@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Maryland": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Andy Harris"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Dutch Ruppersberger"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "John Sarbanes"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Glenn Ivey"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.5,
+        "representative": "Steny Hoyer"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "David Trone"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.4,
+        "representative": "Kweisi Mfume"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Jamie Raskin"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.maryland@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.28,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.maryland@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.3,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.maryland@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.24,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.maryland@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.11,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.maryland@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.21,
+        "averageScore": 84,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.3,
+      "averageScore": 86,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.maryland@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.11,
+      "averageScore": 82,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.maryland@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Massachusetts": {
+    "averageRating": 4.3,
+    "stars": 4,
+    "score": 86,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.8,
+        "representative": "Richard Neal"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Jim McGovern"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.7,
+        "representative": "Lori Trahan"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Jake Auchincloss"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.6,
+        "representative": "Katherine Clark"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Seth Moulton"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.5,
+        "representative": "Ayanna Pressley"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Stephen Lynch"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.4,
+        "representative": "Bill Keating"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.massachusetts@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.61,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.massachusetts@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.59,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.massachusetts@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.86,
+        "averageScore": 97,
+        "stars": 5
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.massachusetts@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.02,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.massachusetts@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.46,
+        "averageScore": 89,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.86,
+      "averageScore": 97,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.massachusetts@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.02,
+      "averageScore": 80,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.massachusetts@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Minnesota": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Brad Finstad"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Angie Craig"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Dean Phillips"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Betty McCollum"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Ilhan Omar"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.6,
+        "representative": "Tom Emmer"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Michelle Fischbach"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.7,
+        "representative": "Pete Stauber"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.minnesota@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.2,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.minnesota@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.56,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.minnesota@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.46,
+        "averageScore": 89,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.minnesota@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.82,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.minnesota@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.81,
+        "averageScore": 76,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.56,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.minnesota@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.81,
+      "averageScore": 76,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.minnesota@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Mississippi": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Trent Kelly"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Bennie Thompson"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.3,
+        "representative": "Michael Guest"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Mike Ezell"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.mississippi@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.15,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.mississippi@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.1,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.mississippi@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.81,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.mississippi@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.36,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.mississippi@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.61,
+        "averageScore": 72,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.36,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.mississippi@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.61,
+      "averageScore": 72,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.mississippi@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Missouri": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Cori Bush"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Ann Wagner"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Blaine Luetkemeyer"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Mark Alford"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Emanuel Cleaver"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Sam Graves"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Eric Burlison"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Jason Smith"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.missouri@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.03,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.missouri@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.97,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.missouri@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.45,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.missouri@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.19,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.missouri@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.83,
+        "averageScore": 77,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.19,
+      "averageScore": 84,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.missouri@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.45,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.missouri@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Montana": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Ryan Zinke"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.5,
+        "representative": "Matt Rosendale"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.montana@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.57,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.montana@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.33,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.montana@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.3,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.montana@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.98,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.montana@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.74,
+        "averageScore": 75,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.33,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.montana@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.57,
+      "averageScore": 71,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.montana@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Nebraska": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Mike Flood"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Don Bacon"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.3,
+        "representative": "Adrian Smith"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.nebraska@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.15,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.nebraska@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.86,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.nebraska@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.44,
+        "averageScore": 89,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.nebraska@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.4,
+        "averageScore": 88,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.nebraska@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.38,
+        "averageScore": 88,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.44,
+      "averageScore": 89,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.nebraska@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.86,
+      "averageScore": 77,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.nebraska@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "Nevada": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Dina Titus"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.5,
+        "representative": "Mark Amodei"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Susie Lee"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.6,
+        "representative": "Steven Horsford"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.nevada@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.01,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.nevada@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.28,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.nevada@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.25,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.nevada@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.15,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.nevada@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.56,
+        "averageScore": 91,
+        "stars": 5
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.56,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.nevada@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.01,
+      "averageScore": 80,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.nevada@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "New Hampshire": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Chris Pappas"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.7,
+        "representative": "Ann McLane Kuster"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.newhampshire@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.92,
+        "averageScore": 78,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.newhampshire@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.2,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.newhampshire@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.1,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.newhampshire@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.17,
+        "averageScore": 83,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.newhampshire@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.68,
+        "averageScore": 94,
+        "stars": 5
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.68,
+      "averageScore": 94,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.newhampshire@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.92,
+      "averageScore": 78,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.newhampshire@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "New Jersey": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Donald Norcross"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Jeff Van Drew"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Andy Kim"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Chris Smith"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.4,
+        "representative": "Josh Gottheimer"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Frank Pallone"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.3,
+        "representative": "Thomas Kean Jr."
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Rob Menendez"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.2,
+        "representative": "Bill Pascrell"
+      },
+      {
+        "number": 10,
+        "averageRating": 3.7,
+        "representative": "Donald Payne Jr."
+      },
+      {
+        "number": 11,
+        "averageRating": 4.1,
+        "representative": "Mikie Sherrill"
+      },
+      {
+        "number": 12,
+        "averageRating": 3.8,
+        "representative": "Bonnie Watson Coleman"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.newjersey@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.66,
+        "averageScore": 93,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.newjersey@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.newjersey@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.01,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.newjersey@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.5,
+        "averageScore": 70,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.newjersey@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.91,
+        "averageScore": 78,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.66,
+      "averageScore": 93,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.newjersey@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.5,
+      "averageScore": 70,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.newjersey@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "New Mexico": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Melanie Stansbury"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Gabe Vasquez"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Teresa Leger Fernandez"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.newmexico@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.41,
+        "averageScore": 68,
+        "stars": 3
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.newmexico@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.newmexico@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.52,
+        "averageScore": 70,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.newmexico@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.54,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.newmexico@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.12,
+        "averageScore": 82,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.54,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.newmexico@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.41,
+      "averageScore": 68,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.newmexico@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "North Dakota": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 3.9,
+        "representative": "Kelly Armstrong"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.northdakota@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.3,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.northdakota@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.07,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.northdakota@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.21,
+        "averageScore": 84,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.northdakota@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.43,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.northdakota@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.62,
+        "averageScore": 72,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.3,
+      "averageScore": 86,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.northdakota@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.43,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.northdakota@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Oklahoma": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Kevin Hern"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Josh Brecheen"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.3,
+        "representative": "Frank Lucas"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Tom Cole"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.2,
+        "representative": "Stephanie Bice"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.oklahoma@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.62,
+        "averageScore": 72,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.oklahoma@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.73,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.oklahoma@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.87,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.oklahoma@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.86,
+        "averageScore": 77,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.oklahoma@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.44,
+        "averageScore": 69,
+        "stars": 3
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.87,
+      "averageScore": 77,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.oklahoma@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.44,
+      "averageScore": 69,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.oklahoma@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "Oregon": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Suzanne Bonamici"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.5,
+        "representative": "Cliff Bentz"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "Earl Blumenauer"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.6,
+        "representative": "Val Hoyle"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.4,
+        "representative": "Lori Chavez-DeRemer"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.7,
+        "representative": "Andrea Salinas"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.oregon@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.96,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.oregon@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.67,
+        "averageScore": 93,
+        "stars": 5
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.oregon@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.62,
+        "averageScore": 72,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.oregon@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.56,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.oregon@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.94,
+        "averageScore": 79,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.67,
+      "averageScore": 93,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.oregon@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.62,
+      "averageScore": 72,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.oregon@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Rhode Island": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Gabe Amo"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.8,
+        "representative": "Seth Magaziner"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.rhodeisland@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.72,
+        "averageScore": 94,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.rhodeisland@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.97,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.rhodeisland@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.76,
+        "averageScore": 95,
+        "stars": 5
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.rhodeisland@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.04,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.rhodeisland@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.31,
+        "averageScore": 86,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.76,
+      "averageScore": 95,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.rhodeisland@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.97,
+      "averageScore": 79,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.rhodeisland@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "South Carolina": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Nancy Mace"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Joe Wilson"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Jeff Duncan"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "William Timmons"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Ralph Norman"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Jim Clyburn"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Russell Fry"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.southcarolina@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.41,
+        "averageScore": 88,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.southcarolina@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.27,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.southcarolina@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.06,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.southcarolina@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.southcarolina@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.69,
+        "averageScore": 74,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 4.41,
+      "averageScore": 88,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.southcarolina@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 3.69,
+      "averageScore": 74,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.southcarolina@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    }
+  },
+  "South Dakota": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 3.9,
+        "representative": "Dusty Johnson"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.southdakota@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.55,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.southdakota@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.33,
+        "averageScore": 67,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.southdakota@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.02,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.southdakota@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.78,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.southdakota@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.33,
+        "averageScore": 87,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.33,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.southdakota@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 3.33,
+      "averageScore": 67,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.southdakota@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "Tennessee": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Diana Harshbarger"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Tim Burchett"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Chuck Fleischmann"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Scott DesJarlais"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Andy Ogles"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "John Rose"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Mark Green"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "David Kustoff"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.1,
+        "representative": "Steve Cohen"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.tennessee@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.02,
+        "averageScore": 80,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.tennessee@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.79,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.tennessee@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.79,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.tennessee@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.37,
+        "averageScore": 67,
+        "stars": 3
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.tennessee@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.2,
+        "averageScore": 84,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fifth City County",
+      "city": "Fifth City",
+      "averageRating": 4.2,
+      "averageScore": 84,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 5",
+        "title": "Regional Director",
+        "email": "director5.tennessee@t-mobile.com",
+        "phone": "(104) 555-1004"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.37,
+      "averageScore": 67,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.tennessee@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  },
+  "Utah": {
+    "averageRating": 4.1,
+    "stars": 4,
+    "score": 82,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.6,
+        "representative": "Blake Moore"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.5,
+        "representative": "Celeste Maloy"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.5,
+        "representative": "John Curtis"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.6,
+        "representative": "Burgess Owens"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.utah@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.6,
+        "averageScore": 92,
+        "stars": 5
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.utah@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.08,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.utah@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.8,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.utah@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.69,
+        "averageScore": 94,
+        "stars": 5
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.utah@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.06,
+        "averageScore": 81,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.69,
+      "averageScore": 94,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.utah@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.8,
+      "averageScore": 76,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.utah@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Vermont": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.2,
+        "representative": "Becca Balint"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.vermont@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.63,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.vermont@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.12,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.vermont@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.32,
+        "averageScore": 86,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.vermont@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.55,
+        "averageScore": 91,
+        "stars": 5
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.vermont@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.45,
+        "averageScore": 89,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.55,
+      "averageScore": 91,
+      "stars": 5,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.vermont@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.63,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.vermont@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Virginia": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Rob Wittman"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Jen Kiggans"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Bobby Scott"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Jennifer McClellan"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Bob Good"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.6,
+        "representative": "Ben Cline"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Abigail Spanberger"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.7,
+        "representative": "Don Beyer"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.1,
+        "representative": "Morgan Griffith"
+      },
+      {
+        "number": 10,
+        "averageRating": 3.8,
+        "representative": "Jennifer Wexton"
+      },
+      {
+        "number": 11,
+        "averageRating": 4,
+        "representative": "Gerry Connolly"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.virginia@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.7,
+        "averageScore": 74,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.virginia@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.11,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.virginia@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.76,
+        "averageScore": 75,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.virginia@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.49,
+        "averageScore": 90,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.virginia@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.04,
+        "averageScore": 81,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 4.49,
+      "averageScore": 90,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.virginia@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.7,
+      "averageScore": 74,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.virginia@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Washington": {
+    "averageRating": 4.2,
+    "stars": 4,
+    "score": 84,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.7,
+        "representative": "Suzan DelBene"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Rick Larsen"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.6,
+        "representative": "Marie Gluesenkamp Perez"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.4,
+        "representative": "Dan Newhouse"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.5,
+        "representative": "Cathy McMorris Rodgers"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.5,
+        "representative": "Derek Kilmer"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.4,
+        "representative": "Pramila Jayapal"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.6,
+        "representative": "Kim Schrier"
+      },
+      {
+        "number": 9,
+        "averageRating": 4.3,
+        "representative": "Adam Smith"
+      },
+      {
+        "number": 10,
+        "averageRating": 3.7,
+        "representative": "Marilyn Strickland"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.washington@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.37,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.washington@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.25,
+        "averageScore": 85,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.washington@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.39,
+        "averageScore": 88,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.washington@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.33,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.washington@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.32,
+        "averageScore": 86,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.39,
+      "averageScore": 88,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.washington@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.25,
+      "averageScore": 85,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.washington@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    }
+  },
+  "West Virginia": {
+    "averageRating": 3.8,
+    "stars": 4,
+    "score": 76,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.4,
+        "representative": "Carol Miller"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.3,
+        "representative": "Alex Mooney"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.westvirginia@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.67,
+        "averageScore": 73,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.westvirginia@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 4.35,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.westvirginia@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.96,
+        "averageScore": 79,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.westvirginia@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 4.04,
+        "averageScore": 81,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.westvirginia@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 4.29,
+        "averageScore": 86,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Second City County",
+      "city": "Second City",
+      "averageRating": 4.35,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 2",
+        "title": "Regional Director",
+        "email": "director2.westvirginia@t-mobile.com",
+        "phone": "(101) 555-1001"
+      }
+    },
+    "lowestCounty": {
+      "name": "Main City County",
+      "city": "Main City",
+      "averageRating": 3.67,
+      "averageScore": 73,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 1",
+        "title": "Regional Director",
+        "email": "director1.westvirginia@t-mobile.com",
+        "phone": "(100) 555-1000"
+      }
+    }
+  },
+  "Wisconsin": {
+    "averageRating": 4,
+    "stars": 4,
+    "score": 80,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 4.5,
+        "representative": "Bryan Steil"
+      },
+      {
+        "number": 2,
+        "averageRating": 3.4,
+        "representative": "Mark Pocan"
+      },
+      {
+        "number": 3,
+        "averageRating": 4.4,
+        "representative": "Derrick Van Orden"
+      },
+      {
+        "number": 4,
+        "averageRating": 3.5,
+        "representative": "Gwen Moore"
+      },
+      {
+        "number": 5,
+        "averageRating": 4.3,
+        "representative": "Scott Fitzgerald"
+      },
+      {
+        "number": 6,
+        "averageRating": 3.6,
+        "representative": "Glenn Grothman"
+      },
+      {
+        "number": 7,
+        "averageRating": 4.2,
+        "representative": "Tom Tiffany"
+      },
+      {
+        "number": 8,
+        "averageRating": 3.7,
+        "representative": "Mike Gallagher"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.wisconsin@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 3.57,
+        "averageScore": 71,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.wisconsin@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.43,
+        "averageScore": 69,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.wisconsin@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 3.41,
+        "averageScore": 68,
+        "stars": 3
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.wisconsin@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.78,
+        "averageScore": 76,
+        "stars": 4
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.wisconsin@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.58,
+        "averageScore": 72,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.78,
+      "averageScore": 76,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.wisconsin@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    },
+    "lowestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 3.41,
+      "averageScore": 68,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.wisconsin@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    }
+  },
+  "Wyoming": {
+    "averageRating": 3.9,
+    "stars": 4,
+    "score": 78,
+    "districts": [
+      {
+        "number": 1,
+        "averageRating": 3.9,
+        "representative": "Harriet Hageman"
+      }
+    ],
+    "counties": [
+      {
+        "name": "Main City County",
+        "city": "Main City",
+        "contact": {
+          "name": "Regional Director 1",
+          "title": "Regional Director",
+          "email": "director1.wyoming@t-mobile.com",
+          "phone": "(100) 555-1000"
+        },
+        "averageRating": 4.11,
+        "averageScore": 82,
+        "stars": 4
+      },
+      {
+        "name": "Second City County",
+        "city": "Second City",
+        "contact": {
+          "name": "Regional Director 2",
+          "title": "Regional Director",
+          "email": "director2.wyoming@t-mobile.com",
+          "phone": "(101) 555-1001"
+        },
+        "averageRating": 3.48,
+        "averageScore": 70,
+        "stars": 3
+      },
+      {
+        "name": "Third City County",
+        "city": "Third City",
+        "contact": {
+          "name": "Regional Director 3",
+          "title": "Regional Director",
+          "email": "director3.wyoming@t-mobile.com",
+          "phone": "(102) 555-1002"
+        },
+        "averageRating": 4.34,
+        "averageScore": 87,
+        "stars": 4
+      },
+      {
+        "name": "Fourth City County",
+        "city": "Fourth City",
+        "contact": {
+          "name": "Regional Director 4",
+          "title": "Regional Director",
+          "email": "director4.wyoming@t-mobile.com",
+          "phone": "(103) 555-1003"
+        },
+        "averageRating": 3.35,
+        "averageScore": 67,
+        "stars": 3
+      },
+      {
+        "name": "Fifth City County",
+        "city": "Fifth City",
+        "contact": {
+          "name": "Regional Director 5",
+          "title": "Regional Director",
+          "email": "director5.wyoming@t-mobile.com",
+          "phone": "(104) 555-1004"
+        },
+        "averageRating": 3.71,
+        "averageScore": 74,
+        "stars": 4
+      }
+    ],
+    "highestCounty": {
+      "name": "Third City County",
+      "city": "Third City",
+      "averageRating": 4.34,
+      "averageScore": 87,
+      "stars": 4,
+      "contact": {
+        "name": "Regional Director 3",
+        "title": "Regional Director",
+        "email": "director3.wyoming@t-mobile.com",
+        "phone": "(102) 555-1002"
+      }
+    },
+    "lowestCounty": {
+      "name": "Fourth City County",
+      "city": "Fourth City",
+      "averageRating": 3.35,
+      "averageScore": 67,
+      "stars": 3,
+      "contact": {
+        "name": "Regional Director 4",
+        "title": "Regional Director",
+        "email": "director4.wyoming@t-mobile.com",
+        "phone": "(103) 555-1003"
+      }
+    }
+  }
+}

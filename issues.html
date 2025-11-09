@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Issues Tracking | T-Mobile</title>
+
+    <meta name="description" content="Track and monitor customer issues and complaints across all states for T-Mobile." />
+
+    <link rel="icon" href="https://www.t-mobile.com/etc.clientlibs/tmo-website/clientlibs/clientlib-site/resources/img/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #222; min-height: 100vh; }
+
+        .navbar { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(226,0,116,0.03);}
+
+        .nav-container { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;}
+
+        .logo-nav { display: flex; align-items: center; gap: 48px;}
+
+        .t-mobile-logo { font-size: 28px; font-weight: 700; color: #E20074; letter-spacing: -0.5px; cursor: pointer; text-decoration: none;}
+
+        .t-mobile-logo:hover { opacity: 0.8;}
+
+        .nav-links { display: flex; gap: 32px; list-style: none;}
+
+        .nav-links a { color: #222; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;}
+
+        .nav-links a:hover { color: #E20074; }
+
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 60px 24px;}
+
+        .issues-header { text-align: center; margin-bottom: 48px; color: #fff;}
+
+        .issues-header h1 { font-size: 42px; font-weight: 700; margin-bottom: 16px;}
+
+        .issues-header p { font-size: 18px; opacity: 0.9;}
+
+        .stats-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 48px;}
+
+        .stat-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); text-align: center;}
+
+        .stat-label { font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500;}
+
+        .stat-value { font-size: 36px; font-weight: 700; color: #E20074; margin-bottom: 4px;}
+
+        .stat-subvalue { font-size: 12px; color: #999;}
+
+        .issues-filters { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 32px;}
+
+        .filters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;}
+
+        .filter-group { display: flex; flex-direction: column; gap: 8px;}
+
+        .filter-label { font-size: 14px; font-weight: 600; color: #333;}
+
+        .filter-select, .filter-input { padding: 10px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s;}
+
+        .filter-select:focus, .filter-input:focus { outline: none; border-color: #E20074;}
+
+        .issues-list { display: grid; gap: 20px;}
+
+        .issue-card { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s;}
+
+        .issue-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15);}
+
+        .issue-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;}
+
+        .issue-title { font-size: 20px; font-weight: 700; color: #222; margin-bottom: 4px;}
+
+        .issue-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #666;}
+
+        .issue-meta span { display: flex; align-items: center; gap: 6px;}
+
+        .issue-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;}
+
+        .badge-critical { background: #fee2e2; color: #dc2626;}
+
+        .badge-high { background: #fef3c7; color: #d97706;}
+
+        .badge-medium { background: #dbeafe; color: #2563eb;}
+
+        .badge-low { background: #f3f4f6; color: #6b7280;}
+
+        .badge-resolved { background: #d1fae5; color: #059669;}
+
+        .issue-description { color: #4b5563; line-height: 1.6; margin-bottom: 16px;}
+
+        .issue-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 16px; background: #f9fafb; border-radius: 12px; margin-top: 16px;}
+
+        .issue-detail-item { display: flex; flex-direction: column; gap: 4px;}
+
+        .issue-detail-label { font-size: 12px; color: #666; font-weight: 500;}
+
+        .issue-detail-value { font-size: 14px; color: #222; font-weight: 600;}
+
+        .loading { text-align: center; padding: 60px 24px; color: #fff;}
+
+        .error { background: #fff; padding: 40px; border-radius: 16px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1);}
+
+        .error h2 { color: #ef4444; margin-bottom: 16px;}
+
+        .footer { background: rgba(255,255,255,0.1); padding: 40px 24px; text-align: center; color: #fff; margin-top: 80px;}
+
+        .footer-content { max-width: 1200px; margin: 0 auto;}
+
+        .footer-logo { font-size: 24px; font-weight: 700; margin-bottom: 12px;}
+
+        .footer-text { font-size: 14px; opacity: 0.9;}
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .issues-header h1 { font-size: 32px; }
+            .stats-overview { grid-template-columns: 1fr; }
+            .filters-grid { grid-template-columns: 1fr; }
+            .issue-header { flex-direction: column; }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo-nav">
+
+            <a href="index.html" class="t-mobile-logo">T-Mobile</a>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="issues.html">Issues</a></li>
+
+                <li><a href="details.html">Detailed Analysis</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="content-section">
+
+    <div class="issues-header">
+
+        <h1>Customer Issues Tracking</h1>
+
+        <p>Monitor and track customer issues and complaints across all states</p>
+
+    </div>
+
+    <div id="statsContainer" class="stats-overview">
+
+        <div class="stat-card">
+
+            <div class="stat-label">Total Issues</div>
+
+            <div class="stat-value" id="total-issues">--</div>
+
+            <div class="stat-subvalue">Tracked</div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-label">Critical Issues</div>
+
+            <div class="stat-value" id="critical-issues">--</div>
+
+            <div class="stat-subvalue">Requires immediate attention</div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-label">Resolved</div>
+
+            <div class="stat-value" id="resolved-issues">--</div>
+
+            <div class="stat-subvalue">This month</div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-label">Avg Resolution Time</div>
+
+            <div class="stat-value" id="avg-resolution">--</div>
+
+            <div class="stat-subvalue">Days</div>
+
+        </div>
+
+    </div>
+
+    <div class="issues-filters">
+
+        <div class="filters-grid">
+
+            <div class="filter-group">
+
+                <label class="filter-label">Filter by State</label>
+
+                <select class="filter-select" id="stateFilter">
+
+                    <option value="all">All States</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label class="filter-label">Filter by Priority</label>
+
+                <select class="filter-select" id="priorityFilter">
+
+                    <option value="all">All Priorities</option>
+
+                    <option value="critical">Critical</option>
+
+                    <option value="high">High</option>
+
+                    <option value="medium">Medium</option>
+
+                    <option value="low">Low</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label class="filter-label">Filter by Status</label>
+
+                <select class="filter-select" id="statusFilter">
+
+                    <option value="all">All Statuses</option>
+
+                    <option value="open">Open</option>
+
+                    <option value="in-progress">In Progress</option>
+
+                    <option value="resolved">Resolved</option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label class="filter-label">Search</label>
+
+                <input type="text" class="filter-input" id="searchInput" placeholder="Search issues...">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="issuesContainer" class="issues-list">
+
+        <div class="loading">
+
+            <div style="font-size: 18px; margin-bottom: 12px;">Loading issues...</div>
+
+            <div style="font-size: 14px; opacity: 0.7;">Fetching data from API...</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-logo">T-Mobile</div>
+
+        <p class="footer-text">©️ 2025 T-Mobile USA, Inc. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+<script>
+
+    // API Configuration
+    let API_BASE_URL = 'http://localhost:3000/api';
+    if (window.location.protocol === 'file:') {
+        API_BASE_URL = 'http://localhost:3000/api';
+    } else {
+        API_BASE_URL = `${window.location.origin}/api`;
+    }
+
+    let allIssues = [];
+    let filteredIssues = [];
+
+    // Helper function to determine issue priority based on rating
+    function getIssuePriority(rating, score) {
+        if (rating <= 2 || score <= 40) return 'critical';
+        if (rating <= 3 || score <= 60) return 'high';
+        if (rating <= 4 || score <= 80) return 'medium';
+        return 'low';
+    }
+
+    // Helper function to generate issue status (simulated)
+    function getIssueStatus(entry) {
+        // Simulate status based on date and rating
+        const daysSince = Math.floor((new Date() - new Date(entry.date)) / (1000 * 60 * 60 * 24));
+        if (entry.rating <= 2 && daysSince < 7) return 'open';
+        if (entry.rating <= 3 && daysSince < 14) return 'in-progress';
+        if (daysSince > 30) return 'resolved';
+        return 'open';
+    }
+
+    // Load issues from all states using generated data
+    async function loadIssues() {
+        try {
+            let allEntries = [];
+            
+            // Try to load from pre-generated entries-all.json first
+            try {
+                const response = await fetch('api/entries-all.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.entries) {
+                        console.log(`Loaded ${data.entries.length} entries from pre-generated file`);
+                        allEntries = data.entries;
+                        // Ensure all entries have state field
+                        allEntries = allEntries.map(entry => ({
+                            ...entry,
+                            state: entry.state || 'Unknown'
+                        }));
+                    } else {
+                        console.warn('Pre-generated file exists but has no entries');
+                    }
+                } else {
+                    console.warn(`Pre-generated file returned status ${response.status}`);
+                }
+            } catch (e) {
+                console.log('Pre-generated file not found, loading from individual states...', e);
+            }
+
+            // If we don't have enough entries, load from individual state files
+            if (allEntries.length < 100) {
+                console.log('Loading entries from individual state files...');
+                const states = [
+                    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+                    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+                    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri',
+                    'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+                    'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+                    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
+                    'West Virginia', 'Wisconsin', 'Wyoming'
+                ];
+                
+                const loadPromises = states.map(async (stateName) => {
+                    try {
+                        const encodedState = encodeURIComponent(stateName);
+                        const response = await fetch(`api/state/${encodedState}/entries.json`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.success && data.entries) {
+                                // Add state name to each entry
+                                return data.entries.map(entry => ({
+                                    ...entry,
+                                    state: stateName
+                                }));
+                            }
+                        }
+                    } catch (e) {
+                        // State file not found, skip
+                    }
+                    return [];
+                });
+                
+                const stateEntriesArrays = await Promise.all(loadPromises);
+                const stateEntries = stateEntriesArrays.flat();
+                
+                // Combine with existing entries, avoiding duplicates
+                const existingIds = new Set(allEntries.map(e => e.id));
+                const newEntries = stateEntries.filter(e => !existingIds.has(e.id));
+                allEntries = [...allEntries, ...newEntries];
+                
+                console.log(`Loaded ${allEntries.length} total entries from generated data`);
+            }
+
+            // Fallback to API if still no entries
+            if (allEntries.length === 0) {
+                console.log('Loading from API...');
+                const response = await fetch(`${API_BASE_URL}/entries/all?limit=500&minRating=1`);
+                const data = await response.json();
+                if (data.success && data.entries) {
+                    allEntries = data.entries;
+                }
+            }
+
+            // Transform entries into issues - include entries with rating <= 4 (to ensure we have issues to display)
+            // In a real scenario, you'd want stricter filtering, but for demo purposes we'll show entries <= 4
+            allIssues = allEntries
+                .filter(entry => {
+                    const rating = entry.rating || 5;
+                    const review = (entry.review || '').toLowerCase();
+                    const hasIssueKeywords = review.includes('issue') || 
+                                           review.includes('problem') || 
+                                           review.includes('complaint') ||
+                                           review.includes('poor') ||
+                                           review.includes('bad') ||
+                                           review.includes('slow') ||
+                                           review.includes('disappointed') ||
+                                           review.includes('frustrated') ||
+                                           review.includes('terrible') ||
+                                           review.includes('awful') ||
+                                           review.includes('worst') ||
+                                           review.includes('horrible') ||
+                                           review.includes('unacceptable') ||
+                                           review.includes('needs improvement') ||
+                                           review.includes('could be better');
+                    // Include entries with rating <= 4 (to ensure we have data to display)
+                    // Priority will be determined by the actual rating
+                    return rating <= 4 || hasIssueKeywords;
+                })
+                .map(entry => {
+                    const priority = getIssuePriority(entry.rating, entry.score);
+                    const status = getIssueStatus(entry);
+                    
+                    // Generate issue title based on category and rating
+                    const category = entry.category || 'General';
+                    let issueTitle = '';
+                    if (entry.rating <= 2) {
+                        issueTitle = `Critical ${category} Issue - ${entry.customerName || 'Customer'}`;
+                    } else if (entry.rating <= 3) {
+                        issueTitle = `${category} Problem Reported - ${entry.customerName || 'Customer'}`;
+                    } else {
+                        issueTitle = `${category} Feedback - ${entry.customerName || 'Customer'}`;
+                    }
+                    
+                    // Use review text as description, or generate based on category and rating
+                    let issueDescription = entry.review || '';
+                    if (!issueDescription || issueDescription.length < 20) {
+                        const categoryIssues = {
+                            'Coverage': 'Customer reported coverage issues in their area.',
+                            'Price': 'Customer has concerns about pricing or billing.',
+                            'Customer Service': 'Customer experienced issues with customer service.',
+                            'Network Speed': 'Customer reported slow network speeds.',
+                            'Reliability': 'Customer reported service reliability problems.'
+                        };
+                        issueDescription = categoryIssues[category] || `Customer reported ${category.toLowerCase()} issues.`;
+                        issueDescription += ` Rating: ${entry.rating}/5, Score: ${entry.score || Math.round(entry.rating * 20)}/100.`;
+                    }
+
+                    return {
+                        id: entry.id || `${entry.state || 'unknown'}-${Math.random().toString(36).substr(2, 9)}`,
+                        title: issueTitle,
+                        description: issueDescription,
+                        state: entry.state || 'Unknown',
+                        location: entry.location || entry.state || 'Unknown',
+                        priority: priority,
+                        status: status,
+                        rating: entry.rating,
+                        score: entry.score || Math.round(entry.rating * 20),
+                        category: category,
+                        date: entry.date,
+                        customerName: entry.customerName || 'Customer',
+                        verified: entry.verified || false
+                    };
+                })
+                .sort((a, b) => {
+                    // Sort by priority first, then by date (newest first)
+                    const priorityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+                    if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+                        return priorityOrder[a.priority] - priorityOrder[b.priority];
+                    }
+                    return new Date(b.date) - new Date(a.date);
+                });
+
+            console.log(`Total entries loaded: ${allEntries.length}`);
+            console.log(`Issues found: ${allIssues.length}`);
+            console.log('Sample entries:', allEntries.slice(0, 3));
+            console.log('Sample issues:', allIssues.slice(0, 3));
+            
+            if (allIssues.length === 0) {
+                console.warn('No issues found. Showing all entries with rating <= 4 as issues for demo purposes.');
+                // If no issues found with strict filter, show entries with rating <= 4 as issues
+                if (allEntries.length > 0) {
+                    allIssues = allEntries
+                        .filter(entry => (entry.rating || 5) <= 4)
+                        .map(entry => {
+                            const priority = getIssuePriority(entry.rating, entry.score);
+                            const status = getIssueStatus(entry);
+                            const category = entry.category || 'General';
+                            
+                            return {
+                                id: entry.id || `${entry.state || 'unknown'}-${Math.random().toString(36).substr(2, 9)}`,
+                                title: `${category} Feedback - ${entry.customerName || 'Customer'}`,
+                                description: entry.review || `Customer feedback regarding ${category.toLowerCase()}. Rating: ${entry.rating}/5.`,
+                                state: entry.state || 'Unknown',
+                                location: entry.location || entry.state || 'Unknown',
+                                priority: priority,
+                                status: status,
+                                rating: entry.rating,
+                                score: entry.score || Math.round(entry.rating * 20),
+                                category: category,
+                                date: entry.date,
+                                customerName: entry.customerName || 'Customer',
+                                verified: entry.verified || false
+                            };
+                        })
+                        .sort((a, b) => {
+                            const priorityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+                            if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+                                return priorityOrder[a.priority] - priorityOrder[b.priority];
+                            }
+                            return new Date(b.date) - new Date(a.date);
+                        });
+                    
+                    console.log(`Created ${allIssues.length} issues from entries`);
+                }
+                
+                if (allIssues.length === 0) {
+                    // Show a message that there are no issues
+                    document.getElementById('issuesContainer').innerHTML = `
+                        <div class="error">
+                            <h2>No Issues Found</h2>
+                            <p>Great news! No customer issues were found in the current data.</p>
+                            <p style="margin-top: 12px; font-size: 14px; opacity: 0.8;">All customer feedback shows positive experiences.</p>
+                        </div>
+                    `;
+                    // Still update statistics with zeros
+                    document.getElementById('total-issues').textContent = '0';
+                    document.getElementById('critical-issues').textContent = '0';
+                    document.getElementById('resolved-issues').textContent = '0';
+                    document.getElementById('avg-resolution').textContent = '--';
+                    return;
+                }
+            }
+
+            // Populate state filter
+            const states = [...new Set(allIssues.map(issue => issue.state))].sort();
+            const stateFilter = document.getElementById('stateFilter');
+            // Clear existing options except "All States"
+            while (stateFilter.children.length > 1) {
+                stateFilter.removeChild(stateFilter.lastChild);
+            }
+            states.forEach(state => {
+                if (state && state !== 'Unknown') {
+                    const option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    stateFilter.appendChild(option);
+                }
+            });
+
+            // Calculate statistics
+            updateStatistics();
+            
+            // Display issues
+            filteredIssues = [...allIssues];
+            displayIssues();
+
+        } catch (error) {
+            console.error('Error loading issues:', error);
+            document.getElementById('issuesContainer').innerHTML = `
+                <div class="error">
+                    <h2>Error Loading Issues</h2>
+                    <p>Could not load issues data. Please try again later.</p>
+                </div>
+            `;
+        }
+    }
+
+    // Update statistics
+    function updateStatistics() {
+        const total = allIssues.length;
+        const critical = allIssues.filter(i => i.priority === 'critical').length;
+        const resolved = allIssues.filter(i => i.status === 'resolved').length;
+        
+        // Calculate average resolution time (simulated)
+        const resolvedIssues = allIssues.filter(i => i.status === 'resolved');
+        const avgResolution = resolvedIssues.length > 0 
+            ? Math.round(resolvedIssues.reduce((sum, issue) => {
+                const daysSince = Math.floor((new Date() - new Date(issue.date)) / (1000 * 60 * 60 * 24));
+                return sum + daysSince;
+            }, 0) / resolvedIssues.length)
+            : 0;
+
+        document.getElementById('total-issues').textContent = total.toLocaleString();
+        document.getElementById('critical-issues').textContent = critical.toLocaleString();
+        document.getElementById('resolved-issues').textContent = resolved.toLocaleString();
+        document.getElementById('avg-resolution').textContent = avgResolution || '--';
+    }
+
+    // Display issues
+    function displayIssues() {
+        const container = document.getElementById('issuesContainer');
+        
+        if (filteredIssues.length === 0) {
+            container.innerHTML = `
+                <div class="error">
+                    <h2>No Issues Found</h2>
+                    <p>No issues match the current filters.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filteredIssues.map(issue => {
+            const priorityBadge = `<span class="issue-badge badge-${issue.priority}">${issue.priority.toUpperCase()}</span>`;
+            const statusBadge = issue.status === 'resolved' 
+                ? `<span class="issue-badge badge-resolved">RESOLVED</span>`
+                : `<span class="issue-badge badge-${issue.priority}">${issue.status.toUpperCase().replace('-', ' ')}</span>`;
+            
+            const stars = '★'.repeat(Math.floor(issue.rating)) + '☆'.repeat(5 - Math.floor(issue.rating));
+            const issueDate = new Date(issue.date).toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+
+            return `
+                <div class="issue-card">
+                    <div class="issue-header">
+                        <div>
+                            <div class="issue-title">${issue.title}</div>
+                            <div class="issue-meta">
+                                <span>📍 ${issue.location}</span>
+                                <span>📅 ${issueDate}</span>
+                                <span>⭐ ${stars} (${issue.rating}/5)</span>
+                                ${issue.verified ? '<span>✓ Verified</span>' : ''}
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            ${priorityBadge}
+                            ${statusBadge}
+                        </div>
+                    </div>
+                    <div class="issue-description">${issue.description}</div>
+                    <div class="issue-details">
+                        <div class="issue-detail-item">
+                            <div class="issue-detail-label">State</div>
+                            <div class="issue-detail-value">${issue.state}</div>
+                        </div>
+                        <div class="issue-detail-item">
+                            <div class="issue-detail-label">Category</div>
+                            <div class="issue-detail-value">${issue.category}</div>
+                        </div>
+                        <div class="issue-detail-item">
+                            <div class="issue-detail-label">Score</div>
+                            <div class="issue-detail-value">${issue.score}/100</div>
+                        </div>
+                        <div class="issue-detail-item">
+                            <div class="issue-detail-label">Customer</div>
+                            <div class="issue-detail-value">${issue.customerName}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Filter issues
+    function filterIssues() {
+        const stateFilter = document.getElementById('stateFilter').value;
+        const priorityFilter = document.getElementById('priorityFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        filteredIssues = allIssues.filter(issue => {
+            const matchState = stateFilter === 'all' || issue.state === stateFilter;
+            const matchPriority = priorityFilter === 'all' || issue.priority === priorityFilter;
+            const matchStatus = statusFilter === 'all' || issue.status === statusFilter;
+            const matchSearch = !searchInput || 
+                issue.title.toLowerCase().includes(searchInput) ||
+                issue.description.toLowerCase().includes(searchInput) ||
+                issue.location.toLowerCase().includes(searchInput) ||
+                issue.category.toLowerCase().includes(searchInput);
+
+            return matchState && matchPriority && matchStatus && matchSearch;
+        });
+
+        displayIssues();
+    }
+
+    // Event listeners
+    document.getElementById('stateFilter').addEventListener('change', filterIssues);
+    document.getElementById('priorityFilter').addEventListener('change', filterIssues);
+    document.getElementById('statusFilter').addEventListener('change', filterIssues);
+    document.getElementById('searchInput').addEventListener('input', filterIssues);
+
+    // Initialize on page load
+    window.onload = () => {
+        loadIssues();
+    };
+
+</script>
+
+</body>
+
+</html>
+

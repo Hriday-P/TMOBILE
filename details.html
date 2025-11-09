@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detailed Satisfaction Breakdown | T-Mobile</title>
+
+    <meta name="description" content="View detailed customer satisfaction ratings by region across the United States for T-Mobile." />
+
+    <link rel="icon" href="https://www.t-mobile.com/etc.clientlibs/tmo-website/clientlibs/clientlib-site/resources/img/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #222; min-height: 100vh; }
+
+        .navbar { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(226,0,116,0.03);}
+
+        .nav-container { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;}
+
+        .logo-nav { display: flex; align-items: center; gap: 48px;}
+
+        .t-mobile-logo { font-size: 28px; font-weight: 700; color: #E20074; letter-spacing: -0.5px; cursor: pointer;}
+
+        .t-mobile-logo:hover { opacity: 0.8;}
+
+        .nav-links { display: flex; gap: 32px; list-style: none;}
+
+        .nav-links a { color: #222; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;}
+
+        .nav-links a:hover { color: #E20074; }
+
+        .nav-cta { background: #E20074; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: 700; border: none; box-shadow: 0 2px 8px rgba(226,0,116,0.10); transition: background 0.2s, box-shadow 0.2s;}
+
+        .nav-cta:hover { background: #c10062; box-shadow: 0 4px 12px rgba(226,0,116,0.16);}
+
+        .hero { background: transparent; padding: 60px 24px 40px; text-align: center; color: #fff;}
+
+        .hero-content { max-width: 900px; margin: 0 auto;}
+
+        .hero h1 { font-size: 48px; font-weight: 700; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px;}
+
+        .hero p { font-size: 18px; line-height: 1.6; opacity: 0.95; margin-bottom: 32px;}
+
+        .map-section { max-width: 1400px; margin: 0 auto 80px; padding: 0 24px;}
+
+        .map-container { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); position: relative;}
+
+        .map-wrapper { width: 100%; height: auto; position: relative; display: flex; justify-content: center; align-items: center;}
+
+        .us-map { width: 100%; height: auto; max-height: 700px; display: block; margin: 0 auto;}
+
+        #map { width: 100%; height: 600px; border-radius: 12px; margin: 20px 0; z-index: 1;}
+
+        /* Custom styles for state hover effects */
+        .leaflet-interactive {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .state-hover {
+            filter: brightness(1.2) drop-shadow(0 8px 16px rgba(226, 0, 116, 0.4));
+            transform: scale(1.05);
+        }
+
+        .state-path { fill: #E8E8E8; stroke: #fff; stroke-width: 1.5; cursor: pointer; transition: all 0.3s ease;}
+
+        .state-path:hover { fill: #E20074; stroke: #E20074; stroke-width: 2; opacity: 0.9;}
+
+        .state-path.high-satisfaction { fill: #10b981;}
+
+        .state-path.medium-satisfaction { fill: #fbbf24;}
+
+        .state-path.low-satisfaction { fill: #ef4444;}
+
+        .map-legend { display: flex; justify-content: center; gap: 32px; margin-top: 32px; flex-wrap: wrap;}
+
+        .legend-item { display: flex; align-items: center; gap: 12px;}
+
+        .legend-color { width: 24px; height: 24px; border-radius: 4px; border: 2px solid #fff;}
+
+        .legend-color.high { background: #10b981;}
+
+        .legend-color.medium { background: #fbbf24;}
+
+        .legend-color.low { background: #ef4444;}
+
+        .legend-color.neutral { background: #E8E8E8;}
+
+        .legend-text { color: #222; font-size: 14px; font-weight: 500;}
+
+        .back-button { display: inline-block; margin-top: 24px; background: #E20074; color: #fff; padding: 12px 32px; border-radius: 24px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: 0 2px 8px rgba(226,0,116,0.15); transition: background 0.2s;}
+
+        .back-button:hover { background: #c10062;}
+
+        .footer { background: rgba(45, 45, 45, 0.95); color: #fff; padding: 48px 24px; text-align: center; border: none; box-shadow: 0 -2px 10px rgba(44,44,44,0.12);}
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-logo { font-size: 28px; font-weight: 700; color: #E20074; margin-bottom: 24px;}
+
+        .footer-text { color: #888; font-size: 14px; line-height: 1.6;}
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .hero h1 { font-size: 32px; } 
+            .map-container { padding: 24px; }
+            .map-legend { flex-direction: column; gap: 16px; align-items: center; }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo-nav">
+
+            <div class="t-mobile-logo" onclick="window.location.href='index.html'">T-Mobile</div>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="issues.html">Issues</a></li>
+
+                <li><a href="details.html">Detailed Analysis</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="map-section">
+
+    <div class="map-container" style="text-align: center; padding: 60px 40px;">
+
+        <h2 style="font-size: 32px; font-weight: 700; color: #222; margin-bottom: 20px;">Detailed Satisfaction Breakdown</h2>
+
+        <p style="font-size: 18px; color: #666; margin-bottom: 40px; line-height: 1.6;">View detailed customer satisfaction ratings by region across the United States.</p>
+
+        <div id="map"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+
+            <a href="index.html" class="back-button">← Back to Reviews</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-logo">T-Mobile</div>
+
+        <p class="footer-text">©️ 2025 T-Mobile USA, Inc. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+<script>
+    // Initialize Leaflet map
+    document.addEventListener('DOMContentLoaded', function() {
+        // USA bounds (approximate)
+        const usaBounds = [
+            [24.396308, -125.0], // Southwest corner
+            [49.384358, -66.93457] // Northeast corner
+        ];
+
+        // Create map centered on USA with no zoom controls and restricted bounds
+        const map = L.map('map', {
+            center: [39.8283, -98.5795],
+            zoom: 4,
+            minZoom: 4,
+            maxZoom: 4,
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            maxBounds: usaBounds,
+            maxBoundsViscosity: 1.0 // Prevent panning outside bounds
+        });
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 4,
+            minZoom: 4
+        }).addTo(map);
+
+        // Lock zoom level - prevent any zoom changes
+        map.on('zoomstart', function() {
+            if (map.getZoom() !== 4) {
+                map.setZoom(4);
+            }
+        });
+
+        map.on('zoom', function() {
+            if (map.getZoom() !== 4) {
+                map.setZoom(4);
+            }
+        });
+
+        // Function to style states
+        function styleState(feature) {
+            return {
+                fillColor: '#E8E8E8',
+                fillOpacity: 0.7,
+                color: '#fff',
+                weight: 2,
+                opacity: 1
+            };
+        }
+        
+        // Add CSS for clickable cursor and visual feedback
+        const style = document.createElement('style');
+        style.textContent = `
+            .leaflet-interactive {
+                cursor: pointer !important;
+            }
+            .leaflet-interactive:hover {
+                cursor: pointer !important;
+            }
+            #map {
+                cursor: default;
+            }
+            #map .leaflet-interactive {
+                cursor: pointer !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Helper function to calculate centroid of a polygon
+        function getPolygonCentroid(feature) {
+            if (!feature || !feature.geometry) {
+                return null;
+            }
+            
+            const geometry = feature.geometry;
+            let coordinates = [];
+            
+            if (geometry.type === 'Polygon') {
+                // For Polygon, use the first ring (exterior ring)
+                coordinates = geometry.coordinates[0];
+            } else if (geometry.type === 'MultiPolygon') {
+                // For MultiPolygon, use the largest polygon's exterior ring
+                let maxArea = 0;
+                let largestRing = null;
+                geometry.coordinates.forEach(polygon => {
+                    const ring = polygon[0];
+                    // Simple area estimation (not exact, but good enough for centroid)
+                    const area = ring.length;
+                    if (area > maxArea) {
+                        maxArea = area;
+                        largestRing = ring;
+                    }
+                });
+                coordinates = largestRing || geometry.coordinates[0][0];
+            }
+            
+            if (coordinates.length === 0) {
+                return null;
+            }
+            
+            // Calculate centroid as average of all coordinates
+            let sumLat = 0;
+            let sumLng = 0;
+            let count = 0;
+            
+            coordinates.forEach(coord => {
+                if (Array.isArray(coord) && coord.length >= 2) {
+                    sumLng += coord[0]; // longitude
+                    sumLat += coord[1]; // latitude
+                    count++;
+                }
+            });
+            
+            if (count === 0) {
+                return null;
+            }
+            
+            return L.latLng(sumLat / count, sumLng / count);
+        }
+
+        // Function to handle state hover - projects outward
+        function highlightState(e) {
+            const layer = e.target;
+            
+            // Get state name
+            const stateName = layer.feature.properties.NAME || layer.feature.properties.name || 'State';
+            
+            // Ensure layer is interactive
+            if (!layer.options.interactive) {
+                layer.options.interactive = true;
+            }
+            
+            // Create hover style with projection effect
+            layer.setStyle({
+                fillColor: '#E20074',
+                fillOpacity: 0.9,
+                color: '#E20074',
+                weight: 3,
+                opacity: 1
+            });
+
+            // Add CSS class for additional effects
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
+
+            // Apply transform effect using SVG - projects outward
+            const path = layer._path;
+            if (path) {
+                // Enhanced projection effect
+                path.style.filter = 'brightness(1.3) drop-shadow(0 12px 24px rgba(226, 0, 116, 0.5)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))';
+                path.style.transform = 'scale(1.08)';
+                path.style.transformOrigin = 'center';
+                path.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                path.style.zIndex = '1000';
+            }
+            
+            // Calculate centroid of the state shape for better centering
+            let center = getPolygonCentroid(layer.feature);
+            
+            // Fallback to bounds center if centroid calculation fails
+            if (!center) {
+                const bounds = layer.getBounds();
+                center = bounds.getCenter();
+            }
+            
+            // Remove any existing label for this layer
+            if (layer._stateLabel) {
+                map.removeLayer(layer._stateLabel);
+            }
+            
+            // Calculate state size to determine appropriate label size
+            const bounds = layer.getBounds();
+            const stateWidth = bounds.getEast() - bounds.getWest();
+            const stateHeight = bounds.getNorth() - bounds.getSouth();
+            const stateArea = stateWidth * stateHeight;
+            
+            // Determine font size based on state size (smaller states get smaller text)
+            let fontSize = 12;
+            let padding = '4px 8px';
+            
+            if (stateArea < 0.5) {
+                // Very small states (RI, DE, etc.)
+                fontSize = 9;
+                padding = '3px 6px';
+            } else if (stateArea < 1.0) {
+                // Small states
+                fontSize = 10;
+                padding = '3px 7px';
+            } else if (stateArea < 2.0) {
+                // Medium states
+                fontSize = 11;
+                padding = '4px 8px';
+            } else {
+                // Large states
+                fontSize = 12;
+                padding = '4px 9px';
+            }
+            
+            // Adjust for long state names
+            if (stateName.length > 12) {
+                fontSize = Math.max(9, fontSize - 1);
+            }
+            
+            // Create text label centered on the state shape
+            // We'll create a temporary element to measure the label size for proper centering
+            const tempDiv = document.createElement('div');
+            tempDiv.style.cssText = `
+                position: absolute;
+                visibility: hidden;
+                padding: ${padding};
+                font-weight: 600;
+                font-size: ${fontSize}px;
+                white-space: nowrap;
+                font-family: 'Inter', Arial, sans-serif;
+            `;
+            tempDiv.textContent = stateName;
+            document.body.appendChild(tempDiv);
+            const labelWidth = tempDiv.offsetWidth;
+            const labelHeight = tempDiv.offsetHeight;
+            document.body.removeChild(tempDiv);
+            
+            const label = L.marker(center, {
+                icon: L.divIcon({
+                    className: 'state-name-label',
+                    html: `<div style="
+                        background: linear-gradient(135deg, rgba(226, 0, 116, 0.98) 0%, rgba(180, 0, 90, 0.98) 100%);
+                        color: white;
+                        padding: ${padding};
+                        border-radius: 16px;
+                        font-weight: 600;
+                        font-size: ${fontSize}px;
+                        white-space: nowrap;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+                        pointer-events: none;
+                        text-align: center;
+                        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                        letter-spacing: 0.2px;
+                        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        backdrop-filter: blur(4px);
+                        -webkit-backdrop-filter: blur(4px);
+                    ">${stateName}</div>`,
+                    iconSize: [labelWidth, labelHeight],
+                    iconAnchor: [labelWidth / 2, labelHeight / 2]
+                }),
+                interactive: false,
+                zIndexOffset: 2000
+            });
+            
+            label.addTo(map);
+            layer._stateLabel = label;
+        }
+
+        // Function to reset state style
+        function resetState(e) {
+            const layer = e.target;
+            geojsonLayer.resetStyle(e.target);
+            
+            // Remove transform effects with smooth transition
+            const path = layer._path;
+            if (path) {
+                path.style.filter = '';
+                path.style.transform = '';
+                path.style.zIndex = '';
+            }
+            
+            // Remove state name label
+            if (layer._stateLabel) {
+                map.removeLayer(layer._stateLabel);
+                layer._stateLabel = null;
+            }
+        }
+
+        // Function to handle state click - navigate to state detail page
+        function onStateClick(e) {
+            try {
+                // Stop any event propagation
+                if (e.originalEvent) {
+                    e.originalEvent.stopPropagation();
+                    e.originalEvent.preventDefault();
+                }
+                L.DomEvent.stopPropagation(e);
+                L.DomEvent.preventDefault(e);
+                
+                const layer = e.target || e.layer;
+                if (!layer || !layer.feature) {
+                    console.error('Invalid layer in click handler');
+                    return;
+                }
+                
+                const stateName = layer.feature.properties.NAME || layer.feature.properties.name || 'State';
+                console.log('State clicked:', stateName);
+                console.log('Navigating to state page...');
+                
+                // Navigate to state detail page
+                const url = `state.html?state=${encodeURIComponent(stateName)}`;
+                console.log('Navigation URL:', url);
+                window.location.href = url;
+            } catch (error) {
+                console.error('Error in onStateClick:', error);
+            }
+        }
+
+        // Load US states GeoJSON
+        let geojsonLayer;
+        fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+            .then(res => res.json())
+            .then(geojson => {
+                // Add states to map
+                geojsonLayer = L.geoJSON(geojson, {
+                    style: styleState,
+                    interactive: true,
+                    onEachFeature: function(feature, layer) {
+                        // Make layer clickable and interactive
+                        layer.options.interactive = true;
+                        
+                        // Add event handlers
+                        layer.on({
+                            mouseover: highlightState,
+                            mouseout: resetState,
+                            click: onStateClick
+                        });
+                    }
+                }).addTo(map);
+
+                // Fit map to bounds of all states (but keep zoom level fixed)
+                const statesBounds = geojsonLayer.getBounds();
+                // Ensure bounds are within USA bounds
+                const constrainedBounds = [
+                    [Math.max(statesBounds.getSouth(), usaBounds[0][0]), Math.max(statesBounds.getWest(), usaBounds[0][1])],
+                    [Math.min(statesBounds.getNorth(), usaBounds[1][0]), Math.min(statesBounds.getEast(), usaBounds[1][1])]
+                ];
+                map.fitBounds(constrainedBounds, { padding: [20, 20] });
+                // Lock zoom level after fitting
+                map.setZoom(4);
+            })
+            .catch(error => {
+                console.error('Error loading states GeoJSON:', error);
+                // Fallback: try alternative source
+                fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+                    .then(res => res.json())
+                    .then(geojson => {
+                        geojsonLayer = L.geoJSON(geojson, {
+                            style: styleState,
+                            interactive: true,
+                            onEachFeature: function(feature, layer) {
+                                // Make layer clickable and interactive
+                                layer.options.interactive = true;
+                                
+                                // Add event handlers
+                                layer.on({
+                                    mouseover: highlightState,
+                                    mouseout: resetState,
+                                    click: onStateClick
+                                });
+                            }
+                        }).addTo(map);
+                        // Fit map to bounds of all states (but keep zoom level fixed)
+                        const statesBounds = geojsonLayer.getBounds();
+                        const constrainedBounds = [
+                            [Math.max(statesBounds.getSouth(), usaBounds[0][0]), Math.max(statesBounds.getWest(), usaBounds[0][1])],
+                            [Math.min(statesBounds.getNorth(), usaBounds[1][0]), Math.min(statesBounds.getEast(), usaBounds[1][1])]
+                        ];
+                        map.fitBounds(constrainedBounds, { padding: [20, 20] });
+                        // Lock zoom level after fitting
+                        map.setZoom(4);
+                    })
+                    .catch(err => {
+                        console.error('Failed to load states:', err);
+                    });
+            });
+
+        // Fetch data and add markers
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(point => {
+                    L.marker([point.lat, point.lng])
+                        .addTo(map)
+                        .bindPopup(`${point.name}: ${point.value}`);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+            });
+    });
+</script>
+
+</body>
+
+</html>

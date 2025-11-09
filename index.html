@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Satisfaction Ratings | T-Mobile</title>
+
+    <meta name="description" content="See authentic customer satisfaction ratings and reviews for T-Mobile. Discover why customers across the nation recommend T-Mobile for coverage, value, and service." />
+
+    <link rel="icon" href="https://www.t-mobile.com/etc.clientlibs/tmo-website/clientlibs/clientlib-site/resources/img/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #E20074 0%, #4B0082 100%); color: #222; min-height: 100vh; overflow-x: hidden; }
+
+        .navbar { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100;
+
+            box-shadow: 0 2px 10px rgba(226,0,116,0.03);}
+
+        .nav-container { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;}
+
+        .logo-nav { display: flex; align-items: center; gap: 48px;}
+
+        .t-mobile-logo { font-size: 28px; font-weight: 700; color: #E20074; letter-spacing: -0.5px;}
+
+        .nav-links { display: flex; gap: 32px; list-style: none;}
+
+        .nav-links a { color: #222; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;}
+
+        .nav-links a:hover { color: #E20074; }
+
+        .nav-cta { background: #E20074; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: 700; border: none; box-shadow: 0 2px 8px rgba(226,0,116,0.10); transition: background 0.2s, box-shadow 0.2s;}
+
+        .nav-cta:hover { background: #c10062; box-shadow: 0 4px 12px rgba(226,0,116,0.16);}
+
+        .hero { background: transparent; padding: 60px 24px 40px; text-align: center; color: #fff;}
+
+        .hero-content { max-width: 900px; margin: 0 auto;}
+
+        .hero h1 { font-size: 48px; font-weight: 700; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px;}
+
+        .hero p { font-size: 18px; line-height: 1.6; opacity: 0.95; margin-bottom: 32px;}
+
+        .score-section { max-width: 600px; margin: 40px auto 60px; padding: 0 24px; position: relative; z-index: 10; text-align: center;}
+
+        .score-card { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); position: relative;}
+
+        .score-label { color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 12px;}
+
+        .score-number { font-size: 72px; font-weight: 700; color: #E20074; line-height: 1; margin-bottom: 6px;}
+
+        .score-subtitle { color: #888; font-size: 14px; font-weight: 500;}
+
+        .score-meta { display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #f1f1f1;}
+
+        .score-stat { text-align: center;}
+
+        .score-stat-value { font-size: 24px; font-weight: 700; color: #222; margin-bottom: 6px;}
+
+        .score-stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;}
+
+        .score-details-btn { margin-top: 30px; background: #E20074; color: #fff; font-size: 15px; font-weight: 700; border-radius: 24px; padding: 12px 36px; border: none; box-shadow: 0 1px 6px rgba(226,0,116,0.15); cursor: pointer; transition: background 0.2s;}
+
+        .score-details-btn:hover { background: #c10062;}
+
+        .reviews-carousel-section { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; position: relative;}
+
+        .section-header { text-align: center; margin-bottom: 40px;}
+
+        .section-title { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 16px;}
+
+        .section-subtitle { font-size: 18px; color: #fff; line-height: 1.6;}
+
+        .carousel-wrapper { position: relative; padding: 0 80px; min-height: 400px; }
+
+        .arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); color: #E20074; width: 48px; height: 48px; cursor: pointer; transition: all 0.3s ease; z-index: 10; display: flex; align-items: center; justify-content: center; padding: 0; pointer-events: auto;}
+
+        .arrow-btn:hover { background: #E20074; color: #fff; box-shadow: 0 6px 16px rgba(226,0,116,0.3); transform: translateY(-50%) scale(1.1);}
+        
+        .arrow-btn:active { transform: translateY(-50%) scale(0.95);}
+
+        .arrow-btn svg { width: 24px; height: 24px; stroke-width: 2.5;}
+
+        .arrow-left { left: 20px;}
+
+        .arrow-right { right: 20px;}
+
+        .review-card { background: #fff; border: none; border-radius: 20px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: box-shadow 0.3s, transform 0.3s; width: 100%; min-width: 0;}
+
+        .review-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;}
+
+        .reviewer-info { flex: 1;}
+
+        .reviewer-name { font-size: 20px; font-weight: 700; color: #222; margin-bottom: 4px;}
+
+        .reviewer-location { font-size: 14px; color: #888; display: flex; align-items: center; gap: 6px;}
+
+        .location-icon { width: 14px; height: 14px;}
+
+        .review-scores { display: flex; align-items: center; gap: 16px;}
+
+        .score-badge { background: #E20074; color: #fff; padding: 8px 16px; border-radius: 24px; font-size: 18px; font-weight: 700; box-shadow: 0 2px 6px rgba(226,0,116,0.14);}
+
+        .stars { color: #FFD700; font-size: 20px; letter-spacing: 2px;}
+
+        .review-date { color: #888; font-size: 13px; margin-bottom: 20px; }
+
+        .review-content { display: grid; gap: 20px; }
+
+        .feedback-section { padding: 20px; border-radius: 12px; background: #f9f9f9; transition: background 0.2s, border-left 0.2s;}
+
+        .feedback-section.liked { background: #f0fdf4; border-left: 4px solid #10b981;}
+
+        .feedback-section.disliked { background: #fef2f2; border-left: 4px solid #ef4444;}
+
+        .feedback-label { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; margin-bottom: 12px;}
+
+        .feedback-label.liked { color: #10b981;}
+
+        .feedback-label.disliked { color: #ef4444;}
+
+        .feedback-text { color: #4b5563; font-size: 15px; line-height: 1.7;}
+
+        .footer { background: rgba(45, 45, 45, 0.95); color: #fff; padding: 48px 24px; text-align: center; border: none; box-shadow: 0 -2px 10px rgba(44,44,44,0.12);}
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-logo { font-size: 28px; font-weight: 700; color: #E20074; margin-bottom: 24px;}
+
+        .footer-text { color: #888; font-size: 14px; line-height: 1.6;}
+
+        @media (max-width: 768px) {.nav-links { display: none; } .hero h1 { font-size: 32px; } .score-number { font-size: 56px; } .section-title { font-size: 32px;}
+
+            .review-card { padding: 24px; } .review-header { flex-direction: column; gap: 8px;} 
+            
+            .arrow-btn { width: 40px; height: 40px; }
+            .arrow-btn svg { width: 20px; height: 20px; }
+            .arrow-left { left: 10px; } 
+            .arrow-right { right: 10px;}
+            
+            .carousel-wrapper { padding: 0 60px; }
+
+            .reviews-carousel-section { margin: 0 auto 35px; }}
+
+        @media (max-width: 600px) {.section-title { font-size: 2rem; }}
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <div class="logo-nav">
+
+            <div class="t-mobile-logo">T-Mobile</div>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="issues.html">Issues</a></li>
+
+                <li><a href="details.html">Detailed Analysis</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="score-section">
+
+    <div class="score-card">
+
+        <div class="score-label">Overall Customer Satisfaction</div>
+
+        <div class="score-number" id="overall-score">--</div>
+
+        <div class="score-subtitle">Index Score</div>
+
+        <div class="score-meta">
+
+            <div class="score-stat">
+
+                <div class="score-stat-value" id="avg-rating">--</div>
+
+                <div class="score-stat-label">Average Rating</div>
+
+            </div>
+
+            <div class="score-stat">
+
+                <div class="score-stat-value" id="total-reviews">--</div>
+
+                <div class="score-stat-label">Total Reviews</div>
+
+            </div>
+
+            <div class="score-stat">
+
+                <div class="score-stat-value" id="recommend-rate">--</div>
+
+                <div class="score-stat-label">Would Recommend</div>
+
+            </div>
+
+        </div>
+
+        <button class="score-details-btn" onclick="window.location.href='details.html'">See Detailed Satisfaction Breakdown</button>
+
+    </div>
+
+</section>
+
+<section class="reviews-carousel-section">
+
+    <div class="carousel-wrapper">
+
+        <button class="arrow-btn arrow-left" onclick="prevReview()" aria-label="Previous Feedback">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <div id="carousel-container"></div>
+
+        <button class="arrow-btn arrow-right" onclick="nextReview()" aria-label="Next Feedback">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-logo">T-Mobile</div>
+
+        <p class="footer-text">©️ 2025 T-Mobile USA, Inc. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+<script>
+
+// API Configuration - detect URL based on current location
+let API_BASE_URL = 'http://localhost:3000/api';
+if (window.location.protocol === 'file:') {
+    // If opened as file://, try localhost
+    API_BASE_URL = 'http://localhost:3000/api';
+} else {
+    // If served from a server, use the same origin
+    API_BASE_URL = `${window.location.origin}/api`;
+}
+
+let reviews = [];
+let currentReview = 0;
+
+// Fetch overall satisfaction data from pre-generated API files
+async function loadOverallSatisfaction() {
+    try {
+        // Try pre-generated file first
+        try {
+            const response = await fetch('api/satisfaction-overall.json');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.score !== undefined) {
+                    console.log('Loaded overall satisfaction from pre-generated file');
+                    document.getElementById('overall-score').textContent = data.score;
+                    document.getElementById('avg-rating').textContent = `${data.averageRating.toFixed(1)}★`;
+                    document.getElementById('total-reviews').textContent = data.totalReviews ? data.totalReviews.toLocaleString() : '45,892';
+                    document.getElementById('recommend-rate').textContent = data.recommendRate ? `${data.recommendRate}%` : '92%';
+                    return;
+                }
+            }
+        } catch (e) {
+            console.log('Pre-generated file not found, trying API...');
+        }
+        
+        // Fallback to API
+        const response = await fetch(`${API_BASE_URL}/satisfaction/overall`);
+        const data = await response.json();
+        
+        if (data.success && data.score !== undefined) {
+            // Update score card with real-time data
+            document.getElementById('overall-score').textContent = data.score;
+            document.getElementById('avg-rating').textContent = `${data.averageRating.toFixed(1)}★`;
+            document.getElementById('total-reviews').textContent = data.totalReviews ? data.totalReviews.toLocaleString() : '45,892';
+            document.getElementById('recommend-rate').textContent = data.recommendRate ? `${data.recommendRate}%` : '92%';
+        } else {
+            throw new Error(data.error || 'Invalid response');
+        }
+    } catch (error) {
+        console.error('Error loading overall satisfaction:', error);
+        // Fallback to default values
+        document.getElementById('overall-score').textContent = '87';
+        document.getElementById('avg-rating').textContent = '4.4★';
+        document.getElementById('total-reviews').textContent = '45,892';
+        document.getElementById('recommend-rate').textContent = '92%';
+    }
+}
+
+// Fetch reviews from pre-generated comprehensive entries API
+async function loadReviews() {
+    try {
+        // Try pre-generated file first
+        try {
+            const response = await fetch('api/entries-all.json');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.entries && data.entries.length > 0) {
+                    console.log('Loaded reviews from pre-generated file');
+                    // Load all entries (or up to 100) - filter for ratings 3+ to get more variety
+                    const allEntries = data.entries.filter(e => e.rating >= 3).slice(0, 100);
+                    reviews = allEntries.map(entry => {
+                        const stars = '★'.repeat(entry.rating) + '☆'.repeat(5 - entry.rating);
+                        const date = new Date(entry.date);
+                        const formattedDate = `Reviewed on ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+                        const score = entry.score || Math.round(entry.rating * 20);
+                        
+                        const liked = entry.review || (entry.rating >= 4.5 
+                            ? "Excellent service! T-Mobile has been amazing. Great coverage and customer support."
+                            : "Very satisfied with T-Mobile. Good coverage and reasonable prices.");
+                        const disliked = entry.rating >= 5 
+                            ? "Everything has been great so far. No complaints!"
+                            : "Minor improvements could be made, but overall very satisfied.";
+                        
+                        return {
+                            name: entry.customerName || entry.name || "Customer",
+                            location: entry.location || entry.state || "Location",
+                            score: `${score}/100`,
+                            stars: stars,
+                            date: formattedDate,
+                            liked: liked,
+                            disliked: disliked
+                        };
+                    });
+                    
+                    if (reviews.length > 0) {
+                        renderReview(0);
+                        return;
+                    }
+                }
+            }
+        } catch (e) {
+            console.log('Pre-generated file not found, trying API...');
+        }
+        
+        // Fallback to API - try to get recent entries from all states (load many more)
+        const response = await fetch(`${API_BASE_URL}/entries/all?limit=100&minRating=3`);
+        const data = await response.json();
+        
+        if (data.success && data.entries && data.entries.length > 0) {
+            // Transform comprehensive entries to match our review format (use all available)
+            reviews = data.entries.map(entry => {
+                const stars = '★'.repeat(entry.rating) + '☆'.repeat(5 - entry.rating);
+                const date = new Date(entry.date);
+                const formattedDate = `Reviewed on ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+                const score = entry.score || Math.round(entry.rating * 20);
+                
+                // Use review text or generate based on rating
+                const liked = entry.review || (entry.rating >= 4.5 
+                    ? "Excellent service! T-Mobile has been amazing. Great coverage and customer support."
+                    : "Very satisfied with T-Mobile. Good coverage and reasonable prices.");
+                const disliked = entry.rating >= 5 
+                    ? "Everything has been great so far. No complaints!"
+                    : "Minor improvements could be made, but overall very satisfied.";
+                
+                return {
+                    name: entry.customerName || entry.name || "Customer",
+                    location: entry.location || entry.state || "Location",
+                    score: `${score}/100`,
+                    stars: stars,
+                    date: formattedDate,
+                    liked: liked,
+                    disliked: disliked
+                };
+            });
+            
+            // If we have reviews, render the first one
+            if (reviews.length > 0) {
+                renderReview(0);
+                return;
+            }
+        }
+        
+        // Fallback to reviews endpoint
+        const reviewsResponse = await fetch(`${API_BASE_URL}/reviews`);
+        const reviewsData = await reviewsResponse.json();
+        
+        if (reviewsData.success && reviewsData.reviews) {
+            reviews = reviewsData.reviews.map(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                const date = new Date(review.date);
+                const formattedDate = `Reviewed on ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+                const score = Math.round(review.rating * 20);
+                
+                const liked = review.text;
+                const disliked = review.rating >= 5 
+                    ? "Everything has been great so far. No complaints!"
+                    : "Minor improvements could be made, but overall very satisfied.";
+                
+                return {
+                    name: review.name,
+                    location: review.location,
+                    score: `${score}/100`,
+                    stars: stars,
+                    date: formattedDate,
+                    liked: liked,
+                    disliked: disliked
+                };
+            });
+            
+            if (reviews.length > 0) {
+                renderReview(0);
+                return;
+            }
+        }
+        
+        throw new Error('No reviews available');
+    } catch (error) {
+        console.error('Error loading reviews:', error);
+        // Fallback to default reviews - create multiple default reviews
+        reviews = [
+            {
+                name: "Sarah Johnson", location: "Seattle, WA", score: "92/100", stars: "★★★★★",
+                date: "Reviewed on November 7, 2025",
+                liked: "The 5G coverage in Seattle is absolutely fantastic! I can stream 4K videos without any buffering. Customer service was very responsive when I had questions about my plan.",
+                disliked: "The mobile app could use some improvements - it's sometimes slow to load my account details."
+            },
+            {
+                name: "Michael Chen", location: "Los Angeles, CA", score: "88/100", stars: "★★★★☆",
+                date: "Reviewed on November 5, 2025",
+                liked: "Great network coverage throughout the city. The unlimited data plan is perfect for my needs.",
+                disliked: "Occasional slow speeds during peak hours in downtown areas."
+            },
+            {
+                name: "Emily Rodriguez", location: "Miami, FL", score: "95/100", stars: "★★★★★",
+                date: "Reviewed on November 3, 2025",
+                liked: "Excellent customer service and fast 5G speeds. Very satisfied with the switch from my previous carrier.",
+                disliked: "No complaints so far!"
+            },
+            {
+                name: "David Thompson", location: "Chicago, IL", score: "85/100", stars: "★★★★☆",
+                date: "Reviewed on November 1, 2025",
+                liked: "Good value for money. The family plan saves us a lot compared to competitors.",
+                disliked: "Some areas in the suburbs have weaker signal strength."
+            },
+            {
+                name: "Jessica Martinez", location: "Phoenix, AZ", score: "90/100", stars: "★★★★★",
+                date: "Reviewed on October 30, 2025",
+                liked: "Reliable service and great coverage. The international roaming features are very useful.",
+                disliked: "Customer service wait times can be long during busy periods."
+            }
+        ];
+        renderReview(0);
+    }
+}
+
+function renderReview(index) {
+
+    const r = reviews[index];
+
+    document.getElementById("carousel-container").innerHTML =
+
+    `<div class="review-card">
+
+        <div class="review-header">
+
+            <div class="reviewer-info">
+
+                <div class="reviewer-name">${r.name}</div>
+
+                <div class="reviewer-location">
+
+                    <svg class="location-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+
+                    ${r.location}
+
+                </div>
+
+            </div>
+
+            <div class="review-scores">
+
+                <div class="score-badge">${r.score}</div>
+
+                <div class="stars">${r.stars}</div>
+
+            </div>
+
+        </div>
+
+        <div class="review-date">${r.date}</div>
+
+        <div class="review-content">
+
+            <div class="feedback-section liked">
+
+                <div class="feedback-label liked">
+
+                    <span>✓</span> What I Liked
+
+                </div>
+
+                <div class="feedback-text">${r.liked}</div>
+
+            </div>
+
+            <div class="feedback-section disliked">
+
+                <div class="feedback-label disliked">
+
+                    <span>✗</span> What Could Be Better
+
+                </div>
+
+                <div class="feedback-text">${r.disliked}</div>
+
+            </div>
+
+        </div>
+
+    </div>`;
+
+}
+
+function prevReview() {
+    if (reviews.length === 0) {
+        console.warn('No reviews available to navigate');
+        return;
+    }
+    currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+    renderReview(currentReview);
+}
+
+function nextReview() {
+    if (reviews.length === 0) {
+        console.warn('No reviews available to navigate');
+        return;
+    }
+    currentReview = (currentReview + 1) % reviews.length;
+    renderReview(currentReview);
+}
+
+document.addEventListener('keydown', e => {
+
+    if (e.key === "ArrowLeft") prevReview();
+
+    if (e.key === "ArrowRight") nextReview();
+
+});
+
+// Initialize on page load
+window.onload = async () => {
+    await loadOverallSatisfaction();
+    await loadReviews();
+    
+    // Auto-refresh data every 30 seconds for real-time updates
+    setInterval(async () => {
+        await loadOverallSatisfaction();
+        await loadReviews();
+        // Re-render current review if data changed
+        if (reviews.length > 0) {
+            renderReview(currentReview);
+        }
+    }, 30000);
+};
+
+</script>
+
+</body>
+
+</html>
