@@ -9,6 +9,9 @@ A real-time customer satisfaction ratings web application for T-Mobile with inte
 - ⭐ District-level performance metrics
 - 💬 Customer reviews carousel
 - 🔄 Auto-refreshing data (updates every 30 seconds)
+- 📱 **Real social media data integration** (Twitter, Instagram, Facebook)
+- 🤖 Automatic sentiment analysis and rating calculation
+- 📈 Issues tracking and feedback analysis pages
 
 ## Setup Instructions
 
@@ -16,6 +19,7 @@ A real-time customer satisfaction ratings web application for T-Mobile with inte
 
 - Node.js (v14 or higher)
 - npm (Node Package Manager)
+- Python 3.7+ (for social media data fetching - optional)
 
 ### Installation
 
@@ -78,32 +82,80 @@ The API server provides the following RESTful endpoints:
 ### Admin
 - `POST /api/admin/reload` - Reload state data from JSON file (development)
 
+## Social Media Data Integration
+
+The app can fetch **real customer feedback** from Twitter, Instagram, and Facebook APIs to replace generated data.
+
+### Quick Start (Social Media Integration)
+
+1. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure API credentials:**
+   - Copy `.env.example` to `.env`
+   - Add your API tokens (see `social_fetch/README.md` for details)
+
+3. **Fetch and process data:**
+   ```bash
+   ./run_social_fetch.sh
+   ```
+   
+   Or run the scheduler for continuous updates:
+   ```bash
+   python -m social_fetch.scheduler
+   ```
+
+4. **Data flow:**
+   - Social media APIs → `social.db` (SQLite)
+   - Sentiment analysis → Rating calculation
+   - Convert to feedback format → `api/entries-all.json`
+   - API server automatically serves the real data
+
+See `social_fetch/README.md` for detailed setup instructions and API credential requirements.
+
 ## Project Structure
 
 ```
 TMOBILE/
-├── index.html          # Main landing page
-├── details.html        # Interactive US map page
-├── issues.html         # Customer issues tracking page
-├── state-data.json     # State data source
-├── api-server.js       # Express API server
-├── package.json        # Node.js dependencies
-└── README.md           # This file
+├── index.html              # Main landing page
+├── details.html            # Interactive US map page
+├── issues.html             # Customer issues tracking page
+├── feedback.html           # Feedback analysis page
+├── state-data.json         # State data source
+├── api-server.js           # Express API server
+├── package.json            # Node.js dependencies
+├── requirements.txt        # Python dependencies (social media)
+├── social_fetch/           # Social media data fetching
+│   ├── twitter_fetch.py    # Twitter API integration
+│   ├── instagram_fetch.py  # Instagram API integration
+│   ├── facebook_fetch.py   # Facebook API integration
+│   ├── process_social_data.py  # Data processing & conversion
+│   └── scheduler.py        # Periodic data fetching
+└── README.md               # This file
 ```
 
 ## How It Works
 
-1. **API Server**: The Express server (`api-server.js`) serves as a mock T-Mobile API that:
-   - Reads state data from `state-data.json`
+1. **Data Sources**: 
+   - **Real Social Media Data** (if configured): Fetched from Twitter, Instagram, and Facebook APIs
+   - **Generated Data**: Fallback mock data for development/demo
+   - Data is processed with sentiment analysis and converted to feedback format
+
+2. **API Server**: The Express server (`api-server.js`) serves as a T-Mobile API that:
+   - Reads feedback data from `api/entries-all.json` (prioritizes real social media data)
+   - Falls back to `state-entries-data.json` if social media data unavailable
    - Adds random variations to simulate real-time updates
    - Provides RESTful endpoints for the frontend
 
-2. **Frontend**: The HTML pages fetch data from the API:
-   - `index.html` displays overall ratings and reviews
+3. **Frontend**: The HTML pages fetch data from the API:
+   - `index.html` displays overall ratings and reviews (calculated from all feedback)
    - `details.html` shows an interactive map of all states
    - `issues.html` displays and tracks customer issues across all states
+   - `feedback.html` analyzes all feedback entries with filtering
 
-3. **Real-time Updates**: Data automatically refreshes every 30 seconds to show updated ratings.
+4. **Real-time Updates**: Data automatically refreshes every 30 seconds to show updated ratings.
 
 ## Development
 
@@ -156,9 +208,12 @@ The API uses comprehensive data with **100-200 entries per state** (over 7,700 t
 
 ## Future Enhancements
 
-- Connect to actual T-Mobile customer service API (when available)
+- ✅ Real social media data integration (Twitter, Instagram, Facebook)
+- ✅ Automatic sentiment analysis and rating calculation
 - Add WebSocket support for true real-time updates
 - Implement user authentication
 - Add data visualization charts
 - Export data functionality
+- Machine learning for better sentiment analysis
+- Automated issue detection from social media posts
 

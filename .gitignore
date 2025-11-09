@@ -26,3 +26,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Social media data
+social.db
+social.db-journal
