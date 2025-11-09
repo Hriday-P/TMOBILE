@@ -2073,7 +2073,7 @@ async function loadIssues() {
         if (lowScoreFeedback.length === 0) {
             document.getElementById('issues-container').innerHTML = `
                 <div class="no-issues">
-                    <div class="no-issues-icon">✅</div>
+                    <div class="no-issues-icon"></div>
                     <div class="no-issues-text">No issues found with scores of 60 or below</div>
                 </div>
             `;
@@ -2284,7 +2284,7 @@ function renderIssues() {
     if (html === '') {
         html = `
         <div class="no-issues">
-            <div class="no-issues-icon">✅</div>
+            <div class="no-issues-icon"></div>
             <div class="no-issues-text">No issues found for this category</div>
         </div>
         `;
