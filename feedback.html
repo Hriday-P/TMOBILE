@@ -161,7 +161,7 @@
         </div>
         <div class="stat-card">
             <div class="stat-number" id="avg-score">0</div>
-            <div class="stat-label">Avg Score</div>
+            <div class="stat-label">Overall Customer Satisfaction</div>
         </div>
         <div class="stat-card">
             <div class="stat-number" id="verified-count">0</div>
@@ -2455,7 +2455,7 @@ function updateStatistics() {
     
     document.getElementById('total-feedback').textContent = total.toLocaleString();
     document.getElementById('avg-rating').textContent = avgRating;
-    document.getElementById('avg-score').textContent = avgScore;
+    document.getElementById('avg-score').textContent = avgScore > 0 ? `${avgScore}%` : '0%';
     document.getElementById('verified-count').textContent = verified.toLocaleString();
 }
 

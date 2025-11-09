@@ -276,47 +276,96 @@ if (window.location.protocol === 'file:') {
 let reviews = [];
 let currentReview = 0;
 
-// Fetch overall satisfaction data from pre-generated API files
+// Fetch overall satisfaction data by averaging all feedback
 async function loadOverallSatisfaction() {
     try {
-        // Try pre-generated file first
+        let allFeedback = [];
+        
+        // Try to load from pre-generated entries-all.json first
         try {
-            const response = await fetch('api/satisfaction-overall.json');
+            const response = await fetch('api/entries-all.json');
             if (response.ok) {
                 const data = await response.json();
-                if (data.success && data.score !== undefined) {
-                    console.log('Loaded overall satisfaction from pre-generated file');
-                    document.getElementById('overall-score').textContent = data.score;
-                    document.getElementById('avg-rating').textContent = `${data.averageRating.toFixed(1)}★`;
-                    document.getElementById('total-reviews').textContent = data.totalReviews ? data.totalReviews.toLocaleString() : '45,892';
-                    document.getElementById('recommend-rate').textContent = data.recommendRate ? `${data.recommendRate}%` : '92%';
-                    return;
+                if (data.success && data.entries && Array.isArray(data.entries)) {
+                    allFeedback = data.entries;
+                    console.log(`Loaded ${allFeedback.length} feedback entries from pre-generated file`);
                 }
             }
         } catch (e) {
             console.log('Pre-generated file not found, trying API...');
         }
-        
-        // Fallback to API
-        const response = await fetch(`${API_BASE_URL}/satisfaction/overall`);
-        const data = await response.json();
-        
-        if (data.success && data.score !== undefined) {
-            // Update score card with real-time data
-            document.getElementById('overall-score').textContent = data.score;
-            document.getElementById('avg-rating').textContent = `${data.averageRating.toFixed(1)}★`;
-            document.getElementById('total-reviews').textContent = data.totalReviews ? data.totalReviews.toLocaleString() : '45,892';
-            document.getElementById('recommend-rate').textContent = data.recommendRate ? `${data.recommendRate}%` : '92%';
+
+        // Fallback to API if no pre-generated data
+        if (allFeedback.length === 0) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/entries/all?limit=20000`);
+                const data = await response.json();
+                if (data.success && data.entries && Array.isArray(data.entries)) {
+                    allFeedback = data.entries;
+                    console.log(`Loaded ${allFeedback.length} feedback entries from API`);
+                }
+            } catch (e) {
+                console.log('API not available, trying mock data...');
+            }
+        }
+
+        // Fallback to large mock data file if no API data is available
+        if (allFeedback.length === 0) {
+            try {
+                const response = await fetch('mock-feedback-data.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        allFeedback = data;
+                        console.log(`Loaded ${allFeedback.length} feedback entries from mock-feedback-data.json`);
+                    }
+                }
+            } catch (e) {
+                console.log('Mock feedback data file not found');
+            }
+        }
+
+        // Calculate satisfaction metrics from all feedback
+        if (allFeedback.length > 0) {
+            const totalReviews = allFeedback.length;
+            
+            // Calculate average rating
+            const avgRating = allFeedback.reduce((sum, f) => sum + (f.rating || 0), 0) / totalReviews;
+            
+            // Calculate average score (from score field or rating * 20)
+            const avgScore = Math.round(
+                allFeedback.reduce((sum, f) => {
+                    const score = f.score || (f.rating ? Math.round(f.rating * 20) : 0);
+                    return sum + score;
+                }, 0) / totalReviews
+            );
+            
+            // Calculate recommend rate (percentage with rating >= 4.0)
+            const recommendCount = allFeedback.filter(f => (f.rating || 0) >= 4.0).length;
+            const recommendRate = Math.round((recommendCount / totalReviews) * 100);
+            
+            // Update the UI
+            document.getElementById('overall-score').textContent = avgScore;
+            document.getElementById('avg-rating').textContent = `${avgRating.toFixed(1)}★`;
+            document.getElementById('total-reviews').textContent = totalReviews.toLocaleString();
+            document.getElementById('recommend-rate').textContent = `${recommendRate}%`;
+            
+            console.log(`Calculated satisfaction: Score=${avgScore}%, Rating=${avgRating.toFixed(2)}, Reviews=${totalReviews}, Recommend=${recommendRate}%`);
         } else {
-            throw new Error(data.error || 'Invalid response');
+            // Fallback to default values if no data available
+            console.warn('No feedback data available, using default values');
+            document.getElementById('overall-score').textContent = '83';
+            document.getElementById('avg-rating').textContent = '4.2★';
+            document.getElementById('total-reviews').textContent = '17,363';
+            document.getElementById('recommend-rate').textContent = '85%';
         }
     } catch (error) {
         console.error('Error loading overall satisfaction:', error);
         // Fallback to default values
-        document.getElementById('overall-score').textContent = '87';
-        document.getElementById('avg-rating').textContent = '4.4★';
-        document.getElementById('total-reviews').textContent = '45,892';
-        document.getElementById('recommend-rate').textContent = '92%';
+        document.getElementById('overall-score').textContent = '83';
+        document.getElementById('avg-rating').textContent = '4.2★';
+        document.getElementById('total-reviews').textContent = '17,363';
+        document.getElementById('recommend-rate').textContent = '85%';
     }
 }
 
