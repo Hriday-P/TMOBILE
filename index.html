@@ -276,6 +276,16 @@ if (window.location.protocol === 'file:') {
 let reviews = [];
 let currentReview = 0;
 
+// Shuffle array function (Fisher-Yates algorithm)
+function shuffleArray(array) {
+    const shuffled = [...array]; // Create a copy to avoid mutating original
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 // Fetch overall satisfaction data by averaging all feedback
 async function loadOverallSatisfaction() {
     try {
@@ -410,6 +420,9 @@ async function loadReviews() {
                         };
                     });
                     
+                    // Randomize the order of reviews
+                    reviews = shuffleArray(reviews);
+                    
                     if (reviews.length > 0) {
                         renderReview(0);
                         return;
@@ -456,6 +469,9 @@ async function loadReviews() {
                 };
             });
             
+            // Randomize the order of reviews
+            reviews = shuffleArray(reviews);
+            
             // If we have reviews, render the first one
             if (reviews.length > 0) {
                 renderReview(0);
@@ -495,6 +511,9 @@ async function loadReviews() {
                 };
             });
             
+            // Randomize the order of reviews
+            reviews = shuffleArray(reviews);
+            
             if (reviews.length > 0) {
                 renderReview(0);
                 return;
@@ -505,7 +524,7 @@ async function loadReviews() {
     } catch (error) {
         console.error('Error loading reviews:', error);
         // Fallback to default reviews - create multiple default reviews
-        reviews = [
+        const defaultReviews = [
             {
                 name: "Sarah Johnson", location: "Seattle, WA", score: "92/100", stars: "★★★★★",
                 date: "Reviewed on November 7, 2025 at 14:32",
@@ -537,6 +556,8 @@ async function loadReviews() {
                 disliked: "Customer service wait times can be long during busy periods."
             }
         ];
+        // Randomize the order of default reviews
+        reviews = shuffleArray(defaultReviews);
         renderReview(0);
     }
 }
