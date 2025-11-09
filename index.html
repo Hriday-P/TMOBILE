@@ -389,9 +389,24 @@ async function loadReviews() {
                 const data = await response.json();
                 if (data.success && data.entries && data.entries.length > 0) {
                     console.log('Loaded reviews from pre-generated file');
-                    // Load all entries (or up to 100) - filter for ratings 3+ to get more variety
-                    const allEntries = data.entries.filter(e => e.rating >= 3).slice(0, 100);
-                    reviews = allEntries.map(entry => {
+                    // Load all entries - filter for ratings 3+ to get more variety
+                    let allEntries = data.entries.filter(e => e.rating >= 3);
+                    
+                    // Remove duplicates based on name and location
+                    const uniqueEntries = [];
+                    const seen = new Set();
+                    for (const entry of allEntries) {
+                        const key = `${entry.customerName || entry.name || ''}-${entry.location || entry.state || ''}`;
+                        if (key && !seen.has(key)) {
+                            seen.add(key);
+                            uniqueEntries.push(entry);
+                        }
+                    }
+                    
+                    // Take up to 200 unique entries for variety
+                    const selectedEntries = uniqueEntries.slice(0, 200);
+                    
+                    reviews = selectedEntries.map(entry => {
                         const stars = '★'.repeat(entry.rating) + '☆'.repeat(5 - entry.rating);
                         const date = new Date(entry.date);
                         // Generate random time for this entry (consistent based on entry ID)
@@ -402,7 +417,7 @@ async function loadReviews() {
                         const formattedDate = `Reviewed on ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} at ${formattedTime}`;
                         const score = entry.score || Math.round(entry.rating * 20);
                         
-                        const liked = entry.review || (entry.rating >= 4.5 
+                        const liked = entry.review || entry.feedback || (entry.rating >= 4.5 
                             ? "Excellent service! T-Mobile has been amazing. Great coverage and customer support."
                             : "Very satisfied with T-Mobile. Good coverage and reasonable prices.");
                         const disliked = entry.rating >= 5 
@@ -434,12 +449,23 @@ async function loadReviews() {
         }
         
         // Fallback to API - try to get recent entries from all states (load many more)
-        const response = await fetch(`${API_BASE_URL}/entries/all?limit=100&minRating=3`);
+        const response = await fetch(`${API_BASE_URL}/entries/all?limit=200&minRating=3`);
         const data = await response.json();
         
         if (data.success && data.entries && data.entries.length > 0) {
-            // Transform comprehensive entries to match our review format (use all available)
-            reviews = data.entries.map(entry => {
+            // Remove duplicates based on name and location
+            const uniqueEntries = [];
+            const seen = new Set();
+            for (const entry of data.entries) {
+                const key = `${entry.customerName || entry.name || ''}-${entry.location || entry.state || ''}`;
+                if (key && !seen.has(key)) {
+                    seen.add(key);
+                    uniqueEntries.push(entry);
+                }
+            }
+            
+            // Transform comprehensive entries to match our review format
+            reviews = uniqueEntries.map(entry => {
                 const stars = '★'.repeat(entry.rating) + '☆'.repeat(5 - entry.rating);
                 const date = new Date(entry.date);
                 // Generate random time for this entry (consistent based on entry ID)
@@ -451,7 +477,7 @@ async function loadReviews() {
                 const score = entry.score || Math.round(entry.rating * 20);
                 
                 // Use review text or generate based on rating
-                const liked = entry.review || (entry.rating >= 4.5 
+                const liked = entry.review || entry.feedback || (entry.rating >= 4.5 
                     ? "Excellent service! T-Mobile has been amazing. Great coverage and customer support."
                     : "Very satisfied with T-Mobile. Good coverage and reasonable prices.");
                 const disliked = entry.rating >= 5 

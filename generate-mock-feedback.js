@@ -33,6 +33,21 @@ const lastNames = [
 // Categories
 const categories = ["Coverage", "Price", "Customer Service", "Network Speed", "Reliability"];
 
+// State abbreviations mapping
+const stateAbbreviations = {
+    "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
+    "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA",
+    "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL", "Indiana": "IN", "Iowa": "IA",
+    "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD",
+    "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", "Missouri": "MO",
+    "Montana": "MT", "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ",
+    "New Mexico": "NM", "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH",
+    "Oklahoma": "OK", "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC",
+    "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT",
+    "Virginia": "VA", "Washington": "WA", "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY",
+    "District of Columbia": "DC"
+};
+
 // States with major cities and counties
 const statesData = {
     "Alabama": { cities: ["Birmingham", "Montgomery", "Mobile", "Huntsville"], counties: ["Jefferson County", "Montgomery County", "Mobile County", "Madison County"] },
@@ -335,7 +350,7 @@ function generateMockFeedback() {
             const countyContact = generateCountyContact(stateName, county);
             
             // Location format
-            const stateAbbr = stateName === "District of Columbia" ? "DC" : stateName.substring(0, 2).toUpperCase();
+            const stateAbbr = stateAbbreviations[stateName] || stateName.substring(0, 2).toUpperCase();
             const location = `${city}, ${stateAbbr}`;
             
             entries.push({
@@ -391,7 +406,7 @@ function generateMockFeedback() {
         
         const verified = rating >= 4.0 ? Math.random() > 0.2 : Math.random() > 0.5;
         const countyContact = generateCountyContact(stateName, county);
-        const stateAbbr = stateName === "District of Columbia" ? "DC" : stateName.substring(0, 2).toUpperCase();
+        const stateAbbr = stateAbbreviations[stateName] || stateName.substring(0, 2).toUpperCase();
         const location = `${city}, ${stateAbbr}`;
         
         entries.push({

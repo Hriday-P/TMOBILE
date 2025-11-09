@@ -144,15 +144,33 @@ app.get('/api/satisfaction/overall', (req, res) => {
         
         const overallRating = count > 0 ? totalRating / count : 0;
         
-        // Add real-time variation
-        const realTimeRating = addVariation(overallRating, 0.05);
-        const stars = Math.max(1, Math.min(5, Math.round(realTimeRating)));
-        const score = Math.max(0, Math.min(100, Math.round(realTimeRating * 20)));
-        const recommendRate = Math.max(85, Math.min(98, Math.round(overallRating * 20 + 5)));
+        // Use actual calculated rating (no random variations)
+        const stars = Math.max(1, Math.min(5, Math.round(overallRating)));
+        const score = Math.max(0, Math.min(100, Math.round(overallRating * 20)));
+        
+        // Calculate recommend rate from actual entries if available
+        let recommendRate = 85; // default
+        if (Object.keys(comprehensiveData).length > 0) {
+            let recommendCount = 0;
+            let totalEntriesForRecommend = 0;
+            Object.keys(comprehensiveData).forEach(stateName => {
+                const state = comprehensiveData[stateName];
+                if (state && state.entries && state.entries.length > 0) {
+                    const stateRecommendCount = state.entries.filter(e => (e.rating || 0) >= 4.0).length;
+                    recommendCount += stateRecommendCount;
+                    totalEntriesForRecommend += state.entries.length;
+                }
+            });
+            if (totalEntriesForRecommend > 0) {
+                recommendRate = Math.round((recommendCount / totalEntriesForRecommend) * 100);
+            }
+        } else {
+            recommendRate = Math.max(85, Math.min(98, Math.round(overallRating * 20 + 5)));
+        }
         
         res.json({
             success: true,
-            averageRating: parseFloat(realTimeRating.toFixed(2)),
+            averageRating: parseFloat(overallRating.toFixed(2)),
             stars: stars,
             score: score,
             totalStates: count,
@@ -193,23 +211,35 @@ app.get('/api/satisfaction/states', (req, res) => {
         
         Object.keys(stateData).forEach(stateName => {
             const state = stateData[stateName];
-            if (!state || !state.averageRating) return;
+            if (!state) return;
             
-            const updatedRating = addVariation(state.averageRating, 0.08);
-            const updatedStars = Math.max(1, Math.min(5, Math.round(updatedRating)));
-            const updatedScore = Math.max(0, Math.min(100, Math.round(updatedRating * 20)));
+            // Calculate rating from entries data if available
+            let calculatedRating = null;
+            let calculatedScore = null;
             
-            // Update districts with variation
-            const updatedDistricts = (state.districts || []).map(district => ({
+            if (comprehensiveData[stateName] && comprehensiveData[stateName].entries && comprehensiveData[stateName].entries.length > 0) {
+                const entries = comprehensiveData[stateName].entries;
+                calculatedRating = entries.reduce((sum, e) => sum + (e.rating || 0), 0) / entries.length;
+                calculatedScore = Math.round(entries.reduce((sum, e) => sum + (e.score || (e.rating ? e.rating * 20 : 0)), 0) / entries.length);
+            }
+            
+            // Use calculated rating from entries, or fallback to state averageRating
+            const finalRating = calculatedRating !== null ? calculatedRating : (state.averageRating || 0);
+            const finalScore = calculatedScore !== null ? calculatedScore : Math.round(finalRating * 20);
+            
+            const stars = Math.max(1, Math.min(5, Math.round(finalRating)));
+            
+            // Keep districts as-is (no random variations)
+            const districts = (state.districts || []).map(district => ({
                 ...district,
-                averageRating: parseFloat(addVariation(district.averageRating || 4.0, 0.1).toFixed(2))
+                averageRating: parseFloat((district.averageRating || 0).toFixed(2))
             }));
             
             updatedStates[stateName] = {
-                averageRating: parseFloat(updatedRating.toFixed(2)),
-                stars: updatedStars,
-                score: updatedScore,
-                districts: updatedDistricts,
+                averageRating: parseFloat(finalRating.toFixed(2)),
+                stars: stars,
+                score: finalScore,
+                districts: districts,
                 lastUpdated: new Date().toISOString()
             };
         });
@@ -308,7 +338,7 @@ app.get('/api/satisfaction/state/:stateName', (req, res) => {
         const state = stateMatch.data;
         
         // Validate state data structure
-        if (!state || !state.averageRating) {
+        if (!state) {
             return res.status(500).json({
                 success: false,
                 error: 'Invalid state data',
@@ -317,25 +347,36 @@ app.get('/api/satisfaction/state/:stateName', (req, res) => {
             });
         }
         
-        // Add real-time variation
-        const updatedRating = addVariation(state.averageRating, 0.08);
-        const updatedStars = Math.max(1, Math.min(5, Math.round(updatedRating)));
-        const updatedScore = Math.max(0, Math.min(100, Math.round(updatedRating * 20)));
+        // Calculate rating from entries data if available
+        let calculatedRating = null;
+        let calculatedScore = null;
         
-        // Update districts with variation
-        const updatedDistricts = (state.districts || []).map(district => ({
+        if (comprehensiveData[stateMatch.name] && comprehensiveData[stateMatch.name].entries && comprehensiveData[stateMatch.name].entries.length > 0) {
+            const entries = comprehensiveData[stateMatch.name].entries;
+            calculatedRating = entries.reduce((sum, e) => sum + (e.rating || 0), 0) / entries.length;
+            calculatedScore = Math.round(entries.reduce((sum, e) => sum + (e.score || (e.rating ? e.rating * 20 : 0)), 0) / entries.length);
+        }
+        
+        // Use calculated rating from entries, or fallback to state averageRating
+        const finalRating = calculatedRating !== null ? calculatedRating : (state.averageRating || 0);
+        const finalScore = calculatedScore !== null ? calculatedScore : Math.round(finalRating * 20);
+        
+        const stars = Math.max(1, Math.min(5, Math.round(finalRating)));
+        
+        // Keep districts as-is (no random variations)
+        const districts = (state.districts || []).map(district => ({
             ...district,
-            averageRating: parseFloat(addVariation(district.averageRating || 4.0, 0.1).toFixed(2))
+            averageRating: parseFloat((district.averageRating || 0).toFixed(2))
         }));
         
         // Include county data if available
         const responseData = {
             success: true,
             stateName: stateMatch.name,
-            averageRating: parseFloat(updatedRating.toFixed(2)),
-            stars: updatedStars,
-            score: updatedScore,
-            districts: updatedDistricts,
+            averageRating: parseFloat(finalRating.toFixed(2)),
+            stars: stars,
+            score: finalScore,
+            districts: districts,
             lastUpdated: new Date().toISOString()
         };
         
@@ -466,21 +507,78 @@ app.get('/api/reviews', (req, res) => {
         const maxLimit = 20;
         const actualLimit = Math.min(limit, maxLimit);
         
-        // Shuffle and return reviews with slight rating variations
-        const shuffled = [...reviewsDatabase].sort(() => 0.5 - Math.random());
-        const selectedReviews = shuffled.slice(0, actualLimit);
+        // Collect reviews from entries data across all states
+        let allEntries = [];
         
-        const updatedReviews = selectedReviews.map(review => ({
-            ...review,
-            rating: Math.max(4, Math.min(5, Math.round(addVariation(review.rating, 0.2)))),
-            date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString()
-        }));
+        if (Object.keys(comprehensiveData).length > 0) {
+            // Get entries from all states
+            Object.keys(comprehensiveData).forEach(stateName => {
+                const state = comprehensiveData[stateName];
+                if (state && state.entries && Array.isArray(state.entries)) {
+                    state.entries.forEach(entry => {
+                        if (entry && entry.rating) {
+                            allEntries.push({
+                                id: entry.id || `${stateName}-${entry.customerName || Math.random()}`,
+                                name: entry.customerName || entry.name || "Customer",
+                                location: entry.location || `${entry.city || ''}, ${stateName}`.trim() || stateName,
+                                rating: entry.rating,
+                                text: entry.review || entry.feedback || `Rated ${entry.rating} stars for ${entry.category || 'service'}`,
+                                date: entry.date || new Date().toISOString()
+                            });
+                        }
+                    });
+                }
+            });
+        }
+        
+        // If no entries data, fallback to hardcoded reviews
+        if (allEntries.length === 0) {
+            const shuffled = [...reviewsDatabase].sort(() => 0.5 - Math.random());
+            const selectedReviews = shuffled.slice(0, actualLimit);
+            
+            const updatedReviews = selectedReviews.map(review => ({
+                ...review,
+                rating: review.rating,
+                date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString()
+            }));
+            
+            return res.json({
+                success: true,
+                reviews: updatedReviews,
+                total: updatedReviews.length,
+                available: reviewsDatabase.length,
+                timestamp: new Date().toISOString()
+            });
+        }
+        
+        // Remove duplicates based on name and location combination
+        const uniqueEntries = [];
+        const seen = new Set();
+        for (const entry of allEntries) {
+            const key = `${entry.name}-${entry.location}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                uniqueEntries.push(entry);
+            }
+        }
+        
+        // Sort by date (newest first) and shuffle for variety
+        uniqueEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Shuffle to get variety, but keep recent ones more likely
+        const shuffled = [...uniqueEntries].sort(() => 0.5 - Math.random());
+        
+        // Take a mix: some recent, some random
+        const recentCount = Math.min(actualLimit, Math.floor(actualLimit * 0.6));
+        const recent = uniqueEntries.slice(0, recentCount);
+        const random = shuffled.filter(e => !recent.includes(e)).slice(0, actualLimit - recentCount);
+        const selectedReviews = [...recent, ...random].slice(0, actualLimit);
         
         res.json({
             success: true,
-            reviews: updatedReviews,
-            total: updatedReviews.length,
-            available: reviewsDatabase.length,
+            reviews: selectedReviews,
+            total: selectedReviews.length,
+            available: uniqueEntries.length,
             timestamp: new Date().toISOString()
         });
     } catch (error) {
