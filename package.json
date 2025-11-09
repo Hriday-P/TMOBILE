@@ -1,0 +1,26 @@
+{
+  "name": "tmobile-customer-satisfaction",
+  "version": "1.0.0",
+  "description": "T-Mobile Customer Satisfaction Ratings Web App with Real-time API",
+  "main": "api-server.js",
+  "scripts": {
+    "start": "node api-server.js",
+    "dev": "nodemon api-server.js",
+    "pre-generate": "node pre-generate-apis.js"
+  },
+  "keywords": [
+    "tmobile",
+    "customer-satisfaction",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
