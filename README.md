@@ -1,6 +1,6 @@
-# T-Mobile Customer Satisfaction Web App
+# T-Mobile Happiness Index Web App
 
-A real-time customer satisfaction ratings web application for T-Mobile with interactive state-by-state breakdowns.
+A real-time customer satisfaction ratings web application for T-Mobile with interactive state-by-state breakdowns to identify issues and customer satisfaction.
 
 ## Features
 
